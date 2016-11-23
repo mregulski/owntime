@@ -7,6 +7,7 @@ import java.util.ArrayList;
 /**
  *
  * @author Cirben
+ * provides not ordered in any way lists
  */
 public interface DataProvider {
 	public ArrayList<Point> getStops();
