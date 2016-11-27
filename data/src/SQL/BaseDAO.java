@@ -17,12 +17,7 @@ public class BaseDAO {
         String password = props.getProperty("password");
 
         Connection con = DriverManager.getConnection(url, name, password);
-        System.out.println("\nConnection successfull");
         return con;
-    }
-
-    public void closeConnection(Connection con) throws SQLException {
-        con.close();
     }
 
 }
