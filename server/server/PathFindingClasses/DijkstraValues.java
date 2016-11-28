@@ -8,41 +8,41 @@ import java.time.LocalDateTime;
  */
 class DijkstraValues {
 
-		VConnection fastestIn;
-		boolean visited;
-		LocalDateTime in;
+    VConnection fastestIn;
+    boolean visited;
+    LocalDateTime in;
 
-		DijkstraValues(VConnection a, boolean b, LocalDateTime in) {
-				fastestIn = a;
-				visited = b;
-				this.in = in;
-		}
+    DijkstraValues(VConnection a, boolean b, LocalDateTime in) {
+        fastestIn = a;
+        visited = b;
+        this.in = in;
+    }
 
-		DijkstraValues() {
-		}
+    DijkstraValues() {
+    }
 
-		public VConnection getFastestIn() {
-				return fastestIn;
-		}
+    public VConnection getFastestIn() {
+        return fastestIn;
+    }
 
-		public void setFastestIn(VConnection fastestIn) {
-				this.fastestIn = fastestIn;
-		}
+    public void setFastestIn(VConnection fastestIn) {
+        this.fastestIn = fastestIn;
+    }
 
-		public boolean isVisited() {
-				return visited;
-		}
+    public boolean isVisited() {
+        return visited;
+    }
 
-		public void setVisited(boolean visited) {
-				this.visited = visited;
-		}
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
 
-		public LocalDateTime getIn() {
-				return in;
-		}
+    public LocalDateTime getIn() {
+        return in;
+    }
 
-		public void setIn(LocalDateTime in) {
-				this.in = in;
-		}
+    public void setIn(LocalDateTime in) {
+        this.in = in;
+    }
 
 }

@@ -7,11 +7,13 @@ import java.util.ArrayList;
 /**
  *
  * @author Cirben
- * provides not ordered in any way lists
  */
 public interface DataProvider {
-	public ArrayList<Point> getStops();
-	public ArrayList<Connection> getConnections();
- 	public ArrayList<Connection> getUpdatedConnections();
-	
+
+    public ArrayList<Point> getStops();
+
+    public ArrayList<Connection> getConnections();
+
+    public ArrayList<Connection> getUpdatedConnections();
+
 }
