@@ -8,7 +8,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Positioner {
-    private final String urlPatch = "http://pasazer.mpk.wroc.pl/jak-jezdzimy/mapa-pozycji-pojazdow";
+    private final String urlPatch = "http://www.mpk.wroc.pl/position.php";
     private final String userAgent = "Chrome/20.0.1090.0";
     String postParameters;
     private String response;
@@ -46,7 +46,7 @@ public class Positioner {
     }
 
     public static void main(String[] args) {
-        Positioner pos = new Positioner("4");
+        Positioner pos = new Positioner("243");
         try {
             pos.sendPositionRequest();
         } catch (Exception e) {
