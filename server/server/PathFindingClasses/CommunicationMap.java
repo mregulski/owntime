@@ -6,6 +6,7 @@ import server.PathFindingClasses.VPoint;
 import server.dataFormats.Connection;
 import server.dataFormats.Point;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import server.dataFormats.Coords;
@@ -34,15 +35,20 @@ public class CommunicationMap {
         }
         for (VPoint p : all) {
             Coords a = p.getCoords();
+            ArrayList<TravelTime> tts = new ArrayList<>();
             for (VPoint q : all) {
                 Coords b = q.getCoords();
                 double j = a.getX() - b.getX();
                 double k = a.getY() - b.getY();
                 double dist = Math.sqrt(j * j + k * k);
-                if (dist < 0.01) {
+                if (dist < 0.01) { // TO DO: change this loop when working with real data, adjust constants
                     TravelTime tt = new TravelTime((int) ((dist / 0.01) * 10000), p, q);// 600 sec per 0.01 of dist
-                    p.addTravelTime(tt);
+                    tts.add(tt);
                 }
+            }
+            Collections.sort(tts);
+            for (int h = 0; h < Math.min(20, tts.size()); h++) {
+                p.addTravelTime(tts.get(h));
             }
         }
         for (Connection c : connections) {
@@ -131,10 +137,10 @@ public class CommunicationMap {
             for (VConnection v : u.getKConnections(20, u.getDValues(threadId).getIn())) {
                 //if in unvisited>??
                 DijkstraValues dv;
-                if(v.getTarget()==null){
+                if (v.getTarget() == null) {
                     System.out.println("aas");
                 }
-                dv = v.getTarget().getDValues(threadId);              
+                dv = v.getTarget().getDValues(threadId);
                 if (dv.getIn() == null || v.getArrival().compareTo(dv.getIn()) < 0) {
                     dv.setFastestIn(v);
                     dv.setIn(v.getArrival());

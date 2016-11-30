@@ -34,7 +34,6 @@ public class VPoint {
 
     public ArrayList<VConnection> getKConnections(int K, LocalDateTime from) {
         ArrayList<VConnection> ret = new ArrayList<>();
-        //TODO: make connections from  unTimedConnections as well - those are connections that are not planned (departure time depends on stop enter time ex: riding a bike or trafeling on foot)
         for (TravelTime tt : unTimedConnections) {
             ret.add(new VConnection(new Connection(-1,tt.getSource().getId(), tt.getTarget().getId(), from, from.plusSeconds(tt.getSecs()),"on foot"),tt.getSource(), tt.getTarget()));
         }
