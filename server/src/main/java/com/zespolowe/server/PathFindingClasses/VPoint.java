@@ -1,14 +1,14 @@
-package server.PathFindingClasses;
+package com.zespolowe.server.PathFindingClasses;
 
-import server.dataFormats.Point;
+import com.zespolowe.server.dataFormats.Connection;
+import com.zespolowe.server.dataFormats.Coords;
+import com.zespolowe.server.dataFormats.Point;
+
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import server.dataFormats.Connection;
-import server.dataFormats.Coords;
 
 /**
  *

@@ -1,7 +1,7 @@
-package server.PathFindingClasses;
+package com.zespolowe.server.PathFindingClasses;
 
-import server.PathFindingClasses.VPoint;
-import server.dataFormats.Connection;
+import com.zespolowe.server.dataFormats.Connection;
+
 import java.time.LocalDateTime;
 
 /**

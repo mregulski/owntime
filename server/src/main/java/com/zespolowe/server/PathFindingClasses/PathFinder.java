@@ -1,13 +1,12 @@
-package server.PathFindingClasses;
+package com.zespolowe.server.PathFindingClasses;
 
-import server.dataFormats.Connection;
-import server.interfaces.DataProvider;
-import server.dataFormats.Request;
-import server.interfaces.RequestProvider;
+import com.zespolowe.server.dataFormats.Connection;
+import com.zespolowe.server.dataFormats.Path;
+import com.zespolowe.server.dataFormats.Request;
+import com.zespolowe.server.interfaces.DataProvider;
+import com.zespolowe.server.interfaces.RequestProvider;
+
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import server.dataFormats.Path;
 
 public class PathFinder implements Runnable {
 

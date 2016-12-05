@@ -1,7 +1,9 @@
-package server.interfaces;
+package com.zespolowe.server.interfaces;
 
-import server.dataFormats.Connection;
-import server.dataFormats.Point;
+
+import com.zespolowe.server.dataFormats.Connection;
+import com.zespolowe.server.dataFormats.Point;
+
 import java.util.ArrayList;
 
 /**
@@ -10,10 +12,10 @@ import java.util.ArrayList;
  */
 public interface DataProvider {
 
-    public ArrayList<Point> getStops();
+    ArrayList<Point> getStops();
 
-    public ArrayList<Connection> getConnections();
+    ArrayList<Connection> getConnections();
 
-    public ArrayList<Connection> getUpdatedConnections();
+    ArrayList<Connection> getUpdatedConnections();
 
 }

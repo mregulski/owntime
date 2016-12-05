@@ -1,6 +1,6 @@
-package server.interfaces;
+package com.zespolowe.server.interfaces;
 
-import server.dataFormats.Request;
+import com.zespolowe.server.dataFormats.Request;
 
 /**
  *

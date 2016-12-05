@@ -1,4 +1,4 @@
-package server.dataFormats;
+package com.zespolowe.server.dataFormats;
 
 /**
  *

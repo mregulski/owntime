@@ -1,14 +1,15 @@
-package server.PathFindingClasses;
+package com.zespolowe.server.PathFindingClasses;
+
+import com.zespolowe.server.dataFormats.Connection;
+import com.zespolowe.server.dataFormats.Coords;
+import com.zespolowe.server.dataFormats.Point;
+import com.zespolowe.server.dataFormats.Request;
+import com.zespolowe.server.interfaces.DataProvider;
+import com.zespolowe.server.interfaces.RequestProvider;
 
 import java.time.LocalDateTime;
-import server.dataFormats.Connection;
-import server.dataFormats.Point;
-import server.interfaces.DataProvider;
-import server.interfaces.RequestProvider;
 import java.util.ArrayList;
 import java.util.Random;
-import server.dataFormats.Coords;
-import server.dataFormats.Request;
 
 /**
  *

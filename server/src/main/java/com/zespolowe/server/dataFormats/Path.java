@@ -1,8 +1,9 @@
-package server.dataFormats;
+package com.zespolowe.server.dataFormats;
+
+import com.zespolowe.server.PathFindingClasses.VConnection;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import server.PathFindingClasses.VConnection;
 
 /**
  *

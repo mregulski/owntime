@@ -1,4 +1,4 @@
-package server.PathFindingClasses;
+package com.zespolowe.server.PathFindingClasses;
 
 import java.time.LocalDateTime;
 
