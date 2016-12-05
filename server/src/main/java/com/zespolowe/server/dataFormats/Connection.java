@@ -1,4 +1,4 @@
-package com.zespolowe.server.dataFormats;
+package server.dataFormats;
 
 import java.time.LocalDateTime;
 
@@ -7,38 +7,49 @@ import java.time.LocalDateTime;
  * @author Cirben
  */
 public class Connection {
-	int idA; // id of departure stop
-	int idB; // id of arrival stop
-	LocalDateTime departure;
-	LocalDateTime arrival;
-	int id; //connection id for updating
 
-	public Connection(int id, int idA, int idB, LocalDateTime departure, LocalDateTime arrival){
-		this.id = id;
-		this.idA = idA;
-		this.idB = idB;
-		this.departure = departure;
-		this.arrival = arrival;
-	}
+    int idA; // id of departure stop
+    int idB; // id of arrival stop
+    LocalDateTime departure;
+    LocalDateTime arrival;
+    int id; //connection id for updating
+    String type;
 
-	public int getId() {
-		return id;
-	}
+    public Connection(int id, int idA, int idB, LocalDateTime departure, LocalDateTime arrival, String type) {
+        this.id = id;
+        this.idA = idA;
+        this.idB = idB;
+        this.departure = departure;
+        this.arrival = arrival;
+        this.type = type;
+    }
 
-	public int getIdA() {
-		return idA;
-	}
+    public String getType() {
+        return type;
+    }
 
-	public int getIdB() {
-		return idB;
-	}
+    public Connection() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-	public LocalDateTime getDeparture() {
-		return departure;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public LocalDateTime getArrival() {
-		return arrival;
-	}
-	
+    public int getIdA() {
+        return idA;
+    }
+
+    public int getIdB() {
+        return idB;
+    }
+
+    public LocalDateTime getDeparture() {
+        return departure;
+    }
+
+    public LocalDateTime getArrival() {
+        return arrival;
+    }
+
 }

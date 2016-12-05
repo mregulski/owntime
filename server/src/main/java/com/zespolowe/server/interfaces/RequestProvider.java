@@ -1,13 +1,14 @@
-package com.zespolowe.server.interfaces;
+package server.interfaces;
 
-import com.zespolowe.server.dataFormats.Request;
+import server.dataFormats.Request;
 
 /**
  *
  * @author Cirben
  */
 public interface RequestProvider {
+
     public Request getRequest();
 
-	public boolean shouldStop();
+    public boolean shouldStop();
 }

@@ -1,11 +1,17 @@
-package com.zespolowe.server.PathFindingClasses;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package server.PathFindingClasses;
 
 /**
  *
  * @author Cirben
  */
-public class MyException extends Exception{
-	public MyException(String a){
-		super(a);
-	} 
+public class MyException extends Exception {
+
+    public MyException(String a) {
+        super(a);
+    }
 }
