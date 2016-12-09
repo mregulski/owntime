@@ -8,6 +8,10 @@ import com.zespolowe.server.interfaces.RequestProvider;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * @author Cirben
+ */
 public class PathFinder implements Runnable {
 
     DataProvider dp;

@@ -32,10 +32,18 @@ public class VPoint {
         connections.add(c);
     }
 
-    public ArrayList<VConnection> getKConnections(int K, LocalDateTime from) {
+    /**
+     *
+     * @return k planned connections (bus tram etc.) + all connections "on foot"
+     */
+    public ArrayList<VConnection> getKConnections(int K, LocalDateTime from, int threadId) {
         ArrayList<VConnection> ret = new ArrayList<>();
         for (TravelTime tt : unTimedConnections) {
-            ret.add(new VConnection(new Connection(-1,tt.getSource().getId(), tt.getTarget().getId(), from, from.plusSeconds(tt.getSecs()),"on foot"),tt.getSource(), tt.getTarget()));
+            ret.add(new VConnection(new Connection(-1, tt.getSource().getId(), tt.getTarget().getId(), from, from.plusSeconds(tt.getSecs()), "on foot"), tt.getSource(), tt.getTarget()));
+        }
+
+        for (TravelTime tt : getDValues(threadId).getUnTimedConnections()) { //those are connections unique for each request, they are form closest stops to target loacation (target stop id is not specified, only coords)
+            ret.add(new VConnection(new Connection(-1, tt.getSource().getId(), tt.getTarget().getId(), from, from.plusSeconds(tt.getSecs()), "on foot"), tt.getSource(), tt.getTarget()));
         }
         int count = 0;
         for (VConnection c : connections) {

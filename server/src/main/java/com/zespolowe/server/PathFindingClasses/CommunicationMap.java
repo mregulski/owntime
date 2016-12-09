@@ -100,12 +100,67 @@ public class CommunicationMap {
         for (VPoint tmp : all) {
             tmp.initDValues(threadId);
         }
-        VPoint source = stops.get(r.getStopId());
-        VPoint target = stops.get(r.getTargetId());
+
+        //################################################################# coords instead of stop id handler section
+        VPoint source = null;
+        if (!r.isStopIdSpecfied()) {
+            source = new VPoint(new Point(-1, "lokacja startowa", r.getStartLocation()));
+            source.initDValues(threadId);
+            ArrayList<TravelTime> tts = new ArrayList<>();
+            for (VPoint q : all) {
+                Coords b = q.getCoords();
+                Coords a = r.getStartLocation();
+                double j = a.getX() - b.getX();
+                double k = a.getY() - b.getY();
+                double dist = Math.sqrt(j * j + k * k);
+                //if (dist < 0.01) { // TO DO: change this loop when working with real data, adjust constants
+                TravelTime tt = new TravelTime((int) ((dist / 0.01) * 10000), source, q);// 600 sec per 0.01 of dist
+                tts.add(tt);
+                //}
+            }
+            Collections.sort(tts);
+            for (int h = 0; h < Math.min(20, tts.size()); h++) {
+                source.addTravelTime(tts.get(h));
+            }
+        } else {
+            source = stops.get(r.getStopId());
+        }
+
+        VPoint target = null;
+        if (!r.isTargetIdSpecfied()) {
+            target = new VPoint(new Point(-2, "cel", r.getTargetLocation()));
+            target.initDValues(threadId);
+            ArrayList<TravelTime> tts = new ArrayList<>();
+            for (VPoint q : all) {
+                Coords b = q.getCoords();
+                Coords a = r.getTargetLocation();
+                double j = a.getX() - b.getX();
+                double k = a.getY() - b.getY();
+                double dist = Math.sqrt(j * j + k * k);
+                //if (dist < 0.01) { // TO DO: change this loop when working with real data, adjust constants
+                TravelTime tt = new TravelTime((int) ((dist / 0.01) * 10000), q, target);// 600 sec per 0.01 of dist
+                tts.add(tt);
+                //}
+            }
+            Collections.sort(tts);
+            for (int h = 0; h < Math.min(20, tts.size()); h++) {
+                tts.get(h).getSource().getDValues(threadId).addUnTimedConnection(tts.get(h));
+            }
+        } else {
+            target = stops.get(r.getTargetId());
+        }
+        //#################################################################
+
         source.getDValues(threadId).setIn(r.getWhen());
         ArrayList<VPoint> unvisited = new ArrayList<>();
         for (VPoint p : all) {
             unvisited.add(p);
+            if (unvisited.indexOf(source) == -1) {
+                unvisited.add(source);
+            }
+            if (unvisited.indexOf(target) == -1) {
+                unvisited.add(target);
+            }
         }
         while (!unvisited.isEmpty()) {
             VPoint u = unvisited.get(0);
@@ -127,9 +182,10 @@ public class CommunicationMap {
                     path.add(last);
                     curr = last.getSource();
                 }
+                int a =1+1;
                 return path;
             }
-            for (VConnection v : u.getKConnections(20, u.getDValues(threadId).getIn())) {
+            for (VConnection v : u.getKConnections(20, u.getDValues(threadId).getIn(), threadId)) {
                 //if in unvisited>??
                 DijkstraValues dv;
                 if (v.getTarget() == null) {
