@@ -1,6 +1,7 @@
 package com.zespolowe.server.PathFindingClasses;
 
 import com.zespolowe.server.dataFormats.Connection;
+import com.zespolowe.server.dataFormats.Transport;
 
 import java.time.LocalDateTime;
 
@@ -51,8 +52,8 @@ public class VConnection implements Comparable {
         return target;
     }
     
-    public String getType(){
-        return c.getType();
+    public Transport getTransport(){
+        return c.getTransport();
     }
 
 }

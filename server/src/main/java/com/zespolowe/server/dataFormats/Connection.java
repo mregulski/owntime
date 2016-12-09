@@ -13,19 +13,19 @@ public class Connection {
     LocalDateTime departure;
     LocalDateTime arrival;
     int id; //connection id for updating
-    String type;
+    Transport transport;
 
-    public Connection(int id, int idA, int idB, LocalDateTime departure, LocalDateTime arrival, String type) {
+    public Connection(int id, int idA, int idB, LocalDateTime departure, LocalDateTime arrival, Transport trns) {
         this.id = id;
         this.idA = idA;
         this.idB = idB;
         this.departure = departure;
         this.arrival = arrival;
-        this.type = type;
+        this.transport = trns;
     }
 
-    public String getType() {
-        return type;
+    public Transport getTransport() {
+        return transport;
     }
 
     public Connection() {

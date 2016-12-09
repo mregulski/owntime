@@ -6,6 +6,7 @@ package com.zespolowe.server.dataFormats;
  */
 public enum TransportType {
     BUS,
+    TRAM,
     FOOT,
     BIKE
 }

@@ -3,6 +3,8 @@ package com.zespolowe.server.PathFindingClasses;
 import com.zespolowe.server.dataFormats.Connection;
 import com.zespolowe.server.dataFormats.Coords;
 import com.zespolowe.server.dataFormats.Point;
+import com.zespolowe.server.dataFormats.Transport;
+import com.zespolowe.server.dataFormats.TransportType;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -39,11 +41,11 @@ public class VPoint {
     public ArrayList<VConnection> getKConnections(int K, LocalDateTime from, int threadId) {
         ArrayList<VConnection> ret = new ArrayList<>();
         for (TravelTime tt : unTimedConnections) {
-            ret.add(new VConnection(new Connection(-1, tt.getSource().getId(), tt.getTarget().getId(), from, from.plusSeconds(tt.getSecs()), "on foot"), tt.getSource(), tt.getTarget()));
+            ret.add(new VConnection(new Connection(-1, tt.getSource().getId(), tt.getTarget().getId(), from, from.plusSeconds(tt.getSecs()), new Transport(TransportType.FOOT,"")), tt.getSource(), tt.getTarget()));
         }
 
         for (TravelTime tt : getDValues(threadId).getUnTimedConnections()) { //those are connections unique for each request, they are form closest stops to target loacation (target stop id is not specified, only coords)
-            ret.add(new VConnection(new Connection(-1, tt.getSource().getId(), tt.getTarget().getId(), from, from.plusSeconds(tt.getSecs()), "on foot"), tt.getSource(), tt.getTarget()));
+            ret.add(new VConnection(new Connection(-1, tt.getSource().getId(), tt.getTarget().getId(), from, from.plusSeconds(tt.getSecs()), new Transport(TransportType.FOOT,"")), tt.getSource(), tt.getTarget()));
         }
         int count = 0;
         for (VConnection c : connections) {
