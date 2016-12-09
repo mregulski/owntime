@@ -25,10 +25,17 @@
 
 })(app);
 
+
+var map = new Vue({
+    el: '#location',
+    data: {
+        coords: {}
+    }
+});
+
 // test
 $(document).ready(() => {
     app.geolocation.getCurrentPosition((result) => {
-        log.i(result);
         window.result = result;
         let latitude = result.coords.latitude;
         let longitude = result.coords.longitude;
