@@ -2,14 +2,19 @@
 to triggerowało funkcję w html'u
 
 <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLdSitwxmN1AJv4dIgaB1v9hAqkQjsXqw&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSrkPCHS0QJt0aVyG_2rNDEmLJ2dZ_KnU&callback=initMap">
     </script>
 */
+(function(app) {
+    let log = app.getLog("initMap");
+    let initMap = {}*/
 
-function initMap() {
-  var mapOptions = {
-    zoom: 17,
-    center: {lat: 51.10930159999999, lng:  17.0517307}
-  	};
-  	map = new google.maps.Map(document.getElementById('map'), mapOptions);
-}
+    function initialMap() {
+        var geoloc = app.geolocation.getCurrentPosition();
+        var mapOptions = {
+            zoom: 17,
+            center: geoloc /*{lat: 51.10930159999999, lng:  17.0517307}*/
+        };
+        map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    }
+})(app);
