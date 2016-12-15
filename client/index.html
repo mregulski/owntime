@@ -1,31 +1,33 @@
-<!DOCTYPE html>
-<html lang="pl">
+<!-- index.html -->
+<!doctype html>
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Jak Szybciej doajde</title>
+    <meta charset="utf-8">
+    <title>Jak dojade</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
+
 <body>
 
-<!-- Searchbox with chosen connection details on right -->
-<section class="searchbox">
-    <div class="searchbox__form">
-        <form id="find-connections">
-            <input type="text" value="Skąd chcesz jechać?">
-            <input type="text" value="Miejsce docelowe">
-            <input type="submit">
-        </form>
-    </div>
-    <div class="searchbox__message">
-        <p>Linai <span class="chosen-connection">33</span> w kierunku <span
-                class="chosen-destination">Plac Strezgomski</span> o <span class="chosen-starting-time">14:00</span></p>
-        <p>Do wyjazdu pozostało Ci</p>
-        <p><span class="chosen-starting-time-left">12</span> minut</p>
-        <p>Na miejsce przyjedziesz najpóźniej o <span class="chosen-arrival-time">14:45</span></p>
-    </div>
-</section>
+<div id="przystanki">
+	<section class="searchbox">
+		<div class="searchbox__form">
+		    <form id="find-connections">
+		        <input type="text" value="Skąd chcesz jechać?">
+		        <input type="text" value="Miejsce docelowe">
+		        <input type="submit">
+		    </form>
+		</div>
+		<div class="searchbox__message">
+		    <p>Linai <span class="chosen-connection">33</span> w kierunku <span
+		            class="chosen-destination">Plac Strezgomski</span> o <span class="chosen-starting-time">14:00</span></p>
+		    <p>Do wyjazdu pozostało Ci</p>
+		    <p><span class="chosen-starting-time-left">12</span> minut</p>
+		    <p>Na miejsce przyjedziesz najpóźniej o <span class="chosen-arrival-time">14:45</span></p>
+		</div>
+	</section>
 
-
-<!-- Table of connections generated from searchbox input -->
 <section class="connections">
     <table>
         <thead>
@@ -36,42 +38,20 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td><span class="connection">103</span></td>
-            <td><span class="starting-time">14:20</span></td>
-            <td><span class="starting-point">Plac Grunwaldzki</span></td>
-            <td></td>
-            <td><span class="arrival-time">14:45</span></td>
-            <td><span class="arrival-point">Plac Strezgomski</span></td>
-            <td><span class="changes">2</span></td>
-        </tr>
-        <tr class="active-connection">
-            <td><span class="connection">103</span></td>
-            <td><span class="starting-time">14:20</span></td>
-            <td><span class="starting-point">Plac Grunwaldzki</span></td>
-            <td></td>
-            <td><span class="arrival-time">14:45</span></td>
-            <td><span class="arrival-point">Plac Strezgomski</span></td>
-            <td><span class="changes">2</span></td>
-        </tr>
-        <!-- Changes for active  connection -->
-        <tr class="active-sub-connection">
-            <td><span class="connection">103</span></td>
-            <td><span class="starting-time">14:20</span></td>
-            <td><span class="starting-point">Plac Grunwaldzki</span></td>
-            <td></td>
-            <td><span class="arrival-time">14:45</span></td>
-            <td><span class="arrival-point">Plac Strezgomski</span></td>
-            <td><span class="changes">2</span></td>
+        <tr v-for="przystanek in przystankiDoWyswietlenia" v-on:click="zmienAktywny(przystanek.id)" v-bind:class="{ przesiadka: przystanek.czyPrzesiadka, active: przystanek.czyAktywny }">
+            <td><span class="connection">{{ przystanek.linia }}</span></td>
+            <td><span class="starting-time">{{ przystanek.przystanekStartowy }} -> {{ przystanek.przystanekKoncowy }}</span></td>
+            <td><span class="changes">{{ przystanek.przesiadki.length }}</span></td>
         </tr>
         </tbody>
     </table>
 </section>
+<h1 v-if="przystanki.length>3">Yes</h1>
 
-<!-- Timer and alarm for chosen connection -->
-<section class="alarm">
-    div.alarm--time
-</section>
-
+</div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="node_modules/vue-resource/dist/vue-resource.js"></script>
+    <script src="app.js"></script>
 </body>
+
 </html>
