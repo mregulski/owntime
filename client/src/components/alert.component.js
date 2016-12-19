@@ -1,8 +1,13 @@
 (function(app){
-    log: app.getLog('V.alert');
+    log: app.getLog('alert');
 
     Vue.component('yak-alert', {
-        template: '#yak-alert',
+        template: `
+        <section class="alert">'
+            <input v-model="minutes" type="text">\
+            <button v-on:click="addAlert">Alert</button>\
+        </section>
+        `,
         /* function, not object, because it's a component.
         can't use arrow functions because they treat this differently */
         props: [

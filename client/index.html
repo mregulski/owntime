@@ -70,14 +70,6 @@
 
 <!-- Timer and alarm for chosen connection -->
 <yak-alert :active-route="activeRoute"></yak-alert>
-
-<script type="text/x-template" id="yak-alert">
-<section class="alert">
-    <input v-model="minutes" type="text">
-    <button v-on:click="addAlert">Alert</button>
-</section>
-</script>
-
 </main>
 <!-- JS -->
 <!-- dependencies -->
@@ -94,8 +86,15 @@
     <script src="src/js/notification.js"></script>
 
 <!-- components -->
-    <script src="src/js/alert.component.js"></script>
+    <script src="src/components/alert.component.js"></script>
 
+<!-- templates -->
+<script type="text/x-template" id="yak-alert">
+    <section class="alert">
+        <input v-model="minutes" type="text">
+        <button v-on:click="addAlert">Alert</button>
+    </section>
+</script>
 <!-- Initialize root Vue component. MUST BE RUN _AFTER_ COMPONENT DECLARATIONS! -->
     <script src="src/js/app.init.js"></script>
 </body>
