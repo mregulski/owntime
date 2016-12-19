@@ -23,7 +23,7 @@
         <p>Na miejsce przyjedziesz najpóźniej o <span class="chosen-arrival-time">14:45</span></p>
     </div>
 </section>
-
+<div id="map"></div>
 
 <!-- Table of connections generated from searchbox input -->
 <section class="connections">
@@ -84,6 +84,8 @@
     <script src="src/js/log.js"></script>
     <script src="src/js/geolocation.js"></script>
     <script src="src/js/notification.js"></script>
+    <script src="src/js/initMap.js"></script>
+    <script src="src/js/route.js"></script>
 
 <!-- components -->
     <script src="src/components/alert.component.js"></script>
@@ -97,5 +99,8 @@
 </script>
 <!-- Initialize root Vue component. MUST BE RUN _AFTER_ COMPONENT DECLARATIONS! -->
     <script src="src/js/app.init.js"></script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSrkPCHS0QJt0aVyG_2rNDEmLJ2dZ_KnU&callback=mapsCallback">
+    </script>
 </body>
 </html>
