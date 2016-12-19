@@ -7,9 +7,9 @@ to triggerowało funkcję w html'u
 */
 (function(app) {
     let log = app.getLog("initMap");
-    let initMap = {}*/
+    let initMap = {}
 
-    function initialMap() {
+     app.initMap = function initialMap() {
         var geoloc = app.geolocation.getCurrentPosition();
         var mapOptions = {
             zoom: 17,

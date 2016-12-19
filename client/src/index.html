@@ -12,6 +12,8 @@
     <script src="js/log.js"></script>
     <script src="js/geolocation.js"></script>
     <script src="js/notification.js"></script>
+    <script src="js/initMap.js"></script>
+    <script src="js/route.js"></script>
 </head>
 <body>
     <header>
@@ -19,9 +21,12 @@
     </header>
     <main>
         <div id="location"></div>
+        <div id="map"></div>
     </main>
     <footer>
     </footer>
-
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSrkPCHS0QJt0aVyG_2rNDEmLJ2dZ_KnU&callback=app.initMap">
+    </script>
 </body>
 </html>
