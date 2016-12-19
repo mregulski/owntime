@@ -7,6 +7,10 @@ new Vue({
     el: '#app',
     data: {
         /* Route currently selected by the user. */
-        activeRoute: {}
+        activeRoute: {
+            line: 123,
+            direction: "Mordor",
+            stop: "Hammertime!"
+        }
     }
 })
