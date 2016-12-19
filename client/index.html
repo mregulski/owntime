@@ -5,13 +5,13 @@
     <title>Jak Szybciej doajde</title>
 </head>
 <body>
-
+<main id="app">
 <!-- Searchbox with chosen connection details on right -->
 <section class="searchbox">
     <div class="searchbox__form">
         <form id="find-connections">
-            <input type="text" value="Skąd chcesz jechać?">
-            <input type="text" value="Miejsce docelowe">
+            <input type="text" placeholder="Skąd chcesz jechać?">
+            <input type="text" placeholder="Miejsce docelowe">
             <input type="submit">
         </form>
     </div>
@@ -69,9 +69,37 @@
 </section>
 
 <!-- Timer and alarm for chosen connection -->
-<section class="alarm">
-    div.alarm--time
-</section>
+<!--<section class="alert">
+    <input v-model="minutes" type="text">
+    <button v-on:click="addAlert">Alert</button>
+</section>-->
 
+<script type="text/x-template" id="yak-alert">
+<section class="alert">
+    <input v-model="minutes" type="text">
+    <button v-on:click="addAlert">Alert</button>
+</section>
+</script>
+<yak-alert></yak-alert>
+</main>
+<!-- JS -->
+<!-- dependencies -->
+    <script src="https://unpkg.com/vue@2.1.0/dist/vue.js"></script>
+    <script>Vue.config.devtools = true;</script>
+    <script src="https://code.jquery.com/jquery-3.1.1.js"
+        integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+        crossorigin="anonymous"></script>
+    <script src="../node_modules/moment/moment.js"></script>
+<!-- app -->
+    <script src="src/js/app.js"></script>
+    <script src="src/js/log.js"></script>
+    <script src="src/js/geolocation.js"></script>
+    <script src="src/js/notification.js"></script>
+
+<!-- components -->
+    <script src="src/js/alert.component.js"></script>
+
+<!-- Initialize root Vue component. MUST BE RUN _AFTER_ COMPONENT DECLARATIONS! -->
+    <script src="src/js/app.init.js"></script>
 </body>
 </html>

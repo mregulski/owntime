@@ -8,7 +8,7 @@
     notification.timeout = 10000
 
     app.notification = notification;
-
+    log.d("Initialized.")
 
 
 
@@ -42,7 +42,7 @@
      */
     function setAlarm(time, routeDetails) {
         checkPermission().then(res => {
-            log.l(res);
+            log.d("Notifications active:", res);
             if(!res) { return; }
             window.setTimeout(() => showNotification(routeDetails),
                 time.diff(moment())
@@ -63,6 +63,5 @@
         msg += " odjeżdża z przystanku " + routeDetails.stop;
         msg += " za 12 minut";
         return msg;
-
     }
 })(app);
