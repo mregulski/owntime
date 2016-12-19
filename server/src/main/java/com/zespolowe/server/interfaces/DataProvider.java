@@ -10,8 +10,8 @@ import java.util.ArrayList;
  *
  * @author Cirben
  */
-public interface DataProvider { 
-   
+public interface DataProvider {
+
 	/** 
 	* @return Unordered ArrayList of all stops. Point's id is it's stop pole(?) number. 
 	*/	
