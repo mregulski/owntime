@@ -4,17 +4,15 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Positioner {
     private final String urlPatch = "http://www.mpk.wroc.pl/position.php";
     private final String userAgent = "Chrome/20.0.1090.0";
     String postParameters;
-    private String response;
+    private String response="";
 
     Positioner(String line) {
-        //TODO check if correct
         this.postParameters = "busList[bus][]=" + line;
     }
 
@@ -31,7 +29,6 @@ public class Positioner {
         sender.flush();
         sender.close();
 
-        int responseCode = connection.getResponseCode();
         BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         String inputLine;
         StringBuffer response = new StringBuffer();
@@ -40,19 +37,27 @@ public class Positioner {
             response.append(inputLine);
         }
         in.close();
-        //TODO filter response
-        System.out.println(response.toString());
-        //TODO convert data
+        this.setResponse(response.toString());
     }
+    
+    public String getResponse() {
+		return response;
+	}
 
+	public void setResponse(String response) {
+		this.response = response;
+	}
+
+    /**
+     * shows position of all vehicles on 243 line
+     */
     public static void main(String[] args) {
-        Positioner pos = new Positioner("243");
+        Positioner pos = new Positioner("2");
         try {
             pos.sendPositionRequest();
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        System.out.println(pos.getResponse());
     }
-
 }
