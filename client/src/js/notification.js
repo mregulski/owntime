@@ -41,10 +41,10 @@
      * @param routeDetails  - route details to display
      */
     function setAlarm(time, routeDetails) {
-        checkPermission().then(res => {
+        return checkPermission().then(res => {
             log.d("Notifications active:", res);
             if(!res) { return; }
-            window.setTimeout(() => showNotification(routeDetails),
+            return window.setTimeout(() => showNotification(routeDetails),
                 time.diff(moment())
             );
         });
