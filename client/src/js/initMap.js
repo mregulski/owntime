@@ -1,6 +1,5 @@
 (function(app) {
     let log = app.getLog("initMap");
-    let initMap = {}
 
      app.initMap = function () {
         var geoloc = app.geolocation.getCurrentPosition();
@@ -16,7 +15,7 @@
         }, function(err){
             coords = {lat: 51.110909, lng: 17.056910};
             var mapOptions = {
-            zoom: 17,
+            zoom: 20,
             center: coords
             };
             map = new google.maps.Map(document.getElementById('map'), mapOptions);
