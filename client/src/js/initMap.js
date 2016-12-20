@@ -11,14 +11,14 @@
             zoom: 15,
             center: coords
             };
-            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            app.map = new google.maps.Map(document.getElementById('map'), mapOptions);
         }, function(err){
             coords = {lat: 51.110909, lng: 17.056910};
             var mapOptions = {
             zoom: 20,
             center: coords
             };
-            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            app.map = new google.maps.Map(document.getElementById('map'), mapOptions);
         });
 
     }
