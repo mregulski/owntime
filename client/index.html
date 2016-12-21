@@ -1,77 +1,104 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" class="fill-container">
 <head>
     <meta charset="UTF-8">
     <title>Jak Szybciej doajde</title>
+    <link rel="stylesheet" href="src/styles/style.css">
 </head>
-<body>
+<body class="fill-container">
+<main id="app" class="fill-container">
+    <div id="map" class="fill-container"></div>
+    <div id="ui">
+        <!-- Searchbox with chosen connection details on right -->
+        <section class="searchbox">
+            <div class="searchbox__form">
+                <form id="find-connections">
+                    <input type="text" placeholder="Skąd chcesz jechać?">
+                    <input type="text" placeholder="Miejsce docelowe">
+                    <input type="submit" value=">">
+                </form>
+            </div>
+            <div class="searchbox__message">
+                <p>Linai <span class="chosen-connection">33</span> w kierunku <span
+                        class="chosen-destination">Plac Strezgomski</span> o <span class="chosen-starting-time">14:00</span></p>
+                <p>Do wyjazdu pozostało Ci</p>
+                <p><span class="chosen-starting-time-left">12</span> minut</p>
+                <p>Na miejsce przyjedziesz najpóźniej o <span class="chosen-arrival-time">14:45</span></p>
+            </div>
+        </section>
 
-<!-- Searchbox with chosen connection details on right -->
-<section class="searchbox">
-    <div class="searchbox__form">
-        <form id="find-connections">
-            <input type="text" value="Skąd chcesz jechać?">
-            <input type="text" value="Miejsce docelowe">
-            <input type="submit">
-        </form>
-    </div>
-    <div class="searchbox__message">
-        <p>Linai <span class="chosen-connection">33</span> w kierunku <span
-                class="chosen-destination">Plac Strezgomski</span> o <span class="chosen-starting-time">14:00</span></p>
-        <p>Do wyjazdu pozostało Ci</p>
-        <p><span class="chosen-starting-time-left">12</span> minut</p>
-        <p>Na miejsce przyjedziesz najpóźniej o <span class="chosen-arrival-time">14:45</span></p>
-    </div>
-</section>
 
+        <!-- Table of connections generated from searchbox input -->
+        <section class="connections">
+            <table>
+                <thead>
+                <tr>
+                    <th>Linia</th>
+                    <th>Trasa</th>
+                    <th>Przesiadki</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><span class="connection">103</span></td>
+                    <td><span class="starting-time">14:20</span></td>
+                    <td><span class="starting-point">Plac Grunwaldzki</span></td>
+                    <td></td>
+                    <td><span class="arrival-time">14:45</span></td>
+                    <td><span class="arrival-point">Plac Strezgomski</span></td>
+                    <td><span class="changes">2</span></td>
+                </tr>
+                <tr class="active-connection">
+                    <td><span class="connection">103</span></td>
+                    <td><span class="starting-time">14:20</span></td>
+                    <td><span class="starting-point">Plac Grunwaldzki</span></td>
+                    <td></td>
+                    <td><span class="arrival-time">14:45</span></td>
+                    <td><span class="arrival-point">Plac Strezgomski</span></td>
+                    <td><span class="changes">2</span></td>
+                </tr>
+                <!-- Changes for active  connection -->
+                <tr class="active-sub-connection">
+                    <td><span class="connection">103</span></td>
+                    <td><span class="starting-time">14:20</span></td>
+                    <td><span class="starting-point">Plac Grunwaldzki</span></td>
+                    <td></td>
+                    <td><span class="arrival-time">14:45</span></td>
+                    <td><span class="arrival-point">Plac Strezgomski</span></td>
+                    <td><span class="changes">2</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+        <div class="flex-fill">
+        </div>
+        <!-- Timer and alarm for chosen connection -->
+        <yak-alert :active-route="activeRoute"></yak-alert>
+    </div> <!-- ui -->
+</main>
+<!-- JS -->
+<!-- dependencies -->
+    <script src="https://unpkg.com/vue@2.1.0/dist/vue.js"></script>
+    <script>Vue.config.devtools = true;</script>
+    <script src="https://code.jquery.com/jquery-3.1.1.js"
+        integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+        crossorigin="anonymous"></script>
+    <script src="../node_modules/moment/moment.js"></script>
+<!-- app -->
+    <script src="src/js/app.js"></script>
+    <script src="src/js/log.js"></script>
+    <script src="src/js/geolocation.js"></script>
+    <script src="src/js/notification.js"></script>
+    <script src="src/js/initMap.js"></script>
+    <!-- <script src="src/js/route.js"></script> -->
 
-<!-- Table of connections generated from searchbox input -->
-<section class="connections">
-    <table>
-        <thead>
-        <tr>
-            <th>Linia</th>
-            <th>Trasa</th>
-            <th>Przesiadki</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><span class="connection">103</span></td>
-            <td><span class="starting-time">14:20</span></td>
-            <td><span class="starting-point">Plac Grunwaldzki</span></td>
-            <td></td>
-            <td><span class="arrival-time">14:45</span></td>
-            <td><span class="arrival-point">Plac Strezgomski</span></td>
-            <td><span class="changes">2</span></td>
-        </tr>
-        <tr class="active-connection">
-            <td><span class="connection">103</span></td>
-            <td><span class="starting-time">14:20</span></td>
-            <td><span class="starting-point">Plac Grunwaldzki</span></td>
-            <td></td>
-            <td><span class="arrival-time">14:45</span></td>
-            <td><span class="arrival-point">Plac Strezgomski</span></td>
-            <td><span class="changes">2</span></td>
-        </tr>
-        <!-- Changes for active  connection -->
-        <tr class="active-sub-connection">
-            <td><span class="connection">103</span></td>
-            <td><span class="starting-time">14:20</span></td>
-            <td><span class="starting-point">Plac Grunwaldzki</span></td>
-            <td></td>
-            <td><span class="arrival-time">14:45</span></td>
-            <td><span class="arrival-point">Plac Strezgomski</span></td>
-            <td><span class="changes">2</span></td>
-        </tr>
-        </tbody>
-    </table>
-</section>
+<!-- components -->
+    <script src="src/components/alert.component.js"></script>
 
-<!-- Timer and alarm for chosen connection -->
-<section class="alarm">
-    div.alarm--time
-</section>
-
+<!-- Initialize root Vue component. MUST BE RUN _AFTER_ COMPONENT DECLARATIONS! -->
+    <script src="src/js/app.init.js"></script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvWrjHtzy7EB0l97Bu6v0LPNHYvGIHLLA&callback=mapsCallback">
+    </script>
 </body>
 </html>
