@@ -3,6 +3,7 @@
 * {
     box-sizing: border-box;
 }
+
 .fill-container {
     position: absolute;
     width: 100%;
@@ -10,12 +11,16 @@
     z-index: -100;
     margin: 0;
     padding: 0;
+    top: 0;
+    left: 0;
 }
 #ui {
     position: relative;
+    top: 30px;
+    right: 30px;
     margin-right: 0;
     margin-left: auto;
-    max-width: 400px;
+    max-width: 600px;
     height: 100%;
     color: #ddd;
     display: flex;
@@ -23,7 +28,6 @@
 }
 
 #ui > section {
-    background: rgba(44,44,44,.9);
 }
 
 #ui > * + * {
@@ -31,4 +35,48 @@
 }
 .flex-fill {
     flex: 1;
+}
+
+
+
+
+.searchbox {
+
+}
+.searchbox__form {
+    background: rgba(0,0,0,0.6);
+    width: 50%;
+    float: left;
+    height: 150px;
+    padding: 20px;
+}
+.searchbox__form input[type="text"] {
+    padding: 10px;
+    border: none;
+    text-transform: uppercase;
+    margin: 10px;
+    width: 240px;
+}
+
+.searchbox__form input[type="text"]:nth-child(2) {
+    width: 200px;
+    margin-right: 0;
+    margin-top: 0;
+}
+
+.searchbox__form input[type="submit"] {
+    padding: 10px 15px;
+    background: #ff8b00;
+    color: white;
+    border: none;
+    margin: 0;
+    position: relative;
+    left: -5px;
+}
+
+.searchbox__message {
+    background: rgba(255, 139, 0, 0.6);
+    width: 50%;
+    float: left;
+    height: 150px;
 }
