@@ -26,6 +26,8 @@
     color: #ddd;
     display: flex;
     flex-direction: column;
+    pointer-events: none;
+
 }
 
 #ui > section {
@@ -44,6 +46,8 @@
     float: left;
     height: 150px;
     padding: 25px 20px;
+    pointer-events: all;
+
 }
 .searchbox__form input[type="text"] {
     border: none;
@@ -78,6 +82,7 @@
     text-align: center;
     padding: 0 30px;
     font-size: 12px;
+    pointer-events: all;
 }
 
 .searchbox__message > p:nth-child(3)  {
@@ -89,6 +94,8 @@
 
 .connections {
     color: black;
+    pointer-events: all;
+
 }
 
 .connections table{
