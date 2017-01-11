@@ -1,1 +1,3 @@
-let app = {};
+let app = {
+    hub: new Vue()
+};

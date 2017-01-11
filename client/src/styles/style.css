@@ -2,7 +2,9 @@
 
 * {
     box-sizing: border-box;
-    font-family: Arial, sans-serif
+    font-family: Arial, sans-serif;
+    padding: 0;
+    margin: 0;
 }
 
 .fill-container {
@@ -61,7 +63,8 @@
     margin-right: 0;
     margin-top: 0;
 }
-.searchbox__form input[type="submit"] {
+/* was: .searchbox__form input[type="submit"] */
+.searchbox__form button {
     padding: 12px 15px;
     background: #ff8b00;
     color: white;
@@ -83,6 +86,8 @@
     font-size: 12px;
     pointer-events: all;
 }
+
+
 .searchbox__message > p:nth-child(3)  {
     font-size: 1.5em;
     font-weight: bold;
@@ -90,6 +95,31 @@
     margin: 14px 0;
 }
 
+/* temporary && probably very shitty*/
+.searchbox__stoplist {
+    list-style-type: none;
+    padding: 0;
+    background: white;
+    width: 280px; /* match input */
+    color: #000;
+    position: absolute;
+    margin-top: -15px; /* push to input bottom */
+    margin-left: 10px; /* align with input's left side */
+}
+
+.searchbox__stoplist li {
+    position: relative;
+    padding: 5px;
+    width: 100%;
+}
+
+.searchbox__stoplist li:hover {
+    background: rgba(0,0,0,0.7);
+    color: white;
+    cursor: pointer;
+}
+
+/*END shitty*/
 
 .connections {
     color: black;

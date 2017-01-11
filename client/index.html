@@ -11,13 +11,14 @@
     <div id="ui">
         <!-- Searchbox with chosen connection details on right -->
         <section class="searchbox">
-            <div class="searchbox__form">
+            <yak-search></yak-search>
+            <!--<div class="searchbox__form">
                 <form id="find-connections">
                     <input type="text" placeholder="Skąd chcesz jechać?">
                     <input type="text" placeholder="Miejsce docelowe">
                     <input type="submit" value=">">
                 </form>
-            </div>
+            </div>-->
             <div class="searchbox__message">
                 <p>Linai <span class="chosen-connection">33</span> w kierunku <span
                         class="chosen-destination">Plac Strezgomski</span> o <span class="chosen-starting-time">14:00</span></p>
@@ -29,6 +30,7 @@
 
 
         <!-- Table of connections generated from searchbox input -->
+        <yak-routes :active-route="activeRoute"></yak-routes>
         <section class="connections">
             <table>
                 <thead>
@@ -84,6 +86,9 @@
         integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
         crossorigin="anonymous"></script>
     <script src="../node_modules/moment/moment.js"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.js"></script>
+
+    <script src="https://cdn.rawgit.com/simplesmiler/vue-clickaway/2.1.0/dist/vue-clickaway.js"></script>
 <!-- app -->
     <script src="src/js/app.js"></script>
     <script src="src/js/log.js"></script>
@@ -92,11 +97,14 @@
     <script src="src/js/initMap.js"></script>
     <!-- <script src="src/js/route.js"></script> -->
 
-<!-- components -->
+<!-- Vue components -->
     <script src="src/components/alert.component.js"></script>
+    <script src="src/components/search.component.js"></script>
+    <script src="src/components/routes.component.js"></script>
 
-<!-- Initialize root Vue component. MUST BE RUN _AFTER_ COMPONENT DECLARATIONS! -->
+<!-- Initialize root Vue component -->
     <script src="src/js/app.init.js"></script>
+<!-- initialize map -->
     <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvWrjHtzy7EB0l97Bu6v0LPNHYvGIHLLA&callback=mapsCallback">
     </script>
