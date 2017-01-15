@@ -8,19 +8,26 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import com.zespolowe.server.PathFindingClasses.ReallyBadExampleOfFakeDataAndRequestProviderInOneClass;
+import com.zespolowe.server.dataFormats.Connection;
 import com.zespolowe.server.dataFormats.MariaDBDataProvider;
 import com.zespolowe.server.dataFormats.Point;
 import com.zespolowe.server.dataFormats.PointService;
 
+import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.DirectedWeightedMultigraph;
+import org.jgrapht.alg.DijkstraShortestPath;
+import static fj.P.p;
+
+
 /**
- *	This class will turn text files with delay data into something
- *	more accessible. As of now, it can load the data and store it
- *	in a retarded map of maps of maps (hey Java, why in hell don't
+ *	This class will turn text files with data about commute time 
+ *	between adjacent stops into a graph. As of now, it can load
+ *	the data and store it in a retarded graph (it doesn't contain
+ *	the departure time data (or is it arrival time?)). There's also this
+ *  retarded map of maps of maps (hey Java, why in hell don't
  *	you have a pair class in the standard library?).
  *
- *	TODO: na razie jest tylko to co w danych, czyli (chyba?) jedynie
- *	opóźnienia między sąsiednimi przystankami. Pewnie trzeba zrobić
- *	też dla całych połączeń. 
  */
 public class Delays
 {
@@ -32,6 +39,10 @@ public class Delays
 	
 	// Source point -> destination point -> arrival time -> commute time.
 	Map<Integer, Map<Integer, Map<Integer, Integer>>> commuteTimes;
+	
+	// Vertices are points, edges are average commute times for each
+	// departure time.
+	DirectedWeightedMultigraph<Integer, DefaultWeightedEdge> commuteGraph;
 	
 	/**
 	 *	@param src Id of the source point.
@@ -72,19 +83,34 @@ public class Delays
 	
 	// For test purposes.
 	public static void main(String[] args) throws IOException
-	{
+	{		
 		Delays d = new Delays();
 		System.out.println(d.averageCommuteTimeById(100, 102));
 		System.out.println(d.averageCommuteTime.get(100));
+		
+		System.out.println(d.commuteGraph.containsEdge(100, 102));
+		System.out.println(d.commuteGraph.getAllEdges(100, 102).size());
+		
+		DijkstraShortestPath<Integer, DefaultWeightedEdge> dsp =
+			new DijkstraShortestPath<>(d.commuteGraph, 100, 799);
+		System.out.println(dsp.getPath());
+		dsp.getPath().getEdgeList().forEach(edge ->
+		{
+			System.out.println(edge + ", weight = " + d.commuteGraph.getEdgeWeight(edge));
+		});
+		
 	}
 	
 	public Delays()
 	{
-		// Read points from the database and initialize stuff.
+		// Read points from the database, initialize stuff and add
+		// the points as vertices to the graph.
 		this.points = new MariaDBDataProvider().getStops();
 		this.averageCommuteTime = new HashMap<>();
 		this.commuteTimes = new HashMap<>();
-		
+		this.commuteGraph = new DirectedWeightedMultigraph<>(DefaultWeightedEdge.class);
+		this.points.forEach(point -> this.commuteGraph.addVertex(point.getId()));
+
 		// Read delay data for each source point.
 		this.points.forEach(src ->
 		{
@@ -121,6 +147,8 @@ public class Delays
 						int commuteTime = Integer.parseInt(splits[i + 1]);
 						this.commuteTimes.get(src.getId()).get(dst.getId()).put(arrivalTime, commuteTime);
 						sumOfCommuteTimes += commuteTime;
+
+						this.commuteGraph.setEdgeWeight(this.commuteGraph.addEdge(src.getId(), dst.getId()), commuteTime); //p(arrivalTime, commuteTime));
 					}
 					int averageCommuteTime = Math.round(sumOfCommuteTimes / ((splits.length - 1) / 2));
 					this.averageCommuteTime.get(src.getId()).put(dst.getId(), averageCommuteTime);
@@ -132,5 +160,6 @@ public class Delays
 				e.printStackTrace();
 			}
 		});
+		System.out.println(this.commuteGraph.edgeSet().size());
 	}
 }
