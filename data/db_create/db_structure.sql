@@ -1,5 +1,5 @@
 DROP DATABASE IF EXISTS `jakDojade`;
-CREATE DATABASE `jakDojade`;
+CREATE DATABASE `jakDojade` CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 USE `jakDojade`;
 DROP TABLE IF EXISTS `agency`, `calendar`, `calendar_dates`,`control_stops`, `feed_info`,`route_types`, `stop_times`,`routes`,`stops`,`trips`,`variants`,`vehicle_types`;
 CREATE TABLE `agency` (
@@ -7,7 +7,7 @@ CREATE TABLE `agency` (
 `agency_name` VARCHAR(50),
 `agency_url` VARCHAR(50),
 `agency_timezone` VARCHAR(20),
-`agency_phone` INT,
+`agency_phone` VARCHAR(20),
 `agency_lang` VARCHAR(2)
 );
 
