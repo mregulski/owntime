@@ -28,6 +28,7 @@
             updateRoute: function(newRoutes) {
                 this.log("updating active route:", newRoutes[0]);
                 this.activeRoute = newRoutes[0];
+                app.hub.$emit('routes-and-active-update', newRoutes, this.activeRoute);
             }
         }
     });
