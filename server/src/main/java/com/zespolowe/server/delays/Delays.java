@@ -17,7 +17,7 @@ import com.zespolowe.server.dataFormats.PointService;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.DirectedWeightedMultigraph;
 import org.jgrapht.alg.DijkstraShortestPath;
-import static fj.P.p;
+//import static fj.P.p;
 
 
 /**
@@ -131,7 +131,8 @@ public class Delays
 					// dstM departeTime1 commuteTime1 ... departureTimeN' commuteTimeN'.
 					// The file can be empty.
 					String[] splits = line.split(" ");
-					Point dst = PointService.staticGetById(Integer.parseInt(splits[0]));
+					PointService p = new PointService();
+					Point dst = p.getById(Integer.parseInt(splits[0]));
 
 					// Initialize more stuff. We will compute the average (it'll most
 					// likely be useless, but whatever).
