@@ -18,10 +18,10 @@ public class JsonConnection {
     }
 
     public void configureRESTPointHandlers(){
-        //get("/", (request, response) -> new PointDTO("karmel", "karmelowo", "karmel@karmelowo.com"), JsonUtil.json());
-        get("/point/:id", (request, response) -> pointService.getById(Integer.parseInt(request.params(":id"))), JsonUtil.json());
-        //get("/", ((request, response) -> new AdjustedTime(), JsonUtil.json()));
-        //get("/", ((request, response) -> new Node(), JsonUtil.json()));
-        //get("/", ((request, response) -> new Transport(), JsonUtil.json()));
+        get("/connection/:id", (request, response) -> pointService.getCons(Integer.parseInt(request.params(":id"))), JsonUtil.json());
+        get("/stop/:id", (request, response) -> pointService.getStps(Integer.parseInt(request.params(":id"))), JsonUtil.json());
+
     }
+
+
 }

@@ -1,18 +1,25 @@
 package com.zespolowe.server.dataFormats;
 
-/**
- * Created by ja on 05.12.16.
- */
+import com.zespolowe.server.PathFindingClasses.ReallyBadExampleOfFakeDataAndRequestProviderInOneClass;
+
+import java.util.ArrayList;
+
 public class PointService {
 
-    Point start;
-    Point end;
+    ReallyBadExampleOfFakeDataAndRequestProviderInOneClass rbeofdarpion = new ReallyBadExampleOfFakeDataAndRequestProviderInOneClass();
+
+    //Node node;
     //AdjustedTime planned;
     //AdjustedTime predicted;
-    //Route route; tab nodów; nody, time - Michał, point, transport - Olga
+    //Route route - tab. nodów;
+    //nody, time - Michał, point, transport - Olga
 
-    public PointService(){
+    public Connection getCons(int id){
+        return rbeofdarpion.getConnections().get(id);
+    }
 
+    public Point getStps(int id){
+        return rbeofdarpion.getStops().get(id);
     }
 
     public Point getById(int id){
