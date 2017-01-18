@@ -15,13 +15,15 @@ public class Tests {
         ResultSet result;
 
         try {
-            ArrayList<Integer> lineNamesAndTypes = routes.getLineNameAndTypeByTripId("3_4550497");
+            ArrayList<Integer> lineNamesAndTypes = routes.getLineNameAndTypeByTripId("3_3685186");
             for (int i = 0; i < lineNamesAndTypes.size(); i=i+2) {
                 System.out.println(lineNamesAndTypes.get(i));
                 System.out.println(lineNamesAndTypes.get(i + 1));
             }
-        } catch (IOException | SQLException e) {
+        } catch (IOException e) {
             e.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
 
     }

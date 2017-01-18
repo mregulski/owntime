@@ -96,7 +96,7 @@ public class Stops {
             e.printStackTrace();
         }
         ResultSet rs = ps.executeQuery();
-        ArrayList stops = new ArrayList<>();
+        ArrayList stops = new ArrayList();
         while(rs.next()) {
             stops.add(rs.getInt(1));
             stops.add(rs.getTime(2));

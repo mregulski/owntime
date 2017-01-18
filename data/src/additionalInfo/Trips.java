@@ -22,7 +22,7 @@ public class Trips {
         Statement stat = conn.createStatement();
         ResultSet rs = stat.executeQuery("SELECT trip_id FROM trips GROUP BY trip_id");
 
-        ArrayList ids = new ArrayList<>();
+        ArrayList ids = new ArrayList();
         while(rs.next()) {
             ids.add(rs.getString(1));
         }
