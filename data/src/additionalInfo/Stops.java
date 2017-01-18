@@ -18,7 +18,6 @@ public class Stops {
      */
     public ResultSet getAllStops() throws IOException, SQLException {
         Connection conn = new BaseDAO().getConnection();
-        //Connection conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/jakDojade", "root", "pass");
         Statement stat = conn.createStatement();
         ResultSet result = stat.executeQuery("SELECT * FROM stops");
         conn.close();

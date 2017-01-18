@@ -12,8 +12,8 @@ import java.util.ArrayList;
 public class Trips {
 
     /**
-     * Gets all lines
-     * @return
+     * Gets all ids for specific trip
+     * @return ArrayList ids
      * @throws SQLException
      * @throws IOException
      */
@@ -30,4 +30,6 @@ public class Trips {
 
         return ids;
     }
+
+
 }

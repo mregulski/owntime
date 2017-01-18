@@ -59,5 +59,38 @@ public class Routes {
         return lines;
     }
 
+    /**
+     * Get line name and type for specific trip_id, i.e: 33, normalna tramwajowa
+     * @return ArrayList ids
+     * @throws SQLException
+     * @throws IOException
+     */
+    public ArrayList getLineNameAndTypeByTripId(String trip_id) throws SQLException, IOException {
+        Connection conn = new BaseDAO().getConnection();
+        ArrayList stops = new Stops().getTripStopsByTripId(trip_id);
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement("SELECT routes.route_short_name, route_types.route_type2_name FROM routes \n" +
+                    "INNER JOIN trips ON trips.route_id = routes.route_id\n" +
+                    "INNER JOIN stop_times ON trips.trip_id = stop_times.trip_id\n" +
+                    "INNER JOIN route_types ON routes.route_type2_id = route_types.route_type2_id\n" +
+                    "WHERE stop_times.stop_id = ?\n +" +
+                    "GROUP BY routes.route_short_name, route_types.route_type2_name");
+            ps.setString(1, stops.get(1).toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        ResultSet rs = ps.executeQuery();
+
+        ArrayList result = new ArrayList<>();
+        while(rs.next()) {
+            result.add(rs.getString(1));
+            result.add(rs.getString(1));
+        }
+        conn.close();
+
+        return result;
+    }
+
 
 }
