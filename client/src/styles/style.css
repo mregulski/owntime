@@ -192,3 +192,6 @@ list-style-type: none;
 .active-sub-connection {
 	background: rgba(255, 139, 0, 0.5);
 }
+.glowingStar {
+	color: #ff8b00;
+}
