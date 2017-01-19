@@ -12,71 +12,15 @@
         <!-- Searchbox with chosen connection details on right -->
         <section class="searchbox">
             <yak-search></yak-search>
-            <!--<div class="searchbox__form">
-                <form id="find-connections">
-                    <input type="text" placeholder="Skąd chcesz jechać?">
-                    <input type="text" placeholder="Miejsce docelowe">
-                    <input type="submit" value=">">
-                </form>
-            </div>-->
+
             <yak-route :route="activeRoute"></yak-route>
-            <!--<div class="searchbox__message">
-                <p>Linai <span class="chosen-connection">33</span> w kierunku <span
-                        class="chosen-destination">Plac Strezgomski</span> o <span class="chosen-starting-time">14:00</span></p>
-                <p>Do wyjazdu pozostało Ci</p>
-                <p><span class="chosen-starting-time-left">12</span> minut</p>
-                <p>Na miejsce przyjedziesz najpóźniej o <span class="chosen-arrival-time">14:45</span></p>
-            </div>-->
+
         </section>
 
 
         <!-- Table of connections generated from searchbox input -->
         <yak-routes :active-route="activeRoute"></yak-routes>
-<!--
-        <section class="connections">
-            <table>
-                <thead>
-                <tr>
-                    <th>Linia</th>
-                    <th colspan="5">Trasa</th>
-                    <th>Przesiadki</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><span class="connection">103</span></td>
-                    <td><span class="starting-time">14:20</span></td>
-                    <td><span class="starting-point">Plac Grunwaldzki</span></td>
-                    <td></td>
-                    <td><span class="arrival-time">14:45</span></td>
-                    <td><span class="arrival-point">Plac Strezgomski</span></td>
-                    <td><span class="changes">2</span></td>
-                </tr>
-                <tr class="active-connection">
-                    <td><span class="connection">103</span></td>
-                    <td><span class="starting-time">14:20</span></td>
-                    <td><span class="starting-point">Plac Grunwaldzki</span></td>
-                    <td></td>
-                    <td><span class="arrival-time">14:45</span></td>
-                    <td><span class="arrival-point">Plac Strezgomski</span></td>
-                    <td><span class="changes">2</span></td>
-                </tr>
--->
-                <!-- Changes for active  connection -->
-<!--
-                <tr class="active-sub-connection">
-                    <td><span class="connection">103</span></td>
-                    <td><span class="starting-time">14:20</span></td>
-                    <td><span class="starting-point">Plac Grunwaldzki</span></td>
-                    <td></td>
-                    <td><span class="arrival-time">14:45</span></td>
-                    <td><span class="arrival-point">Plac Strezgomski</span></td>
-                    <td><span class="changes">2</span></td>
-                </tr>
-                </tbody>
-            </table>
-        </section>
--->
+
         <div class="flex-fill">
         </div>
         <!-- Timer and alarm for chosen connection -->

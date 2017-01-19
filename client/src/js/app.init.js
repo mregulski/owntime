@@ -21,7 +21,8 @@
             },
         },
         created: function() {
-            app.hub.$on('routes-update', this.updateRoute)
+            app.hub.$on('routes-update', this.updateRoute);
+            app.hub.$on('active-update', this.drawRoute);
         },
         methods: {
             log: app.getLog("root"),
@@ -29,6 +30,10 @@
                 this.log("updating active route:", newRoutes[0]);
                 this.activeRoute = newRoutes[0];
                 app.hub.$emit('routes-and-active-update', newRoutes, this.activeRoute);
+            },
+            drawRoute: function(newActiveRoute) {
+                this.activeRoute = newActiveRoute;
+                app.showRoute(this.activeRoute);
             }
         }
     });
