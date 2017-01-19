@@ -207,7 +207,11 @@
                                     stops: [
                                         {displayName: "a", id: 1, coords: "50.12312, 17.26137", transports: [{type: "autobus", line: "666"}]},
                                         {displayName: "b", id: 2, coords: "50.12301, 17.26130", transports: [{type: "autobus", line: "666"}]},
-                                        {displayName: "c", id:3 , coords: "50.12287, 17.26120", transports: [{type: "autobus", line: "666"}]}],
+                                        {displayName: "c", id:3 , coords: "50.12287, 17.26120", transports: [{type: "autobus", line: "666"}]},
+                                        {displayName: "d", id:4 , coords: "50.12387, 17.25120", transports: [{type: "autobus", line: "666"}]},
+                                        {displayName: "e", id:5 , coords: "50.12487, 17.23120", transports: [{type: "autobus", line: "666"}]},
+                                        {displayName: "f", id:6 , coords: "50.12200, 17.26320", transports: [{type: "autobus", line: "666"}]},
+                                        ],
                                     transport: {type: "autobus", line: "666"},
 				                    departure: {
 				                        planned: "11:33",//moment().format(),

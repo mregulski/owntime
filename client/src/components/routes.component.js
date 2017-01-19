@@ -28,7 +28,6 @@
         data: function() {
             return {
                 routes: [],
-				activeRoute: null,
 				routesToShow: [],
                 log: app.getLog('routes')
             };
@@ -37,7 +36,7 @@
 			routesToShow: function() {
 				toShow = [];
 				for (a = 0; a < this.routes.length; a++) {
-					var route = 
+					var route =
 					{
 						departure : this.routes[a].departure.planned,
 						start : this.routes[a].start,
@@ -53,9 +52,9 @@
 					if(this.routes[a] == this.activeRoute)
 					{
 						toShow[a].isActive = true;
-						for (b = 0; b < this.routes[a].route.length; b++) 
+						for (b = 0; b < this.routes[a].route.length; b++)
 						{
-							var subroute = 
+							var subroute =
 							{
 								departure : this.routes[a].route[b].departure.planned,
 								start : this.routes[a].route[b].stops[0].displayName,
