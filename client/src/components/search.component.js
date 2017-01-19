@@ -137,7 +137,7 @@
                             start: this.startPoint.query,
                             end: this.endPoint.query,
                             departure: {
-                                planned: "11:33",//moment().format(),
+                                planned: moment().add(10, 'min'),
                                 predicted: "11:33",//moment().format(),
                             },
                             arrival: {
@@ -151,14 +151,14 @@
                                         {displayName: "b", id: 2, coords: "50.12301, 17.26130", transports: [{type: "autobus", line: "666"}]},
                                         {displayName: "c", id:3 , coords: "50.12287, 17.26120", transports: [{type: "autobus", line: "666"}]}],
                                     transport: {type: "autobus", line: "666"},
-				                    departure: {
-				                        planned: "11:33",//moment().format(),
-				                        predicted: "11:33",//moment().format(),
-				                    },
-				                    arrival: {
-				                        planned: "11:33",//moment().add(15, 'min').format(),
-				                        predicted: "11:33",//moment().add(20, 'min').format()
-				                    }
+                                    departure: {
+                                        planned: "11:33",//moment().format(),
+                                        predicted: "11:33",//moment().format(),
+                                    },
+                                    arrival: {
+                                        planned: "11:33",//moment().add(15, 'min').format(),
+                                        predicted: "11:33",//moment().add(20, 'min').format()
+                                    }
                                 },
                             ]
                         },
@@ -180,20 +180,26 @@
                                         {displayName: "b", id: 2, coords: "50.12301, 17.26130", transports: [{type: "autobus", line: "666"}]},
                                         {displayName: "c", id:3 , coords: "50.12287, 17.26120", transports: [{type: "autobus", line: "666"}]}],
                                     transport: {type: "autobus", line: "666"},
-				                    departure: {
-				                        planned: "11:33",//moment().format(),
-				                        predicted: "11:33",//moment().format(),
-				                    },
-				                    arrival: {
-				                        planned: "11:33",//moment().add(15, 'min').format(),
-				                        predicted: "11:33",//moment().add(20, 'min').format()
-				                    }
+                                    departure: {
+                                        planned: "11:33",//moment().format(),
+                                        predicted: "11:33",//moment().format(),
+                                    },
+                                    arrival: {
+                                        planned: "11:33",//moment().add(15, 'min').format(),
+                                        predicted: "11:33",//moment().add(20, 'min').format()
+                                    }
                                 },
                             ]
                         },
                         {
-                            start: this.startPoint.query,
-                            end: this.endPoint.query,
+                            start: {
+                                displayName: this.startPoint.query,
+                                coords: "50.12312, 17.26137"
+                            },
+                            end: {
+                                displayName: this.endPoint.query,
+                                coords: "50.12200, 17.26320"
+                            },
                             departure: {
                                 planned: "11:33",//moment().format(),
                                 predicted: "11:33",//moment().format(),
@@ -213,14 +219,14 @@
                                         {displayName: "f", id:6 , coords: "50.12200, 17.26320", transports: [{type: "autobus", line: "666"}]},
                                         ],
                                     transport: {type: "autobus", line: "666"},
-				                    departure: {
-				                        planned: "11:33",//moment().format(),
-				                        predicted: "11:33",//moment().format(),
-				                    },
-				                    arrival: {
-				                        planned: "11:33",//moment().add(15, 'min').format(),
-				                        predicted: "11:33",//moment().add(20, 'min').format()
-				                    }
+                                    departure: {
+                                        planned: "11:33",//moment().format(),
+                                        predicted: "11:33",//moment().format(),
+                                    },
+                                    arrival: {
+                                        planned: "11:33",//moment().add(15, 'min').format(),
+                                        predicted: "11:33",//moment().add(20, 'min').format()
+                                    }
                                 },
                             ]
                         },

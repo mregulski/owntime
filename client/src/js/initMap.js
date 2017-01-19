@@ -23,7 +23,7 @@
     }
 	/*
 		drawing a route
-		input: 
+		input:
 			points: tablica obiektów-przystanków:
 				pojedynczy obiekt musi zawierać:
 				position - kordy w postaci {lat: x, lng: y}
@@ -59,7 +59,7 @@
           	strokeColor: '#FF0000',
           	strokeOpacity: 1.0,
           	strokeWeight: 2
-        	}); 
+        	});
     	app.actualRoute.setMap(app.map);
 	}
 
@@ -78,7 +78,7 @@
 			app.actualBuses[i].setMap(null);
 		}
     }
-    
+
     app.makeBuses = function(points){
     	var icon = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
     	var markers = [];
@@ -94,6 +94,7 @@
     }
 
     app.showRoute = function(json){
+		json.result = json;
     	var route = [];
     	var cords = json.result.start.coords.split(", ");
     	route.push({position: { lat: parseFloat(cords[0]), lng: parseFloat(cords[1]) }, text: json.result.start.displayName, color: "Blue" });

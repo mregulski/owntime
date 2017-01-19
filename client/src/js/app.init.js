@@ -33,6 +33,7 @@
             },
             drawRoute: function(newActiveRoute) {
                 this.activeRoute = newActiveRoute;
+                this.log("showing route...")
                 app.showRoute(this.activeRoute);
             }
         }
