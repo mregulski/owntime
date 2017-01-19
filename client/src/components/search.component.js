@@ -102,7 +102,7 @@
                         {name: "Pl. Jakiśtam", lines: [-12, 3.14, 'e']}
                     ]
                 }.bind(this), 200);
-            }, 500),
+            }, 200),
 
             hideResults: function(which) {
                 if(which == 'startPoint' || which == 'endPoint') {
@@ -134,71 +134,13 @@
                     this.isEndDirty = false;
                     newRoutes = [ /* TODO: load from API */
                         {
-                            start: this.startPoint.query,
-                            end: this.endPoint.query,
-                            departure: {
-                                planned: moment().add(10, 'min').format("HH:mm"),
-                                predicted: moment().format("HH:mm"),
-                            },
-                            arrival: {
-                                planned: moment().add(15, 'min').format("HH:mm"),
-                                predicted: moment().add(20, 'min').format("HH:mm")
-                            },
-                            route: [
-                                {
-                                    stops: [
-                                        {displayName: "a", id: 1, coords: "50.12312, 17.26137", transports: [{type: "autobus", line: "666"}]},
-                                        {displayName: "b", id: 2, coords: "50.12301, 17.26130", transports: [{type: "autobus", line: "666"}]},
-                                        {displayName: "c", id:3 , coords: "50.12287, 17.26120", transports: [{type: "autobus", line: "666"}]}],
-                                    transport: {type: "autobus", line: "666"},
-                                    departure: {
-                                        planned: moment().format("HH:mm"),
-                                        predicted: moment().format("HH:mm"),
-                                    },
-                                    arrival: {
-                                        planned: moment().add(15, 'min').format("HH:mm"),
-                                        predicted: moment().add(20, 'min').format("HH:mm")
-                                    }
-                                },
-                            ]
-                        },
-                        {
-                            start: this.startPoint.query,
-                            end: this.endPoint.query,
-                            departure: {
-                                planned: moment().format("HH:mm"),
-                                predicted: moment().format("HH:mm"),
-                            },
-                            arrival: {
-                                planned: moment().add(15, 'min').format("HH:mm"),
-                                predicted: moment().add(20, 'min').format("HH:mm")
-                            },
-                            route: [
-                                {
-                                    stops: [
-                                        {displayName: "a", id: 1, coords: "50.12312, 17.26137", transports: [{type: "autobus", line: "666"}]},
-                                        {displayName: "b", id: 2, coords: "50.12301, 17.26130", transports: [{type: "autobus", line: "666"}]},
-                                        {displayName: "c", id:3 , coords: "50.12287, 17.26120", transports: [{type: "autobus", line: "666"}]}],
-                                    transport: {type: "autobus", line: "666"},
-                                    departure: {
-                                        planned: moment().format("HH:mm"),
-                                        predicted: moment().format("HH:mm"),
-                                    },
-                                    arrival: {
-                                        planned: moment().add(15, 'min').format("HH:mm"),
-                                        predicted: moment().add(20, 'min').format("HH:mm")
-                                    }
-                                },
-                            ]
-                        },
-                        {
                             start: {
                                 displayName: this.startPoint.query,
-                                coords: "50.12312, 17.26137"
+                                coords: "51.1012373, 17.10914251"
                             },
                             end: {
                                 displayName: this.endPoint.query,
-                                coords: "50.12200, 17.26320"
+                                coords: "51.10555881, 17.0778882"
                             },
                             departure: {
                                 planned: moment().format("HH:mm"),
@@ -211,12 +153,12 @@
                             route: [
                                 {
                                     stops: [
-                                        {displayName: "a", id: 1, coords: "50.12312, 17.26137", transports: [{type: "autobus", line: "666"}]},
-                                        {displayName: "b", id: 2, coords: "50.12301, 17.26130", transports: [{type: "autobus", line: "666"}]},
-                                        {displayName: "c", id:3 , coords: "50.12287, 17.26120", transports: [{type: "autobus", line: "666"}]},
-                                        {displayName: "d", id:4 , coords: "50.12387, 17.25120", transports: [{type: "autobus", line: "666"}]},
-                                        {displayName: "e", id:5 , coords: "50.12487, 17.23120", transports: [{type: "autobus", line: "666"}]},
-                                        {displayName: "f", id:6 , coords: "50.12200, 17.26320", transports: [{type: "autobus", line: "666"}]},
+                                        {displayName: "BISKUPIN", id: 1, coords: "51.1012573, 17.10914151", transports: [{type: "autobus", line: "666"}]},
+                                        {displayName: "Spółdzielcza", id: 2, coords: "51.10220572, 17.10232232", transports: [{type: "autobus", line: "666"}]},
+                                        {displayName: "Piramowicza", id:3 , coords: "51.1031808, 17.09632744", transports: [{type: "autobus", line: "666"}]},
+                                        {displayName: "Chełmońkiego", id:4 , coords: "51.10388356, 17.09071195", transports: [{type: "autobus", line: "666"}]},
+                                        {displayName: "Tramwajowa", id:5 , coords: "51.10446682, 17.08466996", transports: [{type: "autobus", line: "666"}]},
+                                        {displayName: "ZOO", id:6 , coords: "51.10556081, 17.0778982", transports: [{type: "autobus", line: "666"}]},
                                         ],
                                     transport: {type: "autobus", line: "666"},
                                     departure: {
@@ -232,8 +174,9 @@
                         },
                     ]
                     app.hub.$emit('routes-update', newRoutes);
+                    app.hub.$emit('active-update', newRoutes[0]);
                 }.bind(this), 200);
-            }, 500)
+            }, 200)
         }
     });
 })(app)

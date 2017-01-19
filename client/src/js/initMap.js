@@ -67,6 +67,7 @@
 		clearing already drawn route
 	*/
 	app.clearRoute = function(){
+		if (!app.actualMarkers) return;
 		for (var i = 0; i < app.actualMarkers.length; i++) {
 			app.actualMarkers[i].setMap(null);
 		}
@@ -94,6 +95,7 @@
     }
 
     app.showRoute = function(json){
+		app.clearRoute();
 		json.result = json;
     	var route = [];
     	var cords = json.result.start.coords.split(", ");

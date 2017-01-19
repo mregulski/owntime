@@ -3,33 +3,33 @@
     Vue.component('yak-routes', {
         template:
         `<section class="connections">
-    <table>
-        <thead>
-        <tr>
-                    <th>Linia</th>
-                    <th colspan="5">Trasa</th>
-                    <th>Przesiadki</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="route in routesToShow" v-on:click="changeActive(route);"  v-bind:class="{ 'active-sub-connection': route.isChange, 'active-connection': route.isActive }">
-            <td><span class="connection">{{ route.line }}</span></td>
-                    <td><span class="starting-time">{{ route.departure }}</span></td>
-                    <td><span class="starting-point">Wsiądź na: {{ route.start }}</span></td>
-                    <td v-if=route.isChange><ul>
-						<li>Trasa</li>
-						 <li v-for="stop of route.stops">
-                        {{stop.displayName}}
-                    </li>
-					</ul></td>
-					<td v-else></td>
-                    <td><span class="arrival-time">{{ route.arrival }}</span></td>
-                    <td><span class="arrival-point">Wysiądź na: {{ route.end }}</span></td>
-            <td><span class="changes">{{ route.changes }}</span></td>
-        </tr>
-        </tbody>
-    </table>
-</section>`,
+			<table>
+				<thead>
+				<tr>
+							<th>Linia</th>
+							<th colspan="5">Trasa</th>
+							<th>Przesiadki</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr v-for="route in routesToShow" v-on:click="changeActive(route);"  v-bind:class="{ 'active-sub-connection': route.isChange, 'active-connection': route.isActive }">
+					<td><span class="connection">{{ route.line }}</span></td>
+							<td><span class="starting-time">{{ route.departure }}</span></td>
+							<td><span class="starting-point">Wsiądź na: {{ route.start.displayName }}</span></td>
+							<td v-if=route.isChange><ul>
+								<li>Trasa</li>
+								<li v-for="stop of route.stops">
+								{{stop.displayName}}
+							</li>
+							</ul></td>
+							<td v-else></td>
+							<td><span class="arrival-time">{{ route.arrival }}</span></td>
+							<td><span class="arrival-point">Wysiądź na: {{ route.end.displayName }}</span></td>
+					<td><span class="changes">{{ route.changes }}</span></td>
+				</tr>
+				</tbody>
+			</table>
+		</section>`,
         props: [ 'activeRoute'],
         data: function() {
             return {
@@ -46,7 +46,7 @@
 					{
 						departure : this.routes[a].departure.planned,
 						start : this.routes[a].start,
-						arrival : this.routes[a].arrival.planned,
+						arrival : this.routes[a].arrival.predicted,
 						end : this.routes[a].end,
 						line : this.routes[a].route[0].transport.line,
 						changes : this.routes[a].route.length,
@@ -88,12 +88,15 @@
         methods: {
             setRoutes: function(routes, activeRoute) {
                 this.routes = routes;
-				this.activeRoute = activeRoute;
+				// this.activeRoute = activeRoute;
 				//this.log(this.activeRoute);
             },
 			changeActive: function(activeRoute) {
 				this.activeRoute = activeRoute.orginalObject;
-			}
+				this.log("drawing route");
+				app.hub.$emit('active-update', this.activeRoute);
+			},
+			log: app.getLog('routes')
         }
     });
 
