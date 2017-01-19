@@ -16,7 +16,12 @@
             <td><span class="connection">{{ route.line }}</span></td>
                     <td><span class="starting-time">{{ route.departure }}</span></td>
                     <td><span class="starting-point">{{ route.start }}</span></td>
-                    <td></td>
+                    <td v-if=route.isChange><ul>
+						 <li v-for="stop of route.stops">
+                        {{stop.displayName}}
+                    </li>
+					</ul></td>
+					<td v-else></td>
                     <td><span class="arrival-time">{{ route.arrival }}</span></td>
                     <td><span class="arrival-point">{{ route.end }}</span></td>
             <td><span class="changes">{{ route.changes }}</span></td>
@@ -46,7 +51,8 @@
 						changes : this.routes[a].route.length,
 						isActive : false,
 						isChange : false,
-						orginalObject : this.routes[a]
+						orginalObject : this.routes[a],
+						stops : this.routes[a].route[0].stops
 					};
 					toShow.push(route);
 					if(this.routes[a] == this.activeRoute)
