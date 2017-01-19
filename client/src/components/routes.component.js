@@ -41,7 +41,7 @@
 						departure : this.routes[a].departure.planned,
 						start : this.routes[a].start,
 						arrival : this.routes[a].arrival.planned,
-						end : this.routes[a].start,
+						end : this.routes[a].end,
 						line : this.routes[a].route[0].transport.line,
 						changes : this.routes[a].route.length,
 						isActive : false,
