@@ -1,17 +1,77 @@
 (function(app) {
 	let log = app.getLog("sendRequest");
+	let sendRequest = {};
 
-    let addressURL = "http://localhost:3000/api";
+    sendRequest.getStops = getStops;
+    sendRequest.getRoute = getRoute;
+    sendRequest.postRating = postRating;
 
-    app.getData = function (dataToSend){
-    	return app.sendRequest(app.dataTypeMode(dataToSend)).then;
+    app.sendRequest = sendRequest;
+
+    let.addressURL = "194.181.240.69:4567/";
+
+    function getStops(name){
+    	return new Promise((resolve, reject) => {	
+    		var url = getURL("");
+    		var stops = $.ajax({
+		  		url: url,
+		  		type: "get", 
+			  	data: name,
+			});
+			if(!stops){
+				reject(Error("Blad"));
+			}
+			else{	
+				resolve(stops);
+			}
+		}).then(res=>{
+			data = new Array();
+			for (i = 0; i < res.length; i++)
+				data.push([i, res[i]])
+			console.log(data)
+		})
     }
 
-	app.dataTypeMode = function(dataToSend){
+
+    function getRoute(startPoint, targetPoint, time){
+    	return sendInfo(dataTypeMode(startPoint, targetPoint, time));
+    }
+
+    function sendInfo(dataToSend){
+    	return new Promise((resolve, reject) => {
+    		var url = getURL("");	
+    		var jsonFromServer = $.ajax({
+		  		url: url,
+		  		type: "get", 
+			  	data: { 
+		  			mode: dataToSend[0], 
+		  			start: dataToSend[1], 
+		  			target: dataToSend[2],
+		  			time: dataToSend[3]
+			  	},
+			});
+			if(!jsonFromServer){
+				reject(Error("Blad"));
+			}
+			else{	
+				resolve(jsonFromServer);
+			}
+		}).then(res => {
+			route(res)
+		}).catch(e =>{
+    		console.log("err - getRoute", e)
+    	});
+    }
+
+    function route(data){
+    		var routs = new Array();
+    		routs.push(data.result.route.stops);
+    		console.log(routs)
+    		return routs;
+    }
+
+    function dataTypeMode(start, target, time){
 		var reg = /^([0-9]{1,3})\.([0-9]+)$/;
-		var start, target, mode;
-		start = dataToSend.start;
-		target = dataToSend.target;
 
 		if(!reg.test(start) && !reg.test(target)){
 			mode = 1;
@@ -30,93 +90,36 @@
 		data.push(mode);
 		data.push(start);
 		data.push(target);
-		data.push(dataToSend.time);
-		data.push(dataToSend.flag);
+		data.push(time);
 		return data;
 	}
 
-    app.sendRequest = function(dataToSend){
-    	return new Promise((resolve, reject) => {	
-    		var jsonFromServer = $.ajax({
-		  		url: addressURL,
-		  		type: "get", 
+	function getURL(url){
+		return addressURL + url;
+	}
+
+	function postRating(rating, comment){
+		return new Promise((resolve, reject) => {
+    		var url = getURL("");	
+    		var routeRating = $.ajax({
+		  		url: url,
+		  		type: "post", 
 			  	data: { 
-		  			mode: dataToSend[0], 
-		  			start: dataToSend[1], 
-		  			target: dataToSend[2],
-		  			time: dataToSend[3],
-		  			mode2: dataToSend[4]
+		  			rating : rating,
+		  			comment : comment
 			  	},
 			});
-			if(!jsonFromServer){
+			if(!routeRating){
 				reject(Error("Blad"));
 			}
 			else{	
-				resolve(jsonFromServer);
+				resolve(routeRating);
 			}
-		});
-    }
-
-    app.route = function (data){
-    	return app.getData(data).then(res =>{
-    		var routs = new Array();
-    		routs.push(res.result.route.stops);
-    		var x = res.result.route.alternatives;
-    		while(x){
-    			routs.push(x.stops);
-    			x = x.alternatives;
-    		}
-    		console.log(routs)
-    	}).catch(e =>{
-    		console.log("err - getRoute", e)
+		}).then(res => {
+			return ((random() > 0.5) ? console.log("sukces") : console.log("blad"));
+		}).catch(e =>{
+    		console.log("err - postRating", e)
     	});
-    }
-
-    app.stopsByName = function (data){
-    	return app.getData(data).then(res =>{
-    		var arr, routeStops, stops; 
-    		stops = new Array(); routeStops = new Array();
-    		arr = res.result.route;
-    		for(i = 0; i < arr.stops.length; i++){
-	    		routeStops.push(arr.stops[i].displayName);
-	    	}
-    		stops.push(routeStops);
-    		routeStops = [];
-    		arr = arr.alternatives;
-    		while(arr){
-	    		for(i = 0; i < arr.stops.length; i++){
-	    			routeStops.push(arr.stops[i].displayName);
-	    		}
-	    		stops.push(routeStops);
-	    		arr = arr.alternatives;
-	    		routeStops = [];
-    		}
-    		console.log(stops)
-    	}).catch(e =>{
-    		console.log("err - getStopsByName", e)
-    	});
-    }
-
-    app.getStops = function (name){
-    	return new Promise((resolve, reject) => {	
-    		var stops = $.ajax({
-		  		url: addressURL,
-		  		type: "get", 
-			  	data: name,
-			});
-			if(!stops){
-				reject(Error("Blad"));
-			}
-			else{	
-				resolve(stops);
-			}
-		}).then(res=>{
-			//TODO
-			data = new Array();
-			for (i = 0; i < res.length; i++)
-				data.push([i, res[i]])
-			console.log(data)
-		})
-    }
+	}
 
 })(app);
