@@ -19,13 +19,14 @@
                     <input type="submit" value=">">
                 </form>
             </div>-->
-            <div class="searchbox__message">
+            <yak-route :route="activeRoute"></yak-route>
+            <!--<div class="searchbox__message">
                 <p>Linai <span class="chosen-connection">33</span> w kierunku <span
                         class="chosen-destination">Plac Strezgomski</span> o <span class="chosen-starting-time">14:00</span></p>
                 <p>Do wyjazdu pozostało Ci</p>
                 <p><span class="chosen-starting-time-left">12</span> minut</p>
                 <p>Na miejsce przyjedziesz najpóźniej o <span class="chosen-arrival-time">14:45</span></p>
-            </div>
+            </div>-->
         </section>
 
 
@@ -90,6 +91,7 @@
         integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
         crossorigin="anonymous"></script>
     <script src="../node_modules/moment/moment.js"></script>
+    <script src="../node_modules/moment/locale/pl.js"></script>
     <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.js"></script>
 
     <script src="https://cdn.rawgit.com/simplesmiler/vue-clickaway/2.1.0/dist/vue-clickaway.js"></script>
@@ -104,6 +106,7 @@
 <!-- Vue components -->
     <script src="src/components/alert.component.js"></script>
     <script src="src/components/search.component.js"></script>
+    <script src="src/components/routeInfo.component.js"></script>
     <script src="src/components/routes.component.js"></script>
 
 <!-- Initialize root Vue component -->
