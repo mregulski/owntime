@@ -101,7 +101,7 @@
                         {name: "Pl. Srzegomski", lines: [123,4,5,33,7,'A']},
                         {name: "Pl. Jakiśtam", lines: [-12, 3.14, 'e']}
                     ]
-                }.bind(this), 500);
+                }.bind(this), 200);
             }, 500),
 
             hideResults: function(which) {
@@ -137,12 +137,12 @@
                             start: this.startPoint.query,
                             end: this.endPoint.query,
                             departure: {
-                                planned: moment().add(10, 'min'),
-                                predicted: "11:33",//moment().format(),
+                                planned: moment().add(10, 'min').format("HH:mm"),
+                                predicted: moment().format("HH:mm"),
                             },
                             arrival: {
-                                planned: "11:33",//moment().add(15, 'min').format(),
-                                predicted: "11:33",//moment().add(20, 'min').format()
+                                planned: moment().add(15, 'min').format("HH:mm"),
+                                predicted: moment().add(20, 'min').format("HH:mm")
                             },
                             route: [
                                 {
@@ -152,12 +152,12 @@
                                         {displayName: "c", id:3 , coords: "50.12287, 17.26120", transports: [{type: "autobus", line: "666"}]}],
                                     transport: {type: "autobus", line: "666"},
                                     departure: {
-                                        planned: "11:33",//moment().format(),
-                                        predicted: "11:33",//moment().format(),
+                                        planned: moment().format("HH:mm"),
+                                        predicted: moment().format("HH:mm"),
                                     },
                                     arrival: {
-                                        planned: "11:33",//moment().add(15, 'min').format(),
-                                        predicted: "11:33",//moment().add(20, 'min').format()
+                                        planned: moment().add(15, 'min').format("HH:mm"),
+                                        predicted: moment().add(20, 'min').format("HH:mm")
                                     }
                                 },
                             ]
@@ -166,12 +166,12 @@
                             start: this.startPoint.query,
                             end: this.endPoint.query,
                             departure: {
-                                planned: "11:33",//moment().format(),
-                                predicted: "11:33",//moment().format(),
+                                planned: moment().format("HH:mm"),
+                                predicted: moment().format("HH:mm"),
                             },
                             arrival: {
-                                planned: "11:33",//moment().add(15, 'min').format(),
-                                predicted: "11:33",//moment().add(20, 'min').format()
+                                planned: moment().add(15, 'min').format("HH:mm"),
+                                predicted: moment().add(20, 'min').format("HH:mm")
                             },
                             route: [
                                 {
@@ -181,12 +181,12 @@
                                         {displayName: "c", id:3 , coords: "50.12287, 17.26120", transports: [{type: "autobus", line: "666"}]}],
                                     transport: {type: "autobus", line: "666"},
                                     departure: {
-                                        planned: "11:33",//moment().format(),
-                                        predicted: "11:33",//moment().format(),
+                                        planned: moment().format("HH:mm"),
+                                        predicted: moment().format("HH:mm"),
                                     },
                                     arrival: {
-                                        planned: "11:33",//moment().add(15, 'min').format(),
-                                        predicted: "11:33",//moment().add(20, 'min').format()
+                                        planned: moment().add(15, 'min').format("HH:mm"),
+                                        predicted: moment().add(20, 'min').format("HH:mm")
                                     }
                                 },
                             ]
@@ -201,12 +201,12 @@
                                 coords: "50.12200, 17.26320"
                             },
                             departure: {
-                                planned: "11:33",//moment().format(),
-                                predicted: "11:33",//moment().format(),
+                                planned: moment().format("HH:mm"),
+                                predicted: moment().format("HH:mm"),
                             },
                             arrival: {
-                                planned: "11:33",//moment().add(15, 'min').format(),
-                                predicted: "11:33",//moment().add(20, 'min').format()
+                                planned: moment().add(15, 'min').format("HH:mm"),
+                                predicted: moment().add(20, 'min').format("HH:mm")
                             },
                             route: [
                                 {
@@ -220,19 +220,19 @@
                                         ],
                                     transport: {type: "autobus", line: "666"},
                                     departure: {
-                                        planned: "11:33",//moment().format(),
-                                        predicted: "11:33",//moment().format(),
+                                        planned: moment().format("HH:mm"),
+                                        predicted: moment().format("HH:mm"),
                                     },
                                     arrival: {
-                                        planned: "11:33",//moment().add(15, 'min').format(),
-                                        predicted: "11:33",//moment().add(20, 'min').format()
+                                        planned: moment().add(15, 'min').format("HH:mm"),
+                                        predicted: moment().add(20, 'min').format("HH:mm")
                                     }
                                 },
                             ]
                         },
                     ]
                     app.hub.$emit('routes-update', newRoutes);
-                }.bind(this), 500);
+                }.bind(this), 200);
             }, 500)
         }
     });
