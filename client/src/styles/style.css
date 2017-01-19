@@ -6,7 +6,10 @@
     padding: 0;
     margin: 0;
 }
-
+ul
+{
+list-style-type: none;
+}
 .fill-container {
     position: absolute;
     width: 100%;
@@ -157,10 +160,11 @@
     padding-bottom: 20px;
 }
 .connections td{
+	vertical-align: top;
     padding: 10px;
 }
 .connections td:nth-child(1){
-    text-align: center;
+    text-align: left;
 }
 .connections td:nth-child(7){
     text-align: right;
@@ -184,5 +188,5 @@
     color: #ff8b00;
 }
 .active-sub-connection {
-	background: #ff8b44
+	background: rgba(255, 139, 0, 0.5);
 }
