@@ -58,7 +58,29 @@ public class Routes {
 
         return lines;
     }
-
+	
+	/**
+     * Get line name and type for all trip_id's from trip_type, i.e: 33, normalna tramwajowa etc
+     * @return ArrayList ids
+     * @throws SQLException
+     * @throws IOException
+     */
+	public ArrayList getAllTripInfo() throws SQLException, IOException {
+        Connection conn = new BaseDAO().getConnection();
+        Statement stat = conn.createStatement();
+        ResultSet rs = stat.executeQuery("SELECT route_short_name, route_type2_name, trip_id FROM trip_type");
+ 
+        ArrayList lines = new ArrayList<>();
+        while(rs.next()) {
+            lines.add(rs.getString(1));
+            lines.add(rs.getString(2));
+            lines.add(rs.getString(3));
+        }
+        conn.close();
+ 
+        return lines;
+    }
+	
     /**
      * Get line name and type for specific trip_id, i.e: 33, normalna tramwajowa
      * @return ArrayList ids
@@ -71,7 +93,7 @@ public class Routes {
 
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("SELECT routes.route_short_name, route_types.route_type2_name FROM routes \n" +
+            /*ps = conn.prepareStatement("SELECT routes.route_short_name, route_types.route_type2_name FROM routes \n" +
                     "INNER JOIN trips ON trips.route_id = routes.route_id\n" +
                     "INNER JOIN stop_times ON trips.trip_id = stop_times.trip_id\n" +
                     "INNER JOIN route_types ON routes.route_type2_id = route_types.route_type2_id\n" +
@@ -79,7 +101,11 @@ public class Routes {
                     "AND trips.trip_id = ?\n" +
                     "GROUP BY routes.route_short_name, route_types.route_type2_name");
             ps.setString(1, stops.get(0).toString());
-            ps.setString(2, trip_id);
+            ps.setString(2, trip_id);*/
+			
+			ps = conn.prepareStatement( "SELECT route_short_name, route_type2_name, trip_id FROM trip_type \n" +
+                                        "WHERE trip_id = ? \n");
+            ps.setString(1, trip_id);
         } catch (Exception e) {
             e.printStackTrace();
         }
