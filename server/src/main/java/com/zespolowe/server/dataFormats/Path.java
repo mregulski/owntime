@@ -66,6 +66,7 @@ public class Path {
 			if (list.get(i).getTripId() == currentTripId) {
 				currentStops.add(list.get(i).getSourcePoint());
 			} else {
+				currentTripId = list.get(i).getTripId();
 				currentStops.add(list.get(i).getSourcePoint()); // last point in the node
 				AdjustedTime arrival = new AdjustedTime(list.get(i - 1).getArrival(), list.get(i - 1).getArrival());
 				Transport transport = list.get(i - 1).getTransport(); // all connections with the same tripId are of the same transport
