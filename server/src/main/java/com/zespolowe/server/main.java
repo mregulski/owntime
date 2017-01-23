@@ -1,14 +1,10 @@
 package com.zespolowe.server;
 
 import com.zespolowe.server.PathFindingClasses.PathFinder;
-import com.zespolowe.server.PathFindingClasses.ReallyBadExampleOfFakeDataAndRequestProviderInOneClass;
 import com.zespolowe.server.dataFormats.JsonConnection;
 import com.zespolowe.server.dataFormats.MariaDBDataProvider;
 import com.zespolowe.server.dataFormats.PointService;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import com.zespolowe.server.dataFormats.DonaldTrumpRequestProvider;
 
 
 public class main {
@@ -18,12 +14,14 @@ public class main {
      */
     public static void main(String[] args){
 
-        ReallyBadExampleOfFakeDataAndRequestProviderInOneClass noob = new ReallyBadExampleOfFakeDataAndRequestProviderInOneClass();
-        //MariaDBDataProvider nooob = new MariaDBDataProvider();
+        //ReallyBadExampleOfFakeDataAndRequestProviderInOneClass noob = new ReallyBadExampleOfFakeDataAndRequestProviderInOneClass();
+        MariaDBDataProvider dataProvider = new MariaDBDataProvider();
+        DonaldTrumpRequestProvider requestProvider = new DonaldTrumpRequestProvider();
         PathFinder pf = new PathFinder();
-        pf.setDataProvider(noob);
-        pf.setRequestProvider(noob);
+        pf.setDataProvider(dataProvider);
+        pf.setRequestProvider(requestProvider);
         pf.init();
+
         pf.run();
 
         PointService pointService = new PointService();
