@@ -23,6 +23,7 @@ public class Point {
 		String line = t.line;
 		if(!added.containsKey(line)){
 			transports.add(t);
+			added.put(line, true);
 		}
 	}
 	
