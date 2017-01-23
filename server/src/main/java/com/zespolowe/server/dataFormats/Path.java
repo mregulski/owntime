@@ -53,7 +53,7 @@ public class Path {
 		return "unspecified";
 	}
 
-	static Result toResult(Path path) {
+	public static Result toResult(Path path) {
 
 		// Start of conversion -Cirben
 		ArrayList<VConnection> list = path.getConnectionLists();
