@@ -8,11 +8,12 @@
 
     app.sendRequest = sendRequest;
 
-    let.addressURL = "194.181.240.69:4567/";
+//	let addressURL = "194.181.240.69:4567/";
+    let addressURL = "http://localhost:3000/api/";
 
     function getStops(name){
     	return new Promise((resolve, reject) => {	
-    		var url = getURL("");
+    		var url = getURL("stops");
     		var stops = $.ajax({
 		  		url: url,
 		  		type: "get", 
@@ -39,7 +40,7 @@
 
     function sendInfo(dataToSend){
     	return new Promise((resolve, reject) => {
-    		var url = getURL("");	
+    		var url = getURL("route");	
     		var jsonFromServer = $.ajax({
 		  		url: url,
 		  		type: "get", 
@@ -57,7 +58,7 @@
 				resolve(jsonFromServer);
 			}
 		}).then(res => {
-			route(res)
+			route(res);
 		}).catch(e =>{
     		console.log("err - getRoute", e)
     	});
@@ -65,7 +66,8 @@
 
     function route(data){
     		var routs = new Array();
-    		routs.push(data.result.route.stops);
+		for(i=0; i < data.result.route.length; i++)
+			routs.push(data.result.route[i].stops);
     		console.log(routs)
     		return routs;
     }
@@ -100,7 +102,7 @@
 
 	function postRating(rating, comment){
 		return new Promise((resolve, reject) => {
-    		var url = getURL("");	
+    		var url = getURL("rating");	
     		var routeRating = $.ajax({
 		  		url: url,
 		  		type: "post", 
@@ -116,7 +118,8 @@
 				resolve(routeRating);
 			}
 		}).then(res => {
-			return ((random() > 0.5) ? console.log("sukces") : console.log("blad"));
+			console.log(res);
+			return (Math.random() > 0.5 ? "Sukces" : "blad");
 		}).catch(e =>{
     		console.log("err - postRating", e)
     	});
