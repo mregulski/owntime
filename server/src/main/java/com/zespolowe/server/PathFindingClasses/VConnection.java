@@ -1,6 +1,7 @@
 package com.zespolowe.server.PathFindingClasses;
 
 import com.zespolowe.server.dataFormats.Connection;
+import com.zespolowe.server.dataFormats.Point;
 import com.zespolowe.server.dataFormats.Transport;
 
 import java.time.LocalDateTime;
@@ -11,49 +12,60 @@ import java.time.LocalDateTime;
  */
 public class VConnection implements Comparable {
 
-    Connection c;
-    VPoint target;
-    VPoint source;
+	Connection c;
+	VPoint target;
+	VPoint source;
 
-    public VConnection(Connection c, VPoint a, VPoint b) {
-        this.c = c;
-        this.source = a;
-        this.target = b;
-    }
-    
-    public void update(Connection c, VPoint a, VPoint b){
-        this.c = c;
-        source= a;
-        target= b;
-    }
+	public VConnection(Connection c, VPoint a, VPoint b) {
+		this.c = c;
+		this.source = a;
+		this.target = b;
+	}
 
-    public LocalDateTime getDeparture() {
-        return c.getDeparture();
-    }
+	public void update(Connection c, VPoint a, VPoint b) {
+		this.c = c;
+		source = a;
+		target = b;
+	}
 
-    public LocalDateTime getArrival() {
-        return c.getArrival();
-    }
+	public LocalDateTime getDeparture() {
+		return c.getDeparture();
+	}
 
-    public VPoint getSource() {
-        return source;
-    }
+	public LocalDateTime getArrival() {
+		return c.getArrival();
+	}
 
-    @Override
-    public int compareTo(Object b) {
-        return this.getDeparture().compareTo(((VConnection) b).getDeparture());
-    }
+	public VPoint getSource() {
+		return source;
+	}
 
-    public int getId() {
-        return c.getId();
-    }
+	public Point getSourcePoint() {
+		return source.getPoint();
+	}
 
-    public VPoint getTarget() {
-        return target;
-    }
-    
-    public Transport getTransport(){
-        return c.getTransport();
-    }
+	public Point getTargetPoint() {
+		return target.getPoint();
+	}
 
+	@Override
+	public int compareTo(Object b) {
+		return this.getDeparture().compareTo(((VConnection) b).getDeparture());
+	}
+
+	public int getId() {
+		return c.getId();
+	}
+
+	public VPoint getTarget() {
+		return target;
+	}
+
+	public Transport getTransport() {
+		return c.getTransport();
+	}
+
+	public int getTripId() {
+		return c.getTripId();
+	}
 }

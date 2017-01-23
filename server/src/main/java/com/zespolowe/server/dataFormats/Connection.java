@@ -14,14 +14,20 @@ public class Connection {
     LocalDateTime arrival;
     int id; //connection id for updating
     Transport transport;
+	int tripId;
 
-    public Connection(int id, int idA, int idB, LocalDateTime departure, LocalDateTime arrival, Transport trns) {
+	public int getTripId() {
+		return tripId;
+	}
+
+    public Connection(int id, int idA, int idB, LocalDateTime departure, LocalDateTime arrival, Transport trns, int tripId) {
         this.id = id;
         this.idA = idA;
         this.idB = idB;
         this.departure = departure;
         this.arrival = arrival;
         this.transport = trns;
+		this.tripId = tripId;
     }
 
     public Transport getTransport() {

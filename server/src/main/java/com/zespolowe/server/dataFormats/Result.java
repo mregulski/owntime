@@ -20,6 +20,7 @@ public class Result {
         this.departure = route.get(0).departure;
         this.arrival = route.get(route.size() - 1).arrival;
     }
+	
 
 
 }

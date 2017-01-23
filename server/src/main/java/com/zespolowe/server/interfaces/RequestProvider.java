@@ -1,5 +1,6 @@
 package com.zespolowe.server.interfaces;
 
+import com.zespolowe.server.dataFormats.Path;
 import com.zespolowe.server.dataFormats.Request;
 
 /**
@@ -11,4 +12,6 @@ public interface RequestProvider {
     public Request getRequest();
 
     public boolean shouldStop();
+
+	public void addPath(Path path);
 }
