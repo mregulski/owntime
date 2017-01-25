@@ -86,6 +86,182 @@
 				    "alternatives": [],
 				    "details": {}
 				}
+			]},
+			{"start": {
+	    "displayName": "Pl. Grunwaldzki",
+	    "coords": "51.111562, 17.060132",
+	    "id": "1",
+	    "transports": []
+		},
+	"end":	{
+	    "displayName": "Pl. jakiśtam",
+	    "coords": "51.111562, 17.060132",
+	    "id": "1",
+	    "transports": []
+		},
+	"departure": 
+		{"planned": "2016-11-17T17:08:36.136Z",
+		"predicted": "2016-11-17T17:08:36.136Z"},
+	"arrival": 
+		{"planned": "2016-11-17T17:08:36.136Z","predicted": "2016-11-17T17:08:36.136Z"},
+	"route": [
+				{
+				    "stops": [
+				    			{
+								    "displayName": "Pl. Grunwaldzki1",
+								    "coords": "51.111562, 17.060140",
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "Pl. Grunwaldzki2",
+								    "coords": "51.111562, 17.060150",
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "Pl. Grunwaldzki3",
+								    "coords": "51.111562, 17.060160",
+								    "id": "1",
+								    "transports": []
+								}
+				    		],
+				    "transport": {"type" : "autobus",	"details": {"line": "336"} },
+				    "departure": {"planned": "2016-11-17T17:08:36.136Z",
+						"predicted": "2016-11-17T17:08:36.136Z"},
+				    "arrival": {"planned": "2016-11-17T17:08:36.136Z",
+						"predicted": "2016-11-17T17:08:36.136Z"},
+				    "alternatives": [],
+				    "details": {}
+				},
+				{
+				    "stops": [
+				    			{
+								    "displayName": "Pl. trtrtrtr",
+								    "coords": "51.111570, 17.060160",
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "Pl. trtrotrtr",
+								    "coords": "51.111580, 17.060160",
+								    "id": "1",
+								    "transports": []
+								}
+				    		],
+				    "transport": {"type" : "autobus",	"details": {"line": "236"} },
+				    "departure": {"planned": "2016-11-17T17:08:36.136Z",
+						"predicted": "2016-11-17T17:08:36.136Z"},
+				    "arrival": {"planned": "2016-11-17T17:08:36.136Z",
+						"predicted": "2016-11-17T17:08:36.136Z"},
+				    "alternatives": [],
+				    "details": {}
+				},
+				{
+				    "stops": [
+				    			{
+								    "displayName": "Pl. Grunwaldzki",
+								    "coords": "51.111590, 17.060170",
+								    "id": "1",
+								    "transports": []
+								}
+				    		],
+				    "transport": {"type" : "autobus",	"details": {"line": "136"} },
+				    "departure": {"planned": "2016-11-17T17:08:36.136Z",
+						"predicted": "2016-11-17T17:08:36.136Z"},
+				    "arrival": {"planned": "2016-11-17T17:08:36.136Z",
+						"predicted": "2016-11-17T17:08:36.136Z"},
+				    "alternatives": [],
+				    "details": {}
+				}
+			]},
+			{"start": {
+	    "displayName": "Pl. Grunwaldzki",
+	    "coords": "51.111562, 17.060132",
+	    "id": "1",
+	    "transports": []
+		},
+	"end":	{
+	    "displayName": "Pl. jakiśtam",
+	    "coords": "51.111562, 17.060132",
+	    "id": "1",
+	    "transports": []
+		},
+	"departure": 
+		{"planned": "2016-11-17T17:08:36.136Z",
+		"predicted": "2016-11-17T17:08:36.136Z"},
+	"arrival": 
+		{"planned": "2016-11-17T17:08:36.136Z","predicted": "2016-11-17T17:08:36.136Z"},
+	"route": [
+				{
+				    "stops": [
+				    			{
+								    "displayName": "Pl. Grunwaldzki1",
+								    "coords": "51.111562, 17.060140",
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "Pl. Grunwaldzki2",
+								    "coords": "51.111562, 17.060150",
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "Pl. Grunwaldzki3",
+								    "coords": "51.111562, 17.060160",
+								    "id": "1",
+								    "transports": []
+								}
+				    		],
+				    "transport": {"type" : "autobus",	"details": {"line": "336"} },
+				    "departure": {"planned": "2016-11-17T17:08:36.136Z",
+						"predicted": "2016-11-17T17:08:36.136Z"},
+				    "arrival": {"planned": "2016-11-17T17:08:36.136Z",
+						"predicted": "2016-11-17T17:08:36.136Z"},
+				    "alternatives": [],
+				    "details": {}
+				},
+				{
+				    "stops": [
+				    			{
+								    "displayName": "Pl. trtrtrtr",
+								    "coords": "51.111570, 17.060160",
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "Pl. trtrotrtr",
+								    "coords": "51.111580, 17.060160",
+								    "id": "1",
+								    "transports": []
+								}
+				    		],
+				    "transport": {"type" : "autobus",	"details": {"line": "236"} },
+				    "departure": {"planned": "2016-11-17T17:08:36.136Z",
+						"predicted": "2016-11-17T17:08:36.136Z"},
+				    "arrival": {"planned": "2016-11-17T17:08:36.136Z",
+						"predicted": "2016-11-17T17:08:36.136Z"},
+				    "alternatives": [],
+				    "details": {}
+				},
+				{
+				    "stops": [
+				    			{
+								    "displayName": "Pl. Grunwaldzki",
+								    "coords": "51.111590, 17.060170",
+								    "id": "1",
+								    "transports": []
+								}
+				    		],
+				    "transport": {"type" : "autobus",	"details": {"line": "136"} },
+				    "departure": {"planned": "2016-11-17T17:08:36.136Z",
+						"predicted": "2016-11-17T17:08:36.136Z"},
+				    "arrival": {"planned": "2016-11-17T17:08:36.136Z",
+						"predicted": "2016-11-17T17:08:36.136Z"},
+				    "alternatives": [],
+				    "details": {}
+				}
 			]}
 	]
 }
