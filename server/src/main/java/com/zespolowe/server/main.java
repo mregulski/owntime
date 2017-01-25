@@ -17,20 +17,24 @@ public class main {
 
         //ReallyBadExampleOfFakeDataAndRequestProviderInOneClass noob = new ReallyBadExampleOfFakeDataAndRequestProviderInOneClass();
         ConsoleRequestProvider crp = new ConsoleRequestProvider();
-		MariaDBDataProvider dataProvider = new MariaDBDataProvider();
+        MariaDBDataProvider dataProvider = new MariaDBDataProvider();
         //DonaldTrumpRequestProvider requestProvider = new DonaldTrumpRequestProvider();
         PathFinder pf = new PathFinder();
         pf.setDataProvider(dataProvider);
         //pf.setRequestProvider(requestProvider);
         pf.setRequestProvider(crp);
-        pf.init();
+//        pf.init();
 
-        pf.run();
-		//pf.wait();
-        //JsonConnection jsonConnection = new JsonConnection();
-        //jsonConnection.configureRESTPointHandlers();
+        //pf.run();
+        //pf.wait();
 
-//        Spark.get("/hello", (req, res) -> "Hello World");
+        MariaDBDataProvider provider = new MariaDBDataProvider();
+        DonaldTrumpRequestProvider donald = new DonaldTrumpRequestProvider();
+        PathFinder pathfinder = new PathFinder();
+
+        JsonConnection jsonConnection = new JsonConnection(provider, donald, pathfinder);
+        jsonConnection.configureRESTPointHandlers();
+
     }
     
 }

@@ -33,12 +33,11 @@ public class JsonConnection {
             return null;
         });
 
-        get("/route/:from/:to/:time/:arrival", (request, response) -> {
+        get("/route/:from/:to/:time", (request, response) -> {
 
             String from = request.params(":from");
             String to = request.params(":to");
             String time = request.params(":time");
-            String arrival = request.params(":arrival");
 
             local = LocalDateTime.parse(time);
 
@@ -87,13 +86,13 @@ public class JsonConnection {
 
             }
 
-            //pathFinder.setDataProvider(mariaDBDataProvider);
-            //pathFinder.setRequestProvider(donald);
+            pathFinder.setDataProvider(mariaDBDataProvider);
+            pathFinder.setRequestProvider(donald);
 
-            //pathFinder.init();
-            //pathFinder.run();
+            pathFinder.init();
+            pathFinder.run();
 
-            //result = donald.getResult();
+            result = donald.getResult();
 
 
             return result;
