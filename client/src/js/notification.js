@@ -58,9 +58,9 @@
     }
 
     function parseRoute(routeDetails) {
-        var msg = "linia " + routeDetails.line;
-        msg +=  " w kierunku " + routeDetails.direction;
-        msg += " odjeżdża z przystanku " + routeDetails.stop;
+        var msg = "linia " + routeDetails.route[0].transport.line;
+        msg +=  " w kierunku " + routeDetails.end;
+        msg += " odjeżdża z przystanku " + routeDetails.route[0].stops[0].displayName;
         msg += " za 12 minut";
         return msg;
     }

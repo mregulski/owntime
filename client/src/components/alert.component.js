@@ -25,7 +25,7 @@
             addAlert: function() {
                 this.removeAlert();
                 app.notification
-                    .setAlarm(moment().add(5, 'seconds'), this.activeRoute)
+                    .setAlarm(this.activeRoute.departure.planned.subtract(this.minutes, 'min'), this.activeRoute)
                     /* [Note] Promises need to use arrow functions if they
                         refer to the current object via `this`. */
                     .then((timeoutId) => {

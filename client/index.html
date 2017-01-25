@@ -10,66 +10,18 @@
     <div id="map" class="fill-container"></div>
     <div id="ui">
         <!-- Searchbox with chosen connection details on right -->
+            <yak-rating></yak-rating>
         <section class="searchbox">
-            <div class="searchbox__form">
-                <form id="find-connections">
-                    <input type="text" placeholder="Skąd chcesz jechać?">
-                    <input type="text" placeholder="Miejsce docelowe">
-                    <input type="submit" value=">">
-                </form>
-            </div>
-            <div class="searchbox__message">
-                <p>Linai <span class="chosen-connection">33</span> w kierunku <span
-                        class="chosen-destination">Plac Strezgomski</span> o <span class="chosen-starting-time">14:00</span></p>
-                <p>Do wyjazdu pozostało Ci</p>
-                <p><span class="chosen-starting-time-left">12</span> minut</p>
-                <p>Na miejsce przyjedziesz najpóźniej o <span class="chosen-arrival-time">14:45</span></p>
-            </div>
+            <yak-search></yak-search>
+
+            <yak-route :route="activeRoute"></yak-route>
+
         </section>
 
 
         <!-- Table of connections generated from searchbox input -->
-        <section class="connections">
-            <table>
-                <thead>
-                <tr>
-                    <th>Linia</th>
-                    <th>Trasa</th>
-                    <th>Przesiadki</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><span class="connection">103</span></td>
-                    <td><span class="starting-time">14:20</span></td>
-                    <td><span class="starting-point">Plac Grunwaldzki</span></td>
-                    <td></td>
-                    <td><span class="arrival-time">14:45</span></td>
-                    <td><span class="arrival-point">Plac Strezgomski</span></td>
-                    <td><span class="changes">2</span></td>
-                </tr>
-                <tr class="active-connection">
-                    <td><span class="connection">103</span></td>
-                    <td><span class="starting-time">14:20</span></td>
-                    <td><span class="starting-point">Plac Grunwaldzki</span></td>
-                    <td></td>
-                    <td><span class="arrival-time">14:45</span></td>
-                    <td><span class="arrival-point">Plac Strezgomski</span></td>
-                    <td><span class="changes">2</span></td>
-                </tr>
-                <!-- Changes for active  connection -->
-                <tr class="active-sub-connection">
-                    <td><span class="connection">103</span></td>
-                    <td><span class="starting-time">14:20</span></td>
-                    <td><span class="starting-point">Plac Grunwaldzki</span></td>
-                    <td></td>
-                    <td><span class="arrival-time">14:45</span></td>
-                    <td><span class="arrival-point">Plac Strezgomski</span></td>
-                    <td><span class="changes">2</span></td>
-                </tr>
-                </tbody>
-            </table>
-        </section>
+        <yak-routes :active-route="activeRoute"></yak-routes>
+
         <div class="flex-fill">
         </div>
         <!-- Timer and alarm for chosen connection -->
@@ -84,19 +36,29 @@
         integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
         crossorigin="anonymous"></script>
     <script src="../node_modules/moment/moment.js"></script>
+    <script src="../node_modules/moment/locale/pl.js"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.js"></script>
+
+    <script src="https://cdn.rawgit.com/simplesmiler/vue-clickaway/2.1.0/dist/vue-clickaway.js"></script>
 <!-- app -->
     <script src="src/js/app.js"></script>
     <script src="src/js/log.js"></script>
     <script src="src/js/geolocation.js"></script>
     <script src="src/js/notification.js"></script>
     <script src="src/js/initMap.js"></script>
+    <script src="src/js/sendRequest.js"></script>
     <!-- <script src="src/js/route.js"></script> -->
 
-<!-- components -->
+<!-- Vue components -->
     <script src="src/components/alert.component.js"></script>
+    <script src="src/components/search.component.js"></script>
+    <script src="src/components/routeInfo.component.js"></script>
+    <script src="src/components/routes.component.js"></script>
+    <script src="src/components/rating.component.js"></script>
 
-<!-- Initialize root Vue component. MUST BE RUN _AFTER_ COMPONENT DECLARATIONS! -->
+<!-- Initialize root Vue component -->
     <script src="src/js/app.init.js"></script>
+<!-- initialize map -->
     <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvWrjHtzy7EB0l97Bu6v0LPNHYvGIHLLA&callback=mapsCallback">
     </script>
