@@ -15,7 +15,7 @@ public class main {
     public static void main(String[] args){
 
         //ReallyBadExampleOfFakeDataAndRequestProviderInOneClass noob = new ReallyBadExampleOfFakeDataAndRequestProviderInOneClass();
-        MariaDBDataProvider dataProvider = new MariaDBDataProvider();
+        /*MariaDBDataProvider dataProvider = new MariaDBDataProvider();
         DonaldTrumpRequestProvider requestProvider = new DonaldTrumpRequestProvider();
         PathFinder pf = new PathFinder();
         pf.setDataProvider(dataProvider);
@@ -23,9 +23,8 @@ public class main {
         pf.init();
 
         pf.run();
-
-        PointService pointService = new PointService();
-        JsonConnection jsonConnection = new JsonConnection(pointService);
+*/
+        JsonConnection jsonConnection = new JsonConnection();
         jsonConnection.configureRESTPointHandlers();
 
 //        Spark.get("/hello", (req, res) -> "Hello World");
