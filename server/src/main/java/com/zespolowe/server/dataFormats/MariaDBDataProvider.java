@@ -90,7 +90,8 @@ public class MariaDBDataProvider implements DataProvider {
                 formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
                 LocalDateTime arrival = LocalDateTime.parse(input, formatter);
                 int id = i*100+a; //connection id for updating
-                Connection foo = new Connection(id, idA, idB, departure, arrival, boo);
+                int result = Integer.parseInt(tripsId.get(i).toString().substring(2));
+                Connection foo = new Connection(id, idA, idB, departure, arrival, boo, result);                
                 allConnections.add(foo);
             }
         }
