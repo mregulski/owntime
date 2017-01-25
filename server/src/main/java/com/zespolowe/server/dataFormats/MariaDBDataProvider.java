@@ -56,83 +56,51 @@ public class MariaDBDataProvider implements DataProvider {
 
     @Override
     public ArrayList<Connection> getConnections() {
-        //System.err.println("START");
-        //long begin = System.currentTimeMillis();
-        //zawiera wszystkie polaczenia
-        ArrayList<Connection> allConnections = new ArrayList<>();
-        //zawiera wszystkie trip id
-        ArrayList tripsId;
-        //zawiera trase dla danego przejazdu
+        ArrayList<Connection> result = new ArrayList<>();
         ArrayList route = new ArrayList();
-        ArrayList routes = new ArrayList();
-        routes = getTripStops();
-        tripsId = getAllTripsIds();
+        ArrayList routes = getTripStops();
         ArrayList<String> lineInfo = getAll();
-        String input = "";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
-        for(int i=0;i<tripsId.size();i++) { //tripsId.size()
-            //dodajemy wszystkie przystanki danej trasy
-            for(int f=0; f<routes.size();f+=3) {
-                if (routes.get(f).toString().equals(tripsId.get(i).toString())) {
+        int f = 0;
+        for(int i=0;i<lineInfo.size();i+=3) {
+            for (; f < routes.size(); f += 3) {
+                if (routes.get(f).toString().equals(lineInfo.get(i).toString())) {
                     route.add(routes.get(f + 1));
                     route.add(routes.get(f + 2));
                 }
+                else break;
             }
-            int e=0;
-            while(!lineInfo.get(e).toString().equals(tripsId.get(i).toString())) {
-                e += 3;
+            if (lineInfo.get(i).toString().charAt(0)!='6'){
+                route.clear();
+                continue;
             }
-            Boolean polnoc=false;
-            for(int a=0;a<=(route.size()-4);a+=2) {
-                String line = lineInfo.get(e+1);
-                Boolean b = false;
-                if(lineInfo.get(e+2).toString()=="Normalna tramwajowa") b=true;
-                Transport boo;
-                if(b)
-                    boo = new Transport(TransportType.TRAM, line);
-                else
-                    boo = new Transport(TransportType.BUS, line);
-                int idA = (int) route.get(a); // id of departure stop
-                int idB = (int) route.get(a+2); // id of arrival stop
-                if(Integer.parseInt(route.get(a+1).toString().substring(0,2))>Integer.parseInt(route.get(a+3).toString().substring(0,2))){
-                    polnoc = true;
-                }
-                if(polnoc) {
-                    if (route.get(a + 1).toString().substring(0, 2).equals("23")) {
-                        input = "20.01.2017 ";
-                    }
-                    else {
-                        input = "21.01.2017 ";
-                    }
-                }
-                else {
-                    input = "21.01.2017 ";
-                }
-                input += route.get(a+1).toString();
-                LocalDateTime departure = LocalDateTime.parse(input, formatter);
-                if(polnoc) {
-                    if (route.get(a + 3).toString().substring(0, 2).equals("23")) {
-                        input = "20.01.2017 ";
-                    }
-                    else {
-                        input = "21.01.2017 ";
-                    }
-                }
-                else {
-                    input = "21.01.2017 ";
-                }
-                input += route.get(a+3).toString();
+
+            LocalDateTime lastArrival = null;
+            String line = lineInfo.get(i + 1);
+            Transport transportType;
+            if (lineInfo.get(i + 2).toString() == "Normalna tramwajowa")
+                transportType = new Transport(TransportType.TRAM, line);
+            else
+                transportType = new Transport(TransportType.BUS, line);
+            for (int a = 0; a < route.size(); a += 2) {
+                String input = "26.01.2017 "+route.get(a + 1).toString();
                 LocalDateTime arrival = LocalDateTime.parse(input, formatter);
-                int id = i*100+a; //connection id for updating
-                int result = Integer.parseInt(tripsId.get(i).toString().substring(2));
-                Connection foo = new Connection(0, idA, idB, departure, arrival, boo, result);
-                allConnections.add(foo);
+                if(a==0) {
+                    lastArrival=arrival;
+                    continue;
+                }
+                if (lastArrival.compareTo(arrival) > 0) {
+                    arrival=arrival.plusDays(1);
+                    //System.err.println(i + " " + lineInfo.get(i).toString() + " " + lastArrival + " " + arrival + " " + route.get(a - 1) + " " + route.get(a + 1));
+                }
+                int id = i * 100 + a; //connection id for updating
+                result.add(new Connection(id, (int) route.get(a-2), (int) route.get(a), lastArrival, arrival, transportType,
+                        Integer.parseInt(lineInfo.get(i).toString().substring(2))));
+                lastArrival=arrival;
             }
-            //if(i%1000==0)System.err.println(i+" "+(System.currentTimeMillis() - begin));
             route.clear();
         }
-        //System.err.println("END "+(System.currentTimeMillis() - begin));
-        return allConnections;
+        return result;
     }
 
     @Override
