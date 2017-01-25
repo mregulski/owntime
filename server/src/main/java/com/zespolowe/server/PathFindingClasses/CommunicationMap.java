@@ -18,16 +18,50 @@ public class CommunicationMap {
     Map<Integer, VConnection> connections; // for updating graph
     ArrayList<VPoint> all;
 
-    public CommunicationMap(ArrayList<Point> stops, ArrayList<Connection> connections) {
+	
+	
+    public CommunicationMap(ArrayList<Point> stops, ArrayList<Connection> connections) throws MyException {
         this.stops = new HashMap<>();
         this.connections = new HashMap<>();
         this.all = new ArrayList<>();
-
+		
+		//checking input properties
+		if(stops == null){
+			throw new MyException("getStops() returned null");
+		}
+		if(stops.isEmpty()){
+			throw new MyException("getStops() returned empty array");
+		}
+		if(connections == null){
+			throw new MyException("getConnections() returned null");
+		}
+		if(connections.isEmpty()){
+			throw new MyException("getConnections() returned empty array");
+		}
+		
+		for(Connection c : connections){
+			if(c.getDeparture().compareTo(c.getArrival()) > 0){
+				throw new MyException("getConnections() returned negative value connection");
+			}
+		}
+		
         for (Point p : stops) {
             VPoint tmp = new VPoint(p);
             this.stops.put(p.getId(), tmp);
             this.all.add(tmp);
         }
+
+		for(Connection c : connections){
+			int tmp = c.getIdA();
+			if(this.stops.get(tmp) == null){
+				throw new MyException("Stop id= " + tmp + " hadn't been returned by getStops() but it's still present in connections returned by getConnetions()");
+			}
+			tmp = c.getIdB();
+			if(this.stops.get(tmp) == null){
+				throw new MyException("Stop id= " + tmp + " hadn't been returned by getStops() but it's still present in connections returned by getConnetions()");
+			}
+		}
+		
         for (VPoint p : all) {
             Coords a = p.getCoords();
             ArrayList<TravelTime> tts = new ArrayList<>();
@@ -47,6 +81,7 @@ public class CommunicationMap {
             }
         }
         for (Connection c : connections) {
+			
             VConnection vc = new VConnection(c, this.stops.get(c.getIdA()), this.stops.get(c.getIdB()));
             this.stops.get(c.getIdA()).addConnection(vc);
             this.connections.put(vc.getId(), vc);
