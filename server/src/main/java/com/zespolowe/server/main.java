@@ -1,5 +1,6 @@
 package com.zespolowe.server;
 
+import com.zespolowe.server.PathFindingClasses.ConsoleRequestProvider;
 import com.zespolowe.server.PathFindingClasses.PathFinder;
 import com.zespolowe.server.dataFormats.JsonConnection;
 import com.zespolowe.server.dataFormats.MariaDBDataProvider;
@@ -12,20 +13,24 @@ public class main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException{
 
-        MariaDBDataProvider dataProvider = new MariaDBDataProvider();
-        DonaldTrumpRequestProvider requestProvider = new DonaldTrumpRequestProvider();
+        //ReallyBadExampleOfFakeDataAndRequestProviderInOneClass noob = new ReallyBadExampleOfFakeDataAndRequestProviderInOneClass();
+        ConsoleRequestProvider crp = new ConsoleRequestProvider();
+		MariaDBDataProvider dataProvider = new MariaDBDataProvider();
+        //DonaldTrumpRequestProvider requestProvider = new DonaldTrumpRequestProvider();
         PathFinder pf = new PathFinder();
-/*      pf.setDataProvider(dataProvider);
-        pf.setRequestProvider(requestProvider);
+        pf.setDataProvider(dataProvider);
+        //pf.setRequestProvider(requestProvider);
+        pf.setRequestProvider(crp);
         pf.init();
 
         pf.run();
-*/
-        JsonConnection jsonConnection = new JsonConnection(dataProvider, requestProvider, pf);
-        jsonConnection.configureRESTPointHandlers();
+		//pf.wait();
+        //JsonConnection jsonConnection = new JsonConnection();
+        //jsonConnection.configureRESTPointHandlers();
 
+//        Spark.get("/hello", (req, res) -> "Hello World");
     }
     
 }

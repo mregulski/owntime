@@ -56,49 +56,51 @@ public class MariaDBDataProvider implements DataProvider {
 
     @Override
     public ArrayList<Connection> getConnections() {
-        //zawiera wszystkie polaczenia
-        ArrayList<Connection> allConnections = new ArrayList<>();
-        //zawiera wszystkie trip id
-        ArrayList tripsId;
-        //zawiera trase dla danego przejazdu
+        ArrayList<Connection> result = new ArrayList<>();
         ArrayList route = new ArrayList();
-        tripsId = getAllTripsIds();
+        ArrayList routes = getTripStops();
         ArrayList<String> lineInfo = getAll();
-        for(int i=0;i<1;i++) { //tripsId.size()
-            //dodajemy wszystkie przystanki danej trasy
-            route = getTripStopsByTripId(tripsId.get(i).toString());
-            int e=0;
-            while(!lineInfo.get(e).toString().equals(tripsId.get(i).toString())) {
-                e += 3;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
+        int f = 0;
+        for(int i=0;i<lineInfo.size();i+=3) {
+            for (; f < routes.size(); f += 3) {
+                if (routes.get(f).toString().equals(lineInfo.get(i).toString())) {
+                    route.add(routes.get(f + 1));
+                    route.add(routes.get(f + 2));
+                }
+                else break;
             }
-            for(int a=0;a<=(route.size()-4);a+=2) {
-                //ArrayList<String> lineInfo = getLineNameAndTypeByTripId(tripsId.get(i).toString());
-                String line = lineInfo.get(e+1);
-                Boolean b = false;
-                if(lineInfo.get(e+2).toString()=="Normalna tramwajowa") b=true;
-                Transport boo;
-                if(b)
-                    boo = new Transport(TransportType.TRAM, line);
-                else
-                    boo = new Transport(TransportType.BUS, line);
-                int idA = (int) route.get(a); // id of departure stop
-                int idB = (int) route.get(a+2); // id of arrival stop
-                System.out.println(a+" "+idA+" "+idB);
-                String input = "20.01.2017 " + route.get(a+1).toString();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
-                LocalDateTime departure = LocalDateTime.parse(input, formatter);
-                input = "20.01.2017 " + route.get(a+3).toString();
-                formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
-                LocalDateTime arrival = LocalDateTime.parse(input, formatter);
-                int id = i*100+a; //connection id for updating
-                System.out.println(tripsId.get(i));
-                int result = Integer.parseInt(tripsId.get(i).toString().substring(2));
-                Connection foo = new Connection(id, idA, idB, departure, arrival, boo, result);
-                allConnections.add(foo);
+            if (lineInfo.get(i).toString().charAt(0)!='6'){
+                route.clear();
+                continue;
             }
-        }
 
-        return allConnections;
+            LocalDateTime lastArrival = null;
+            String line = lineInfo.get(i + 1);
+            Transport transportType;
+            if (lineInfo.get(i + 2).toString() == "Normalna tramwajowa")
+                transportType = new Transport(TransportType.TRAM, line);
+            else
+                transportType = new Transport(TransportType.BUS, line);
+            for (int a = 0; a < route.size(); a += 2) {
+                String input = "26.01.2017 "+route.get(a + 1).toString();
+                LocalDateTime arrival = LocalDateTime.parse(input, formatter);
+                if(a==0) {
+                    lastArrival=arrival;
+                    continue;
+                }
+                if (lastArrival.compareTo(arrival) > 0) {
+                    arrival=arrival.plusDays(1);
+                    //System.err.println(i + " " + lineInfo.get(i).toString() + " " + lastArrival + " " + arrival + " " + route.get(a - 1) + " " + route.get(a + 1));
+                }
+                int id = i * 100 + a; //connection id for updating
+                result.add(new Connection(id, (int) route.get(a-2), (int) route.get(a), lastArrival, arrival, transportType,
+                        Integer.parseInt(lineInfo.get(i).toString().substring(2))));
+                lastArrival=arrival;
+            }
+            route.clear();
+        }
+        return result;
     }
 
     @Override
@@ -108,24 +110,10 @@ public class MariaDBDataProvider implements DataProvider {
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
-    private ArrayList getLines(){
-        ArrayList lines = new ArrayList<>();
-        try {
-            preparedStatement = connection.prepareStatement(getNames);
-            ResultSet rs = preparedStatement.executeQuery();
-            while(rs.next()) lines.add(rs.getString(1)); //pobiera wszystkie numery linii
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return lines;
-    }
-
-    private ArrayList getTripStopsByTripId(String tripID){
+    private ArrayList getTripStops(){
         PreparedStatement ps = null;
         try {
-            ps = connection.prepareStatement("SELECT stop_times.stop_id, stop_times.arrival_time FROM stop_times\n" +
-                    "WHERE stop_times.trip_id = ?");
-            ps.setString(1, tripID);
+            ps = connection.prepareStatement("SELECT stop_times.trip_id, stop_times.stop_id, stop_times.arrival_time FROM stop_times");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -138,15 +126,13 @@ public class MariaDBDataProvider implements DataProvider {
         ArrayList stops = new ArrayList<>();
         try {
             while(rs.next()) {
-                stops.add(rs.getInt(1));
-                stops.add(rs.getTime(2));
+                stops.add(rs.getString(1));
+                stops.add(rs.getInt(2));
+                stops.add(rs.getTime(3));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        for(int i=0;i<stops.size();i++)
-            System.out.println(stops.get(i));
-        System.out.println(stops.size());
         return stops;
     }
 

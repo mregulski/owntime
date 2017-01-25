@@ -34,7 +34,7 @@ public class Path {
 
 	public void print() {
 		for (int i = p.size() - 1; i >= 0; --i) {
-			System.out.println("  (" + " " + p.get(i).getDeparture() + " [" + p.get(i).getSource().getId() + " --" + tmp(p.get(i).getTransport()) + "--> " + p.get(i).getTarget().getId() + "] " + p.get(i).getArrival() + ")  ");
+			System.out.println("  (" + " " + p.get(i).getDeparture() + " [" + p.get(i).getSource().getId() + " --"+p.get(i).getTransport().line+"--" + tmp(p.get(i).getTransport()) + "--> " + p.get(i).getTarget().getId() + "] " + p.get(i).getArrival() + ")  ");
 		}
 		System.out.println();
 	}

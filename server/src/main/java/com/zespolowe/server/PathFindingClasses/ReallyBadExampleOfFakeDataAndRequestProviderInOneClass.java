@@ -46,7 +46,7 @@ public class ReallyBadExampleOfFakeDataAndRequestProviderInOneClass implements R
 
 	@Override
 	public boolean shouldStop() {
-		return !testRequests.isEmpty();
+		return testRequests.isEmpty();
 	}
 
 	@Override
@@ -101,7 +101,7 @@ public class ReallyBadExampleOfFakeDataAndRequestProviderInOneClass implements R
 
 	@Override
 	public void addPath(Path path) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	
 	}
 
 }
