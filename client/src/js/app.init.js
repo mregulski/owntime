@@ -14,11 +14,7 @@
         el: '#app',
         data: {
             /* Route currently selected by the user. */
-            activeRoute: {
-                line: 123,
-                direction: "Mordor",
-                stop: "Hammertime!"
-            },
+            activeRoute: {},
         },
         created: function() {
             // update list of routes
@@ -31,11 +27,12 @@
             updateRoute: function(newRoutes) {
                 this.log("updating active route:", newRoutes[0]);
                 this.activeRoute = newRoutes[0];
+                this.drawRoute(this.activeRoute);
                 app.hub.$emit('routes-and-active-update', newRoutes, this.activeRoute);
             },
             drawRoute: function(newActiveRoute) {
                 this.activeRoute = newActiveRoute;
-                this.log("showing route...")
+                this.log("showing route...", this.activeRoute)
                 app.showRoute(this.activeRoute);
             }
         }

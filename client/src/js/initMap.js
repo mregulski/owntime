@@ -72,11 +72,11 @@
           	strokeOpacity: 1.0,
           	strokeWeight: 4
         	});
-    	app.actualRoute.setMap(app.map); 
-  		
+    	app.actualRoute.setMap(app.map);
+
 	}
 
-	
+
 
 	/*
 		clearing already drawn route
@@ -110,7 +110,8 @@
 		app.actualBuses = markers;
     }
 
-    app.showRoute = function(json){
+    app.showRoute = function(json) {
+		log("showRoute json:", json);
 		app.clearRoute();
 		json.result = json;
     	var route = [];

@@ -127,14 +127,12 @@
                     this.endPoint.query,
                     moment().format()
                 ).then(routes => {
-                       this.log.d("Routes fetched.");
+                    this.log.d("Routes fetched.");
                     this.isCalculating = false;
                     this.isStartDirty = false;
                     this.isEndDirty = false;
-                    newRoutes = routes.result;
-                    log("got routes: ", newRoutes);
-                    app.hub.$emit('routes-update', newRoutes);
-                    app.hub.$emit('active-update', newRoutes[0]);
+                    this.log("got routes: ", routes);
+                    app.hub.$emit('routes-update', routes.result);
                 });
             }, 200)
         }
