@@ -44,7 +44,7 @@ public class PathFinder implements Runnable {
                     path = graph.findPath(r, 0);
                     System.out.println("request id: " + r.getRequestId());
                     path.print();
-                    rp.addPath(path);
+                    //rp.addPath(path);
                 } catch (MyException ex) {
                     System.out.println("EXCEPTION: " + ex.getMessage());
                 }
