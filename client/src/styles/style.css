@@ -20,6 +20,12 @@ list-style-type: none;
     top: 0;
     left: 0;
 }
+.gm-style div[style*="display: table-cell"] div {
+    background-color: white;
+    padding: 3px;
+    border-radius: 5px;
+    box-shadow: #000 0 0 4px;
+}
 #ui {
     position: relative;
     top: 30px;

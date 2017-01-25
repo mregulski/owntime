@@ -9,18 +9,25 @@
             coords.lng = result.coords.longitude;
             var mapOptions = {
             zoom: 15,
-            center: coords
+            center: coords,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            clickableIcons: false
             };
             app.map = new google.maps.Map(document.getElementById('map'), mapOptions);
         }, function(err){
             coords = {lat: 51.110909, lng: 17.056910};
             var mapOptions = {
             zoom: 20,
-            center: coords
+            center: coords,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            clickableIcons: false
             };
             app.map = new google.maps.Map(document.getElementById('map'), mapOptions);
         });
     }
+
+
+
 	/*
 		drawing a route
 		input:
@@ -31,7 +38,8 @@
 				color - kolor label'a w zależności od tego, czy to początek/środek/koniec trasy.
 	*/
 	app.makeRoute = function(points){
-		var icon = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+		///var icon = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+		var icon = 'src/styles/bus-stop3.png';
     	var markers = [];
 		var route = [];
 		var markers = [];
@@ -41,7 +49,11 @@
 		markers.push(new google.maps.Marker({
 			position: point.position,
 			map: app.map,
-			icon: icon,
+			icon: {
+				url: icon,
+				origin: new google.maps.Point(0, 0),
+				labelOrigin: new google.maps.Point(18,-15)
+				},
 			label: {
 				text: point.text,
 				fontfamily: "Arial",
@@ -56,12 +68,15 @@
 		app.actualRoute = new google.maps.Polyline({
           	path: route,
           	geodesic: true,
-          	strokeColor: '#FF0000',
+          	strokeColor: 'Gray',
           	strokeOpacity: 1.0,
-          	strokeWeight: 2
+          	strokeWeight: 4
         	});
-    	app.actualRoute.setMap(app.map);
+    	app.actualRoute.setMap(app.map); 
+  		
 	}
+
+	
 
 	/*
 		clearing already drawn route
@@ -81,7 +96,8 @@
     }
 
     app.makeBuses = function(points){
-    	var icon = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+    	//var icon = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+    	var icon = 'src/styles/icon.png';
     	var markers = [];
 		for (var i = 0; i < points.length; i++) {
 		var point = points[i];
@@ -107,7 +123,7 @@
     		for (var j = 0; j < stopsl; j++) {
     			var stop = json.result.route[i].stops[j];
     			cords = stop.coords.split(", ");
-    			route.push({position: { lat: parseFloat(cords[0]), lng: parseFloat(cords[1]) }, text: stop.displayName, color: j!=0?"Orange":"RED" });
+    			route.push({position: { lat: parseFloat(cords[0]), lng: parseFloat(cords[1]) }, text: stop.displayName, color: j!=0?"#FF5900":"RED" });
     		}
     	}
 
@@ -124,6 +140,8 @@
 
 })(app);
 
+
+
 function mapsCallback () {app.initMap();};
 
 /*
@@ -133,26 +151,26 @@ function testr(){
 		var tests = [];
         //var test0 = [, image , "Dom", "Blue"];
 		var test0 = {position: {lat: 51.1012573, lng:  17.10914151}, text: "BISKUPIN", color: "Blue"};
-		var test1 = {position: {lat: 51.10220572, lng:  17.10232232}, text: "Spółdzielcza", color: "RED"};
-		var test2 = {position: {lat: 51.1031808, lng:  17.09632744}, text: "Piramowicza", color: "RED"};
-		var test3 = {position: {lat: 51.10388356, lng:  17.09071195},  text: "Chełmońkiego", color: "RED"};
-		var test4 = {position: {lat: 51.10446682, lng:  17.08466996},  text: "Tramwajowa", color: "RED"};
-		var test5 = {position: {lat: 51.10556081, lng:  17.0778982},  text: "ZOO", color: "RED"};
-		var test6 = {position: {lat: 51.10708825, lng:  17.07346452},  text: "Hala Stulecia", color: "RED"};
-		var test7 = {position: {lat: 51.1094524, lng:  17.06612151},  text: "Kliniki", color: "RED"};
-		var test8 = {position: {lat: 51.1111569, lng:  17.06146483},  text: "PL. GRUNWALDZKI", color: "RED"};
+		var test1 = {position: {lat: 51.10220572, lng:  17.10232232}, text: "Spółdzielcza", color: "#FF5900"};
+		var test2 = {position: {lat: 51.1031808, lng:  17.09632744}, text: "Piramowicza", color: "#FF5900"};
+		var test3 = {position: {lat: 51.10388356, lng:  17.09071195},  text: "Chełmońkiego", color: "#FF5900"};
+		var test4 = {position: {lat: 51.10446682, lng:  17.08466996},  text: "Tramwajowa", color: "#FF5900"};
+		var test5 = {position: {lat: 51.10556081, lng:  17.0778982},  text: "ZOO", color: "#FF5900"};
+		var test6 = {position: {lat: 51.10708825, lng:  17.07346452},  text: "Hala Stulecia", color: "#FF5900"};
+		var test7 = {position: {lat: 51.1094524, lng:  17.06612151},  text: "Kliniki", color: "#FF5900"};
+		var test8 = {position: {lat: 51.1111569, lng:  17.06146483},  text: "PL. GRUNWALDZKI", color: "#FF5900"};
 		var test9 = {position: {lat: 51.11536582, lng:  17.06087806},  text: "Piastowska", color: "RED"};
-		var test10 = {position: {lat: 51.11947641, lng:  17.05740455},  text: "Prusa", color: "RED"};
-		var test11 = {position: {lat: 51.12191852, lng:  17.05294165},  text: "Wyszyńkiego", color: "RED"};
-		var test12 = {position: {lat: 51.12423914, lng:  17.0448911},  text: "Nowowiejska", color: "RED"};
-		var test13 = {position: {lat: 51.12354191, lng:  17.04021723},  text: "Słowiańka", color: "RED"};
-		var test14 = {position: {lat: 51.12474918, lng:  17.03497559},  text: "DWORZEC NADODRZE", color: "RED"};
-		var test15 = {position: {lat: 51.12431442, lng:  17.03503321},  text: "DWORZEC NADODRZE", color: "RED"};
-		var test16 = {position: {lat: 51.12813406, lng:  17.03666443},  text: "Trzebnicka", color: "RED"};
-		var test17 = {position: {lat: 51.13539403, lng:  17.03647045},  text: "Broniewskiego", color: "RED"};
-		var test18 = {position: {lat: 51.14097662, lng:  17.03222223},  text: "Kamieńskiego", color: "RED"};
-		var test19 = {position: {lat: 51.14421883, lng:  17.031233},  text: "Kępińska", color: "RED"};
-		var test20 = {position: {lat: 51.14736913, lng:  17.03027131},  text: "Wołowska", color: "RED"};
+		var test10 = {position: {lat: 51.11947641, lng:  17.05740455},  text: "Prusa", color: "#FF5900"};
+		var test11 = {position: {lat: 51.12191852, lng:  17.05294165},  text: "Wyszyńkiego", color: "#FF5900"};
+		var test12 = {position: {lat: 51.12423914, lng:  17.0448911},  text: "Nowowiejska", color: "#FF5900"};
+		var test13 = {position: {lat: 51.12354191, lng:  17.04021723},  text: "Słowiańka", color: "#FF5900"};
+		var test14 = {position: {lat: 51.12474918, lng:  17.03497559},  text: "DWORZEC NADODRZE", color: "#FF5900"};
+		var test15 = {position: {lat: 51.12431442, lng:  17.03503321},  text: "DWORZEC NADODRZE", color: "#FF5900"};
+		var test16 = {position: {lat: 51.12813406, lng:  17.03666443},  text: "Trzebnicka", color: "#FF5900"};
+		var test17 = {position: {lat: 51.13539403, lng:  17.03647045},  text: "Broniewskiego", color: "#FF5900"};
+		var test18 = {position: {lat: 51.14097662, lng:  17.03222223},  text: "Kamieńskiego", color: "#FF5900"};
+		var test19 = {position: {lat: 51.14421883, lng:  17.031233},  text: "Kępińska", color: "#FF5900"};
+		var test20 = {position: {lat: 51.14736913, lng:  17.03027131},  text: "Wołowska", color: "#FF5900"};
 		var test21 = {position: {lat: 51.15020822, lng:  17.02870501},  text: "POŚWTNE", color: "Green"};
 
 		tests.push(test0);
@@ -169,8 +187,8 @@ function testr(){
 		tests.push(test11);
 		tests.push(test12);
 		tests.push(test13);
-		tests.push(test14);
 		tests.push(test15);
+		tests.push(test14);
 		tests.push(test16);
 		tests.push(test17);
 		tests.push(test18);
