@@ -38,7 +38,7 @@ public class PathFinder implements Runnable {
 
     @Override
     public void run() {
-        while (rp.shouldStop()) {
+        while (!rp.shouldStop()) {
             ArrayList<Connection> updatedConnections = dp.getUpdatedConnections();
             if (updatedConnections != null) {
                 graph.update(updatedConnections);
