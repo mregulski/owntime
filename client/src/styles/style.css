@@ -233,4 +233,7 @@ list-style-type: none;
   display: table-cell;
   vertical-align: middle;
 }
+.busStops{
+    display: none;
+}
 

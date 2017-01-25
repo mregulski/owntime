@@ -11,11 +11,16 @@
 				<div><span><ul class = "lines"> <li v-for="lines in route.route">{{lines.transport.line}} </li></ul></span></div>
 				<div><span> {{ route.arrival.planned }}</span></div>
 				<div v-for="conChange in route.route">
-					<div><span>{{ conChange.departure.planned }}</span></div>
-					<div><span>{{ conChange.transport.line}}</span></div>
-					<div><span>{{conChange.stops[0].displayName}}</span></div>
-					<div><span>{{ conChange.stops[conChange.stops.length-1].displayName}}</span></div>
-					<div><span>{{ conChange.arrival.planned }}</span></div>
+					<div v-on:click="listRollout('busStops')">
+						<div><span>{{ conChange.departure.planned }}</span></div>
+						<div><span>{{ conChange.transport.line}}</span></div>
+						<div><span>{{ conChange.stops[0].displayName}}</span></div>
+						<div id="busStops">
+							<div v-for="i in conChange.stops.length-2"><span>{{ conChange.stops[i].displayName}}</span></div>
+						</div>
+						<div><span>{{ conChange.stops[conChange.stops.length-1].displayName}}</span></div>
+						<div><span>{{ conChange.arrival.planned }}</span></div>
+					</div>
 				</div>
 			</div>
 		</section>`,
@@ -41,6 +46,10 @@
 				this.log("drawing route");
 				app.hub.$emit('active-update', this.activeRoute);
 			},
+			listRollout: function(sDivId){
+                var oDiv = document.getElementById(sDivId);
+                oDiv.style.display = (oDiv.style.display == "none") ? "block" : "none";
+            },
 			log: app.getLog('routes')
         }
     });
