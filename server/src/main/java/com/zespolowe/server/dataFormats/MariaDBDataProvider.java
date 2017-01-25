@@ -77,9 +77,9 @@ public class MariaDBDataProvider implements DataProvider {
             LocalDateTime lastArrival = null;
             String line = lineInfo.get(i + 1);
             Transport transportType;
-            if (lineInfo.get(i + 2).toString().equals("Normalna tramwajowa"))
+            if (lineInfo.get(i + 2).toString().contains("tramwajowa"))
                 transportType = new Transport(TransportType.TRAM, line);
-            else
+            else 
                 transportType = new Transport(TransportType.BUS, line);
             for (int a = 0; a < route.size(); a += 2) {
                 String input = "26.01.2017 "+route.get(a + 1).toString();
@@ -98,7 +98,6 @@ public class MariaDBDataProvider implements DataProvider {
             }
             route.clear();
         }
-        System.err.println(result.size());
         return result;
     }
 
