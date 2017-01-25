@@ -74,13 +74,12 @@ public class MariaDBDataProvider implements DataProvider {
                 route.clear();
                 continue;
             }
-
             LocalDateTime lastArrival = null;
             String line = lineInfo.get(i + 1);
             Transport transportType;
-            if (lineInfo.get(i + 2).toString() == "Normalna tramwajowa")
+            if (lineInfo.get(i + 2).toString().contains("tramwajowa"))
                 transportType = new Transport(TransportType.TRAM, line);
-            else
+            else 
                 transportType = new Transport(TransportType.BUS, line);
             for (int a = 0; a < route.size(); a += 2) {
                 String input = "26.01.2017 "+route.get(a + 1).toString();
@@ -91,7 +90,6 @@ public class MariaDBDataProvider implements DataProvider {
                 }
                 if (lastArrival.compareTo(arrival) > 0) {
                     arrival=arrival.plusDays(1);
-                    //System.err.println(i + " " + lineInfo.get(i).toString() + " " + lastArrival + " " + arrival + " " + route.get(a - 1) + " " + route.get(a + 1));
                 }
                 int id = i * 100 + a; //connection id for updating
                 result.add(new Connection(id, (int) route.get(a-2), (int) route.get(a), lastArrival, arrival, transportType,
@@ -113,7 +111,7 @@ public class MariaDBDataProvider implements DataProvider {
     private ArrayList getTripStops(){
         PreparedStatement ps = null;
         try {
-            ps = connection.prepareStatement("SELECT stop_times.trip_id, stop_times.stop_id, stop_times.arrival_time FROM stop_times");
+            ps = connection.prepareStatement("SELECT stop_times.trip_id, stop_times.stop_id, stop_times.arrival_time FROM stop_times ORDER BY trip_id,stop_sequence");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -163,7 +161,7 @@ public class MariaDBDataProvider implements DataProvider {
 
         PreparedStatement ps = null;
         try {
-            ps = connection.prepareStatement("SELECT trip_type.trip_id, trip_type.route_short_name, trip_type.route_type2_name FROM trip_type");
+            ps = connection.prepareStatement("SELECT trip_type.trip_id, trip_type.route_short_name, trip_type.route_type2_name FROM trip_type ORDER BY trip_id");
         } catch (Exception e) {
             e.printStackTrace();
         }
