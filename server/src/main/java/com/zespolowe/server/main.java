@@ -14,20 +14,18 @@ public class main {
      */
     public static void main(String[] args){
 
-        //ReallyBadExampleOfFakeDataAndRequestProviderInOneClass noob = new ReallyBadExampleOfFakeDataAndRequestProviderInOneClass();
-        /*MariaDBDataProvider dataProvider = new MariaDBDataProvider();
+        MariaDBDataProvider dataProvider = new MariaDBDataProvider();
         DonaldTrumpRequestProvider requestProvider = new DonaldTrumpRequestProvider();
         PathFinder pf = new PathFinder();
-        pf.setDataProvider(dataProvider);
+/*      pf.setDataProvider(dataProvider);
         pf.setRequestProvider(requestProvider);
         pf.init();
 
         pf.run();
 */
-        JsonConnection jsonConnection = new JsonConnection();
+        JsonConnection jsonConnection = new JsonConnection(dataProvider, requestProvider, pf);
         jsonConnection.configureRESTPointHandlers();
 
-//        Spark.get("/hello", (req, res) -> "Hello World");
     }
     
 }

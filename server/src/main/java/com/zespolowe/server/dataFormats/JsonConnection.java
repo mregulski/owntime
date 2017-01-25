@@ -11,13 +11,21 @@ import static spark.Spark.*;
 
 public class JsonConnection {
 
-    MariaDBDataProvider mariaDBDataProvider = new MariaDBDataProvider();
+    MariaDBDataProvider mariaDBDataProvider;
 
-    DonaldTrumpRequestProvider donald = new DonaldTrumpRequestProvider();
+    DonaldTrumpRequestProvider donald;
 
-    PathFinder pathFinder = new PathFinder();
+    PathFinder pathFinder;
+
+    public JsonConnection(MariaDBDataProvider mariaDBDataProvider, DonaldTrumpRequestProvider donald, PathFinder pathFinder){
+        this.mariaDBDataProvider = mariaDBDataProvider;
+        this.donald = donald;
+        this.pathFinder = pathFinder;
+    }
 
     LocalDateTime local;
+    Request dataformats_request;
+    Result result = null;
 
     public void configureRESTPointHandlers(){
 
@@ -31,9 +39,6 @@ public class JsonConnection {
             String to = request.params(":to");
             String time = request.params(":time");
             String arrival = request.params(":arrival");
-
-            Request dataformats_request;
-            Result result = null;
 
             local = LocalDateTime.parse(time);
 
@@ -82,16 +87,16 @@ public class JsonConnection {
 
             }
 
-            pathFinder.setDataProvider(mariaDBDataProvider);
-            pathFinder.setRequestProvider(donald);
+            //pathFinder.setDataProvider(mariaDBDataProvider);
+            //pathFinder.setRequestProvider(donald);
 
-            pathFinder.init();
-            pathFinder.run();
+            //pathFinder.init();
+            //pathFinder.run();
 
-            result = donald.getResult();
+            //result = donald.getResult();
 
 
-            return donald;
+            return result;
         }, JsonUtil.json());
     }
 
