@@ -63,39 +63,33 @@ public class MariaDBDataProvider implements DataProvider {
         //zawiera trase dla danego przejazdu
         ArrayList route = new ArrayList();
         tripsId = getAllTripsIds();
+        ArrayList<String> lineInfo = getAll();
         for(int i=0;i<1;i++) { //tripsId.size()
             //dodajemy wszystkie przystanki danej trasy
             route = getTripStopsByTripId(tripsId.get(i).toString());
-            for(int a=0;a<route.size()/2-2;a++) {
-                ArrayList<String> lineInfo = getLineNameAndTypeByTripId(tripsId.get(i).toString());
-                String line = lineInfo.get(0);
+            int e=0;
+            while(!lineInfo.get(e).toString().equals(tripsId.get(i).toString())) {
+                e += 3;
+            }
+            for(int a=0;a<route.size();a+=2) {
+                String line = lineInfo.get(e+1);
                 Boolean b = false;
-                if(lineInfo.get(1).toString()=="Normalna tramwajowa") b=true;
+                if(lineInfo.get(e+2).toString()=="Normalna tramwajowa") b=true;
                 Transport boo;
                 if(b)
                     boo = new Transport(TransportType.TRAM, line);
                 else
                     boo = new Transport(TransportType.BUS, line);
-                int idA = (int) route.get(2*a); // id of departure stop
-                int idB = (int) route.get(2*a+2); // id of arrival stop
+                int idA = (int) route.get(a); // id of departure stop
+                int idB = (int) route.get(a+2); // id of arrival stop
+                System.out.println(a+" "+idA+" "+idB);
                 String input = "20.01.2017 " + route.get(2*a+1).toString();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
                 LocalDateTime departure = LocalDateTime.parse(input, formatter);
                 input = "20.01.2017 " + route.get(2*a+3).toString();
                 formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
                 LocalDateTime arrival = LocalDateTime.parse(input, formatter);
-                // wypisuje wszystkie dane
-//                System.out.println(departure);
-//                System.out.println(arrival);
-//                System.out.println(line);
-//                System.out.println(b);
-//                System.out.println(idA);
-//                System.out.println(idB);
-//                System.out.println(boo.line);
-//                System.out.println(boo.type);
-
                 int id = i*100+a; //connection id for updating
-                System.out.println(id);
                 Connection foo = new Connection(id, idA, idB, departure, arrival, boo);
                 allConnections.add(foo);
             }
@@ -147,7 +141,9 @@ public class MariaDBDataProvider implements DataProvider {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        for(int i=0;i<stops.size();i++)
+            System.out.println(stops.get(i));
+        System.out.println(stops.size());
         return stops;
     }
 
@@ -174,20 +170,11 @@ public class MariaDBDataProvider implements DataProvider {
         return ids;
     }
 
-    public ArrayList getLineNameAndTypeByTripId(String trip_id) {
-        ArrayList stops = new MariaDBDataProvider().getTripStopsByTripId(trip_id);
+    public ArrayList getAll() {
 
         PreparedStatement ps = null;
         try {
-            ps = connection.prepareStatement("SELECT routes.route_short_name, route_types.route_type2_name FROM routes \n" +
-                    "INNER JOIN trips ON trips.route_id = routes.route_id\n" +
-                    "INNER JOIN stop_times ON trips.trip_id = stop_times.trip_id\n" +
-                    "INNER JOIN route_types ON routes.route_type2_id = route_types.route_type2_id\n" +
-                    "WHERE stop_times.stop_id = ?\n" +
-                    "AND trips.trip_id = ?\n" +
-                    "GROUP BY routes.route_short_name, route_types.route_type2_name");
-            ps.setString(1, stops.get(0).toString());
-            ps.setString(2, trip_id);
+            ps = connection.prepareStatement("SELECT trip_type.trip_id, trip_type.route_short_name, trip_type.route_type2_name FROM trip_type");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -203,6 +190,7 @@ public class MariaDBDataProvider implements DataProvider {
             while(rs.next()) {
                 result.add(rs.getString(1));
                 result.add(rs.getString(2));
+                result.add(rs.getString(3));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -210,4 +198,5 @@ public class MariaDBDataProvider implements DataProvider {
         return result;
     }
 }
+
 
