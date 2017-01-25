@@ -1,0 +1,105 @@
+ {
+"result": {
+        "start": 
+		{
+		    "displayName": "Pl. Grunwaldzki",
+		    "coords": "51.111562, 17.060132",
+		    "id": "1",
+		    "transports": 
+				{
+				    "type":  "autobus",
+				    "details": {
+					"line": "136"
+				    }
+				}
+		},
+        "end": 		
+		{
+		    "displayName": "Pl. Grunwaldzki",
+		    "coords": "51.111562, 17.060132",
+		    "id": "1",
+		    "transports":
+				 {
+				    "type":  "autobus",
+				    "details": {
+					"line": "136"
+				    }
+				}
+		},
+        "departure": 
+		{
+		    "planned": "2016-11-17T17:08:36.136Z",
+		    "predicted": "2016-11-17T17:08:36.136Z"
+	   	},
+        "arrival": 
+		{
+		    "planned": "2016-11-17T17:08:36.136Z",
+		    "predicted": "2016-11-17T17:08:36.136Z"
+		},
+        "route": 
+		[
+		    {
+				"stops": 	
+						[
+							{
+									"displayName": "Pl. Grunwaldzki",
+									"coords": "51.111562, 17.060132",
+									"id": "1",
+									"transports": 
+									{
+											"type":  "autobus",
+											"details": {
+										"line": "136"
+											}
+									}
+							},
+							{
+								"displayName": "Most Grunwaldzki",
+									"coords": "51.111562, 17.060132",
+									"id": "1",
+									"transports": 
+									{
+											"type":  "autobus",
+											"details": {
+										"line": "136"
+											}
+									}
+				
+							},
+							{
+								"displayName": "urzad wojewodzki",
+									"coords": "51.111562, 17.060132",
+									"id": "1",
+									"transports": 
+									{
+											"type":  "autobus",
+											"details": {
+												"line": "136"
+											}
+									}
+				
+							}
+					],
+		    "transport": 
+				{
+				    "type":  "autobus",
+				    "details": {
+					"line": "136"
+				    }
+				},
+		    "departure": 
+				{
+				    "planned": "2016-11-17T17:08:36.136Z",
+				    "predicted": "2016-11-17T17:08:36.136Z"
+				},
+		    "arrival":		
+				{
+				    "planned": "2016-11-17T17:08:36.136Z",
+				    "predicted": "2016-11-17T17:08:36.136Z"
+				},
+				"alternatives": {},
+				"details": {}
+		}
+    ]
+	}
+}
