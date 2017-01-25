@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1388534400000,
+        "rating": "5",
+        "comment": "Hey there!"
+    },
+    {
+        "id": 1485201159887,
+        "rate": "123",
+        "comment": "321"
+    },
+    {
+        "id": 1485201249195,
+        "rate": "123",
+        "comment": "321"
+    },
+    {
+        "id": 1485202464889,
+        "rate": "5",
+        "comment": "aaaaaa"
+    },
+    {
+        "id": 1485202469755,
+        "rate": "5",
+        "comment": "aaaaaa"
+    },
+    {
+        "id": 1485375832193,
+        "rate": "0",
+        "comment": "Napisz co o niej sądzisz"
+    }
+]

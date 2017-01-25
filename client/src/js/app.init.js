@@ -21,7 +21,9 @@
             },
         },
         created: function() {
+            // update list of routes
             app.hub.$on('routes-update', this.updateRoute);
+            // update the active route and notify the map component
             app.hub.$on('active-update', this.drawRoute);
         },
         methods: {

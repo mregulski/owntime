@@ -1,0 +1,14 @@
+[
+	{
+		"name": "Pl. Grunwaldzki", 
+		"lines": [1,2,3,4,5,6,7,8,"D"]
+	},
+	{
+		"name": "Pl. Srzegomski", 
+		"lines": [123,4,5,33,7,"A"]
+	},	
+	{
+		"name": "Pl. Jakiśtam", 
+		"lines": [-12, 3.14, "e"]
+	}
+]
