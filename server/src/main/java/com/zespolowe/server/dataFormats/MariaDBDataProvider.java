@@ -71,7 +71,8 @@ public class MariaDBDataProvider implements DataProvider {
             while(!lineInfo.get(e).toString().equals(tripsId.get(i).toString())) {
                 e += 3;
             }
-            for(int a=0;a<route.size();a+=2) {
+            for(int a=0;a<=(route.size()-4);a+=2) {
+                //ArrayList<String> lineInfo = getLineNameAndTypeByTripId(tripsId.get(i).toString());
                 String line = lineInfo.get(e+1);
                 Boolean b = false;
                 if(lineInfo.get(e+2).toString()=="Normalna tramwajowa") b=true;
@@ -83,15 +84,16 @@ public class MariaDBDataProvider implements DataProvider {
                 int idA = (int) route.get(a); // id of departure stop
                 int idB = (int) route.get(a+2); // id of arrival stop
                 System.out.println(a+" "+idA+" "+idB);
-                String input = "20.01.2017 " + route.get(2*a+1).toString();
+                String input = "20.01.2017 " + route.get(a+1).toString();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
                 LocalDateTime departure = LocalDateTime.parse(input, formatter);
-                input = "20.01.2017 " + route.get(2*a+3).toString();
+                input = "20.01.2017 " + route.get(a+3).toString();
                 formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
                 LocalDateTime arrival = LocalDateTime.parse(input, formatter);
                 int id = i*100+a; //connection id for updating
+                System.out.println(tripsId.get(i));
                 int result = Integer.parseInt(tripsId.get(i).toString().substring(2));
-                Connection foo = new Connection(id, idA, idB, departure, arrival, boo, result);                
+                Connection foo = new Connection(id, idA, idB, departure, arrival, boo, result);
                 allConnections.add(foo);
             }
         }
@@ -199,5 +201,4 @@ public class MariaDBDataProvider implements DataProvider {
         return result;
     }
 }
-
 
