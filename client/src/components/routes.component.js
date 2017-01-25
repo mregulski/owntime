@@ -7,19 +7,21 @@
 			<span>wyjdź o 	Trasa	na miejscu</span>
 			</div>
 			<div class="routes" v-for="route in routes">
-				<div><span>{{ route.departure.planned }}</span></div>
-				<div><span><ul class = "lines"> <li v-for="lines in route.route">{{lines.transport.line}} </li></ul></span></div>
-				<div><span> {{ route.arrival.planned }}</span></div>
-				<div v-for="conChange in route.route">
-					<div v-on:click="listRollout('busStops')">
-						<div><span>{{ conChange.departure.planned }}</span></div>
-						<div><span>{{ conChange.transport.line}}</span></div>
-						<div><span>{{ conChange.stops[0].displayName}}</span></div>
-						<div id="busStops">
-							<div v-for="i in conChange.stops.length-2"><span>{{ conChange.stops[i].displayName}}</span></div>
+				<div><span>{{ time(route.departure) }}</span></div>
+				<div><span><ul class = "lines"> <li v-for="lines in route.route">{{lines.transport.details.line}} </li></ul></span></div>
+				<div><span> {{ time(route.arrival) }}</span></div>
+				<div class="connectionChanges">
+					<div v-for="conChange in route.route">
+						<div v-on:click="listRollout('busStops')">
+							<div><span>{{ time(conChange.departure) }}</span></div>
+							<div><span>{{ conChange.transport.details.line}}</span></div>
+							<div><span>{{ conChange.stops[0].displayName}}</span></div>
+							<div v-if="conChange.stops.length>2"id="busStops">
+								<div v-for="i in conChange.stops.length-2"><span>{{ conChange.stops[i].displayName}}</span></div>
+							</div>
+							<div><span>{{ conChange.stops[conChange.stops.length-1].displayName}}</span></div>
+							<div><span>{{ time(conChange.arrival) }}</span></div>
 						</div>
-						<div><span>{{ conChange.stops[conChange.stops.length-1].displayName}}</span></div>
-						<div><span>{{ conChange.arrival.planned }}</span></div>
 					</div>
 				</div>
 			</div>
@@ -41,6 +43,9 @@
 				// this.activeRoute = activeRoute;
 				//this.log(this.activeRoute);
             },
+			time: function(moment){
+				return moment.planned;
+			},
 			changeActive: function(activeRoute) {
 				this.activeRoute = activeRoute.orginalObject;
 				this.log("drawing route");
