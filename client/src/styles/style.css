@@ -149,22 +149,25 @@ list-style-type: none;
     text-transform: capitalize;
     background: rgba(255, 139, 0, 0.9);
 }
+
+.connectionListHeader :first-child,
+.route :first-child {
+        margin-left: 0;
+}
+
+.connectionListHeader :last-child,
+.route :last-child,
+.connectionChanges div :last-child {
+    margin-right: 0;
+}
+
 .connectionListHeader *, .route * {
     margin: auto;
 }
 /*.connectionChanges div * {
     margin: 0 auto;
 }*/
-.connectionListHeader :first-child,
-.route :first-child, {
-        margin-left: 0;
-}
 
-.connectionListHeader :last-child
-.route :last-child,
-.connectionChanges div :last-child {
-    margin-right: 0;
-}
 
 .listOfConnections {
     overflow-y: auto;
@@ -184,26 +187,43 @@ list-style-type: none;
     flex: 2;
 }
 .busStops span {
-    padding: 5px 0;
+    padding: 5px;
     text-align: right;
+    text-transform: uppercase;
+    font-size: .9em;
+}
+
+.stopFrom {
+    /*background: white;
+    border: 1px solid rgba(255, 139, 0, 0.8);*/
+    font-weight: bold;
+}
+
+.stopTo {
+    /*background: rgba(255, 139, 0, 0.8);*/
+    /*border: 1px solid white;*/
+    font-weight: bold;
 }
 
 
 .departureTime, .arrivalTime {
     width: 5em;
     text-align: center;
-    border: rgba(255, 139, 0, 0.9);
-    color: rgba(255, 139, 0, 0.9);
-    border: 1px solid rgba(255, 139, 0, 0.9);
-    background: white;
     padding: 5px;
+    font-weight: bold;
 }
 
 .departureTime {
+    color: rgba(255, 139, 0, 0.9);
+    border: 1px solid rgba(255, 139, 0, 0.9);
+    background: white;
     margin-left: 0;
 }
 
 .arrivalTime {
+    color: white;
+    border: 1px white;
+    background: rgba(255, 139, 0, 0.9);
     margin-right: 0;
 }
 
@@ -252,6 +272,20 @@ ul.lines li:only-child {
     margin-left: auto;
 }
 
+.line {
+    color: rgba(255, 139, 0, 0.9);
+    border: 1px solid rgba(255, 139, 0, 0.9);
+    background: white;
+    margin-left: 0;
+    width: 3em;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.connectionChanges :first-child {
+    justify-content: space-between;
+}
+
 .connectionChanges {
     display: flex;
     flex-direction: column;
@@ -277,6 +311,7 @@ ul.lines li:only-child {
    margin-left: 0;
    width: 3em;
 }
+
 
 
 .onClickListRollOut:nth-child(2n) {
