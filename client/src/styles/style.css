@@ -6,10 +6,10 @@
     padding: 0;
     margin: 0;
 }
-ul
-{
+ul {
 list-style-type: none;
 }
+
 .fill-container {
     position: absolute;
     width: 100%;
@@ -20,6 +20,7 @@ list-style-type: none;
     top: 0;
     left: 0;
 }
+
 .gm-style div[style*="display: table-cell"] div {
     background-color: white;
     padding: 3px;
@@ -37,7 +38,7 @@ list-style-type: none;
     color: #ddd;
     display: flex;
     flex-direction: column;
-    justify-content: space-between
+    justify-content: space-between;
     pointer-events: none;
 }
 
@@ -52,6 +53,9 @@ list-style-type: none;
     flex: 1;
 }
 
+.input_wbutton {
+    display: flex;
+}
 
 .searchbox__form {
     background: rgba(0,0,0,0.7);
@@ -79,9 +83,10 @@ list-style-type: none;
     background: #ff8b00;
     color: white;
     border: none;
-    margin: 0;
-    position: relative;
-    left: -5px;
+    margin: auto;
+    /*position: relative;
+    left: -5px;*/
+    margin-bottom: 15px;
 }
 
 
@@ -144,13 +149,14 @@ list-style-type: none;
     text-transform: capitalize;
     background: rgba(255, 139, 0, 0.9);
 }
-.connectionListHeader *, .route *, .connectionChanges div * {
+.connectionListHeader *, .route * {
     margin: auto;
 }
+/*.connectionChanges div * {
+    margin: 0 auto;
+}*/
 .connectionListHeader :first-child,
-.route :first-child,
-.connectionChanges div :first-child,
-.onClickListRollOut .lines {
+.route :first-child, {
         margin-left: 0;
 }
 
@@ -164,6 +170,24 @@ list-style-type: none;
     overflow-y: auto;
     /*height: 700px;*/
 }
+
+.col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.row {
+    flex: 1;
+}
+
+.busStops {
+    flex: 2;
+}
+.busStops span {
+    padding: 5px 0;
+    text-align: right;
+}
+
 
 .departureTime, .arrivalTime {
     width: 5em;
@@ -231,8 +255,8 @@ ul.lines li:only-child {
 .connectionChanges {
     display: flex;
     flex-direction: column;
-    /*margin-left: 80px;*/
-    background: rgba(200, 200,200, 1);
+    padding-left: 110px;
+    background: rgba(200, 200,200, .7);
 
 }
 
@@ -249,13 +273,11 @@ ul.lines li:only-child {
     transition: 0.1s all ease-in;
     background: rgba(160, 160,160, .7);
 }
-.onClickListRollOut .line {
-   margin-left: 10px;
+.onClickListRollOut .col:first-child() {
+   margin-left: 0;
+   width: 3em;
 }
-.onClickListRollOut .departureTime,
-.onClickListRollOut .arrivalTime {
-    margin-right: 0;
-}
+
 
 .onClickListRollOut:nth-child(2n) {
     background: rgba(180, 180,180, 1);

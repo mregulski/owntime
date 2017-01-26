@@ -6,7 +6,7 @@
 			<div class="connectionListHeader">
 			<span>wyjdź o</span>
 			<span>Trasa</span>
-			<span>na miejscu</span>	
+			<span>na miejscu</span>
 			</div>
 			<div class="listOfConnections">
 				<div class="routes" v-for="route in routes">
@@ -18,16 +18,20 @@
 					<div class="connectionChanges" v-if="route == activeRoute">
 						<div v-for="conChange in route.route">
 							<div class="onClickListRollOut" v-on:click="number=conChange.transport.details.line">
-								<span class="departureTime">{{ plannedTime(conChange.departure) }}</span>
-								<span class="line">{{ conChange.transport.details.line}}</span>
-								<div class="busStops">
+								<div class="col row">
+									<span class="line">{{ conChange.transport.details.line}}</span>
+								</div>
+								<div class="lineTimes col row">
+									<span class="departureTime">{{ plannedTime(conChange.departure) }}</span>
+									<span class="arrivalTime">{{ predictedTime(conChange.arrival) }}</span>
+								</div>
+								<div class="busStops col row">
 									<span class="stopFrom">{{ conChange.stops[0].displayName}}</span>
 									<div class="hiddenStops" v-if="conChange.stops.length>2 && number == conChange.transport.details.line">
 										<div v-for="i in conChange.stops.length-2"><span>{{ conChange.stops[i].displayName}}</span></div>
 									</div>
 									<span class="stopTo"> {{ conChange.stops[conChange.stops.length-1].displayName}}</span>
 								</div>
-								<span class="arrivalTime">{{ predictedTime(conChange.arrival) }}</span>
 							</div>
 						</div>
 					</div>

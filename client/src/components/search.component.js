@@ -7,6 +7,7 @@
         template: `
         <div class="searchbox__form">
             <form id="find-connections">
+
                 <input type="text" placeholder="Skąd chcesz jechać?" v-model="startPoint.query">
                 <ul v-if="showStartPoints" class="searchbox__stoplist" v-on-clickaway="hideResults('startPoint')">
                     <li v-for="stop of startPoint.results"
@@ -14,8 +15,10 @@
                         {{stop.name}}
                     </li>
                 </ul>
-
-                <input type="text" placeholder="Miejsce docelowe" v-model="endPoint.query">
+                <div class="input_wbutton">
+                    <input type="text" placeholder="Miejsce docelowe" v-model="endPoint.query">
+                    <button v-on:click.prevent="getRoutes">&gt;</button>
+                </div>
                 <ul class="searchbox__stoplist"
                     v-if="showEndPoints"
                     v-on-clickaway="hideResults('endPoint')">
@@ -25,7 +28,7 @@
                     </li>
                 </ul>
 
-                <button v-on:click.prevent="getRoutes">&gt;</button>
+
             </form>
         </div>
         `,
