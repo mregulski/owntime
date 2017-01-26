@@ -5,6 +5,7 @@
     sendRequest.getStops = getStops;
     sendRequest.getRoute = getRoute;
     sendRequest.postRating = postRating;
+		sendRequest.getLivePosition = getLivePosition;
 
     app.sendRequest = sendRequest;
 
@@ -132,4 +133,21 @@
     	});
 	}
 
+	 function getLivePosition(line_number){
+        return new Promise((resolve, reject) => {
+            var url = getURL("liveposition"); 
+            var busLivePosition = $.ajax({
+                type: "POST",
+                url: url,
+                data: line_number
+            });     
+             if(!busLivePosition){
+                reject(Error("Blad"));
+            }
+            else{  
+                resolve(busLivePosition);
+            }
+        })
+    }
+	
 })(app);
