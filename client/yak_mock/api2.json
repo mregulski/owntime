@@ -1,13 +1,13 @@
 {"result": [
 	{"start": {
-	    "displayName": "Pl. Grunwaldzki",
-		"coords": {"x" : 51.111562,"y" :17.060132},
+	    "displayName": "BISKUPIN",
+		"coords": {"x" : 51.1012573,"y" :17.10914151},
 	    "id": "1",
 	    "transports": []
 		},
 	"end":	{
-	    "displayName": "Pl. jakiśtam",
-	    "coords":{"x" : 51.111562,"y" : 17.060132},
+	    "displayName": "POŚWIĘTNE",
+	    "coords":{"x" :51.15020822,"y" :17.02870501},
 	    "id": "1",
 	    "transports": []
 		},
@@ -15,74 +15,182 @@
 		{"planned": "2016-11-17T17:08:36.136Z",
 		"predicted": "2016-11-17T17:08:36.136Z"},
 	"arrival": 
-		{"planned": "2016-11-17T17:08:36.136Z","predicted": "2016-11-17T17:08:36.136Z"},
+		{"planned": "2016-11-17T17:55:36.136Z","predicted": "2016-11-17T18:00:36.136Z"},
 	"route": [
 				{
 				    "stops": [
 				    			{
-								    "displayName": "Pl. Grunwaldzki1",
-								    "coords":{"x" : 51.111562,"y" : 17.060140},
+								    "displayName": "BISKUPIN",
+								    "coords":{"x" :51.1012573,"y" :17.10914151},
 								    "id": "1",
 								    "transports": []
 								},
 								{
-								    "displayName": "Pl. Grunwaldzki2",
-								    "coords":{"x" : 51.111562, "y" :17.060150},
+								    "displayName": "Spółdzielcza",
+								    "coords":{"x" :51.10220572,"y" :17.10232232},
 								    "id": "1",
 								    "transports": []
 								},
 								{
-								    "displayName": "Pl. Grunwaldzki3",
-								    "coords": {"x" : 51.111562, "y" :17.060160},
+								    "displayName": "Piramowicza",
+								    "coords": {"x" :51.1031808,"y" :17.09632744},
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "Chełmońskiego",
+								    "coords":{"x" :51.10388356,"y" :17.09071195},
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "Tramwajowa",
+								    "coords":{"x" :51.10446682,"y" :17.08466996},
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "ZOO",
+								    "coords":{"x" :51.10556081,"y" :17.0778982},
 								    "id": "1",
 								    "transports": []
 								}
 				    		],
-				    "transport": {"type" : "autobus",	"details": {"line": "336"} },
+				    "transport": {"type" : "tramwaj",	"details": {"line": "1"} },
 				    "departure": {"planned": "2016-11-17T17:08:36.136Z",
 						"predicted": "2016-11-17T17:08:36.136Z"},
-				    "arrival": {"planned": "2016-11-17T17:08:36.136Z",
-						"predicted": "2016-11-17T17:08:36.136Z"},
+				    "arrival": {"planned": "2016-11-17T17:14:36.136Z",
+						"predicted": "2016-11-17T17:16:36.136Z"},
 				    "alternatives": [],
 				    "details": {}
 				},
 				{
 				    "stops": [
 				    			{
-								    "displayName": "Pl. trtrtrtr",
-								    "coords":{"x" : 51.111570, "y" :17.060160},
+								    "displayName": "ZOO",
+								    "coords":{"x" :51.10556081,"y" :17.0778982},
 								    "id": "1",
 								    "transports": []
 								},
 								{
-								    "displayName": "Pl. trtrotrtr",
-								    "coords": {"x" : 51.111580, "y" :17.060160},
+								    "displayName": "Hala Stulecia",
+								    "coords": {"x" :51.10708825,"y" :17.07346452},
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "Kliniki",
+								    "coords": {"x" :51.1094524,"y" :17.06612151},
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "PL. GRUNWALDZKI",
+								    "coords": {"x" :51.1111569,"y" :17.06146483},
 								    "id": "1",
 								    "transports": []
 								}
 				    		],
-				    "transport": {"type" : "autobus",	"details": {"line": "236"} },
-				    "departure": {"planned": "2016-11-17T17:08:36.136Z",
-						"predicted": "2016-11-17T17:08:36.136Z"},
-				    "arrival": {"planned": "2016-11-17T17:08:36.136Z",
-						"predicted": "2016-11-17T17:08:36.136Z"},
+				    "transport": {"type" : "autobus",	"details": {"line": "115"} },
+				    "departure": {"planned": "2016-11-17T17:15:36.136Z",
+						"predicted": "2016-11-17T17:20:36.136Z"},
+				    "arrival": {"planned": "2016-11-17T17:20:36.136Z",
+						"predicted": "2016-11-17T17:26:36.136Z"},
 				    "alternatives": [],
 				    "details": {}
 				},
 				{
 				    "stops": [
 				    			{
-								    "displayName": "Pl. Grunwaldzki",
-								    "coords": {"x" : 51.111590, "y" :17.060170},
+								    "displayName": "PL. GRUNWALDZKI",
+								    "coords": {"x" :51.1111569,"y" :17.06146483},
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "Piastowska",
+								    "coords": {"x" :51.11536582,"y" :17.06087806},
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "Prusa",
+								    "coords": {"x" :51.11947641,"y" :17.05740455},
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "Wyszyńskiego",
+								    "coords": {"x" :51.12191852,"y" :17.05294165},
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "Nowowiejska",
+								    "coords": {"x" :51.12423914,"y" :17.0448911},
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "Słowiańska",
+								    "coords": {"x" :51.12354191,"y" :17.04021723},
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "DWORZEC NADODRZE",
+								    "coords": {"x" :51.12431442,"y" :17.03503321},
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "DWORZEC NADODRZE",
+								    "coords": {"x" :51.12474918,"y" :17.03497559},
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "Trzebnicka",
+								    "coords": {"x" :51.12813406,"y" :17.03666443},
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "Broniewskiego",
+								    "coords": {"x" :51.13539403,"y" :17.03647045},
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "Kamieńskiego",
+								    "coords": {"x" :51.14097662,"y" :17.03222223},
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "Kępińska",
+								    "coords": {"x" :51.14421883,"y" :17.031233},
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "Wołowska",
+								    "coords": {"x" :51.14736913,"y" :17.03027131},
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "POŚWIĘTNE",
+								    "coords": {"x" :51.15020822,"y" :17.02870501},
 								    "id": "1",
 								    "transports": []
 								}
 				    		],
-				    "transport": {"type" : "autobus",	"details": {"line": "136"} },
-				    "departure": {"planned": "2016-11-17T17:08:36.136Z",
-						"predicted": "2016-11-17T17:08:36.136Z"},
-				    "arrival": {"planned": "2016-11-17T17:08:36.136Z",
-						"predicted": "2016-11-17T17:08:36.136Z"},
+				    "transport": {"type" : "autobus",	"details": {"line": "139"} },
+				    "departure": {"planned": "2016-11-17T17:28:36.136Z",
+						"predicted": "2016-11-17T17:30:36.136Z"},
+				    "arrival": {"planned": "2016-11-17T17:55:36.136Z",
+						"predicted": "2016-11-17T18:00:36.136Z"},
 				    "alternatives": [],
 				    "details": {}
 				}
