@@ -10,18 +10,18 @@
 			</div>
 			<div class="listOfConnections">
 				<div class="routes" v-for="route in routes">
-					<div class="route">
+					<div class="route" v-on:click="changeActive(route)">
 					<span class="departureTime">{{ plannedTime(route.departure) }}</span>
 					<ul class = "lines"> <li v-for="lines in route.route">{{lines.transport.details.line}} </li></ul>
 					<span class="arrivalTime"> {{ predictedTime(route.arrival) }}</span>
 					</div>
-					<div class="connectionChanges">
+					<div class="connectionChanges" v-if="route == activeRoute">
 						<div v-for="conChange in route.route">
 							<div class="onClickListRollOut" v-on:click="listRollout('busStops')">
 								<span class="departureTime">{{ plannedTime(conChange.departure) }}</span>
 								<span class="line">{{ conChange.transport.details.line}}</span>
 								<span class="stopFrom">{{ conChange.stops[0].displayName}}</span>
-								<div v-if="conChange.stops.length>2"id="busStops">
+								<div v-if="conChange.stops.length>2" id="busStops">
 									<div v-for="i in conChange.stops.length-2"><span>{{ conChange.stops[i].displayName}}</span></div>
 								</div>
 								<span class="stopTo"> {{ conChange.stops[conChange.stops.length-1].displayName}}</span>
@@ -59,8 +59,8 @@
                 return moment(time.predicted).format("HH:mm");
 
             },
-			changeActive: function(activeRoute) {
-				this.activeRoute = activeRoute.orginalObject;
+			changeActive: function(Route) {
+				this.activeRoute = Route;
 				this.log("drawing route");
 				app.hub.$emit('active-update', this.activeRoute);
 			},
