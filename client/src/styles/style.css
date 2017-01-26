@@ -1,5 +1,8 @@
 /* temporary css for preview */
-
+html, body {
+    width: 100vw;
+    height: 100vh;
+}
 * {
     box-sizing: border-box;
     font-family: Arial, sans-serif;
@@ -137,6 +140,7 @@ list-style-type: none;
 /*END shitty*/
 .connections {
     color: black;
+    overflow-y: auto;
     /*background: rgba(0,0,0,0.7);*/
     pointer-events: all;
     margin-top: 10px;
@@ -170,7 +174,7 @@ list-style-type: none;
 
 
 .listOfConnections {
-    overflow-y: auto;
+
     /*height: 700px;*/
 }
 
