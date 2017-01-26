@@ -28,8 +28,8 @@ list-style-type: none;
 }
 #ui {
     position: relative;
-    top: 30px;
-    right: 30px;
+    padding-top: 30px;
+    right: 40px;
     margin-right: 0;
     margin-left: auto;
     max-width: 600px;
@@ -37,19 +37,19 @@ list-style-type: none;
     color: #ddd;
     display: flex;
     flex-direction: column;
+    justify-content: space-between
     pointer-events: none;
 }
 
 #ui > section {
-
     pointer-events: all;
 }
 
 #ui > * + * {
-    margin-top:1em;
+    margin-top: 1em;
 }
 .flex-fill {
-    flex: 2;
+    flex: 1;
 }
 
 
@@ -134,6 +134,7 @@ list-style-type: none;
     color: black;
     /*background: rgba(0,0,0,0.7);*/
     pointer-events: all;
+    margin-top: 10px;
 }
 
 .connectionListHeader {
@@ -161,7 +162,7 @@ list-style-type: none;
 
 .listOfConnections {
     overflow-y: auto;
-    height: 700px;
+    /*height: 700px;*/
 }
 
 .departureTime, .arrivalTime {
@@ -186,7 +187,6 @@ list-style-type: none;
     background: rgba(255,255,255,0.7);
     color: black;
     width: 100%;
-    padding-top: 10px;
     /*padding-bottom: 10px;*/
     border-bottom: 2px solid rgba(255, 139, 0, 0.9);
 }
@@ -197,7 +197,14 @@ list-style-type: none;
 
 .route {
     display: flex;
-    padding: 0px 30px 10px 30px;
+    padding: 10px 30px;
+    transition: 0.1s all ease-in;
+}
+
+.route:hover {
+    background: rgba(247, 185, 110, 1);
+    cursor: pointer;
+    transition: 0.1s all ease-in;
 }
 
 .route > span:not(:first-child):not(:last-child), .route > ul {
@@ -211,9 +218,9 @@ ul.lines {
 
 ul.lines li {
     font-weight: bold;
-    color: rgba(255, 139, 0, 0.9);
+    color: rgba(255, 139, 0, 0.7);
     padding: 5px;
-    border: rgba(255, 139, 0, 0.9) 1px solid;
+    border: rgba(255, 139, 0, 0.7) 1px solid;
     background: white;
 }
 
@@ -224,16 +231,24 @@ ul.lines li:only-child {
 .connectionChanges {
     display: flex;
     flex-direction: column;
-    padding: 5px 30px 5px 30px;
     /*margin-left: 80px;*/
     background: rgba(200, 200,200, 1);
+
+}
+
+.connectionChanges > div:not(:last-child) {
+    border-bottom: 1px solid rgba(150, 150,150, 1);
 }
 
 .onClickListRollOut {
     display: flex;
-    padding: 5px 0;
+    padding: 10px 30px;
+    transition: 0.1s all ease-in;
 }
-
+.onClickListRollOut:hover {
+    transition: 0.1s all ease-in;
+    background: rgba(160, 160,160, .7);
+}
 .onClickListRollOut .line {
    margin-left: 10px;
 }
@@ -244,6 +259,11 @@ ul.lines li:only-child {
 
 .onClickListRollOut:nth-child(2n) {
     background: rgba(180, 180,180, 1);
+}
+
+.alert {
+    background: rgba(0,0,0,.7);
+    padding: 30px;
 }
 
 /*
