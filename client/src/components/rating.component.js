@@ -2,49 +2,58 @@
 
     Vue.component('yak-rating', {
         template:
-        `<div v-if="active">
-    <div class="modal-mask">
-      <div class="modal-wrapper">
-		<div class="ratingbox__form" id="ratingbox">
-		<div style = "margin-top:20px;">
-		<h3>Pomóż nam ulapszać naszą aplikację</h3>
-		<h4 style="margin-top:10px;">Oceń zaproponowaną przez nas trasę </h4>
-        <tr style="font-size:60px">
-            <th style="color:grey">
-				<td v-on:click.prevent="stars=1" v-bind:class="{ 'glowingStar':stars>=1}">
-					\u22C6
-				</td>
-				<td v-on:click.prevent="stars=2" v-bind:class="{ 'glowingStar':stars>=2}">
-					\u22C6
-				</td>
-				<td v-on:click.prevent="stars=3" v-bind:class="{ 'glowingStar':stars>=3}">
-					\u22C6
-				</td>
-				<td v-on:click.prevent="stars=4" v-bind:class="{ 'glowingStar':stars>=4}">
-					\u22C6
-				</td>
-				<td  v-on:click.prevent="stars=5" v-bind:class="{ 'glowingStar':stars>=5}">
-					\u22C6
-				</td>
-				<td>
-				</td>
-				<td>
-                <button v-on:click.prevent="send()">oceń &gt;</button>
-				</td>
-			</th>
-		</tr>
-				<form>
-					<textarea rows="3" cols="30" name="comment" form="usrform"  v-model="comment">
-					</textarea>
-				</form>
+               `
+		<div >
+			<div style="position: fixed; right:50px; bottom:100px;" v-if="!mobile">
+				<div>
+					<div style="float:left; color:white; background: rgba(0,0,0,0.7); padding: 15px 20px; ">Jak ci się podobała trasa?</div>
+					<button 
+						style="color:white; background: #ff8b00; border: none; border-radius:0px; float:right; padding: 15px 20px;" 
+						v-on:click.prevent="active=true">
+						&gt;
+					</button>
+				</div>
+			</div>
+			<div class="modal-mask" v-if="active">
+			  <div class="modal-wrapper">
+				<div class="ratingbox__form" id="ratingbox">
+					<div style = "margin-top:20px;">
+						<h3>Pomóż nam ulepszać naszą aplikację</h3>
+						<h4 style="margin-top:10px;">Oceń zaproponowaną przez nas trasę </h4>
+						<tr style="font-size:60px">
+							<th style="color:grey">
+								<td v-on:click.prevent="stars=1" v-bind:class="{ 'glowingStar':stars>=1}">
+									\u22C6
+								</td>
+								<td v-on:click.prevent="stars=2" v-bind:class="{ 'glowingStar':stars>=2}">
+									\u22C6
+								</td>
+								<td v-on:click.prevent="stars=3" v-bind:class="{ 'glowingStar':stars>=3}">
+									\u22C6
+								</td>
+								<td v-on:click.prevent="stars=4" v-bind:class="{ 'glowingStar':stars>=4}">
+									\u22C6
+								</td>
+								<td  v-on:click.prevent="stars=5" v-bind:class="{ 'glowingStar':stars>=5}">
+									\u22C6
+								</td>
+							</th>
+						</tr>
+						<form style="float:center">
+							<textarea rows="3" cols="33" name="comment" form="usrform"  v-model="comment">
+							</textarea>
+						</form>
+					</div>
+					<div style="margin-top:30px">
+						<button  style = "float: left;" v-on:click.prevent="send()">oceń</button>
+						<button style = "float: left; background-color:grey" v-on:click="close();">nie teraz</button>
+				
+						   
+								</div>
+							</div>
+			</div>
 		</div>
-			<a style = "float: right; margin:10px" v-on:click="close();">
-				nie teraz
-			</a>
-
-		</div>
-		</div>
-			</div></div>`    ,
+	</div>`    ,
         data: function() {
             return {
 				stars: 0,
@@ -108,7 +117,7 @@
 					}
 					else
 					{
-						if(Math.random()<=this.chanceBeingSelected)
+						/*if(Math.random()<=this.chanceBeingSelected)
 						{
 							this.randomlySelected = true;
 							
@@ -117,7 +126,7 @@
 						{
 							this.randomlySelected = false;
 						}
-						setTimeout(this.openIfSelected, 3000);
+						setTimeout(this.openIfSelected, 3000);*/
 					}
 				}
             },

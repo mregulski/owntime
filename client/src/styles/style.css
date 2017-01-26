@@ -405,7 +405,7 @@ ul.lines li:only-child {
 .ratingbox__form button{
 	font-size:20px;
 	position: relative;
-	top: -12px;
+	margin: 5px;
 	border: none;
     padding: 12px 15px;
     background: #ff8b00;
