@@ -1,13 +1,13 @@
 {"result": [
 	{"start": {
 	    "displayName": "Pl. Grunwaldzki",
-	    "coords": "51.111562, 17.060132",
+		"coords": {"x" : 51.111562,"y" :17.060132},
 	    "id": "1",
 	    "transports": []
 		},
 	"end":	{
 	    "displayName": "Pl. jakiśtam",
-	    "coords": "51.111562, 17.060132",
+	    "coords":{"x" : 51.111562,"y" : 17.060132},
 	    "id": "1",
 	    "transports": []
 		},
@@ -21,19 +21,19 @@
 				    "stops": [
 				    			{
 								    "displayName": "Pl. Grunwaldzki1",
-								    "coords": "51.111562, 17.060140",
+								    "coords":{"x" : 51.111562,"y" : 17.060140},
 								    "id": "1",
 								    "transports": []
 								},
 								{
 								    "displayName": "Pl. Grunwaldzki2",
-								    "coords": "51.111562, 17.060150",
+								    "coords":{"x" : 51.111562, "y" :17.060150},
 								    "id": "1",
 								    "transports": []
 								},
 								{
 								    "displayName": "Pl. Grunwaldzki3",
-								    "coords": "51.111562, 17.060160",
+								    "coords": {"x" : 51.111562, "y" :17.060160},
 								    "id": "1",
 								    "transports": []
 								}
@@ -50,13 +50,13 @@
 				    "stops": [
 				    			{
 								    "displayName": "Pl. trtrtrtr",
-								    "coords": "51.111570, 17.060160",
+								    "coords":{"x" : 51.111570, "y" :17.060160},
 								    "id": "1",
 								    "transports": []
 								},
 								{
 								    "displayName": "Pl. trtrotrtr",
-								    "coords": "51.111580, 17.060160",
+								    "coords": {"x" : 51.111580, "y" :17.060160},
 								    "id": "1",
 								    "transports": []
 								}
@@ -73,7 +73,7 @@
 				    "stops": [
 				    			{
 								    "displayName": "Pl. Grunwaldzki",
-								    "coords": "51.111590, 17.060170",
+								    "coords": {"x" : 51.111590, "y" :17.060170},
 								    "id": "1",
 								    "transports": []
 								}
@@ -89,13 +89,13 @@
 			]},
 			{"start": {
 	    "displayName": "Pl. Grunwaldzki",
-	    "coords": "51.111562, 17.060132",
+	    "coords": {"x" : 51.111562, "y" :17.060132},
 	    "id": "1",
 	    "transports": []
 		},
 	"end":	{
 	    "displayName": "Pl. jakiśtam",
-	    "coords": "51.111562, 17.060132",
+	    "coords": {"x" : 51.111562,"y" : 17.060132},
 	    "id": "1",
 	    "transports": []
 		},
@@ -109,19 +109,19 @@
 				    "stops": [
 				    			{
 								    "displayName": "Pl. Grunwaldzki1",
-								    "coords": "51.111562, 17.060140",
+								    "coords": {"x" : 51.111562, "y" :17.060140},
 								    "id": "1",
 								    "transports": []
 								},
 								{
 								    "displayName": "Pl. Grunwaldzki2",
-								    "coords": "51.111562, 17.060150",
+								    "coords": {"x" : 51.111562,"y" : 17.060150},
 								    "id": "1",
 								    "transports": []
 								},
 								{
 								    "displayName": "Pl. Grunwaldzki3",
-								    "coords": "51.111562, 17.060160",
+								    "coords": {"x" : 51.111562,"y" : 17.060160},
 								    "id": "1",
 								    "transports": []
 								}
@@ -138,26 +138,26 @@
 				    "stops": [
 				    			{
 								    "displayName": "Pl. trtrtrtr",
-								    "coords": "51.111570, 17.060160",
+								    "coords": {"x" : 51.111570, "y" :17.060160},
 								    "id": "1",
 								    "transports": []
 								},
 								{
 								    "displayName": "Pl. trtrtrtr",
-								    "coords": "51.111580, 17.060160",
+								    "coords": {"x" : 51.111580, "y" :17.060160},
 								    "id": "1",
 								    "transports": []
 								},
 								{
 								    "displayName": "Pl. trtrtrtr",
-								    "coords": "51.111590, 17.060160",
+								    "coords": {"x" : 51.111590, "y" :17.060160},
 								    "id": "1",
 								    "transports": []
 								},
 								
 								{
 								    "displayName": "Pl. trtrotrtr",
-								    "coords": "51.111600, 17.060160",
+								    "coords": {"x" : 51.111600,"y" : 17.060160},
 								    "id": "1",
 								    "transports": []
 								}
@@ -174,7 +174,7 @@
 				    "stops": [
 				    			{
 								    "displayName": "Pl. Grunwaldzki",
-								    "coords": "51.111590, 17.060170",
+								    "coords": {"x" : 51.111590, "y" :17.060170},
 								    "id": "1",
 								    "transports": []
 								}
@@ -190,13 +190,13 @@
 			]},
 			{"start": {
 	    "displayName": "Pl. Grunwaldzki",
-	    "coords": "51.111562, 17.060132",
+	    "coords":{"x" : 51.111562,"y" : 17.060132},
 	    "id": "1",
 	    "transports": []
 		},
 	"end":	{
 	    "displayName": "Pl. jakiśtam",
-	    "coords": "51.111562, 17.060132",
+	    "coords": {"x" : 51.111562, "y" :17.060132},
 	    "id": "1",
 	    "transports": []
 		},
@@ -210,19 +210,19 @@
 				    "stops": [
 				    			{
 								    "displayName": "Pl. Grunwaldzki1",
-								    "coords": "51.111562, 17.060140",
+								    "coords": {"x" : 51.111562, "y" :17.060140},
 								    "id": "1",
 								    "transports": []
 								},
 								{
 								    "displayName": "Pl. Grunwaldzki2",
-								    "coords": "51.111562, 17.060150",
+								    "coords":{"x" : 51.111562, "y" :17.060150},
 								    "id": "1",
 								    "transports": []
 								},
 								{
 								    "displayName": "Pl. Grunwaldzki3",
-								    "coords": "51.111562, 17.060160",
+								    "coords":{"x" : 51.111562, "y" :17.060160},
 								    "id": "1",
 								    "transports": []
 								}
@@ -239,13 +239,13 @@
 				    "stops": [
 				    			{
 								    "displayName": "Pl. trtrtrtr",
-								    "coords": "51.111570, 17.060160",
+								    "coords": {"x" : 51.111570, "y" :17.060160},
 								    "id": "1",
 								    "transports": []
 								},
 								{
 								    "displayName": "Pl. trtrotrtr",
-								    "coords": "51.111580, 17.060160",
+								    "coords": {"x" : 51.111580, "y" :17.060160},
 								    "id": "1",
 								    "transports": []
 								}
@@ -262,7 +262,7 @@
 				    "stops": [
 				    			{
 								    "displayName": "Pl. Grunwaldzki",
-								    "coords": "51.111590, 17.060170",
+								    "coords": {"x" : 51.111590, "y" :17.060170},
 								    "id": "1",
 								    "transports": []
 								}
