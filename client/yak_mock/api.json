@@ -1,91 +1,238 @@
- {
+
+{
 	"result": [
-		{
-			"start": {
-				"displayName": "Pl. Grunwaldzki",
-				"coords": {"x" : 51.111562, "y" : 17.060132},
-				"id": "1",
-				"transport": {
-					"type":  "autobus",
-					"details": {
-					"line": "136"
-					}
-				}
-			},
-			"end": {
-				"displayName": "Pl. Grunwaldzki",
-				"coords": { "x" : 51.111562, "y" : 17.060132 },
-				"id": "1",
-				"transport": {
-					"type":  "autobus",
-					"details": {
-					"line": "136"
-					}
-				}
-			},
-			"departure": {
-				"planned": "2016-11-17T17:08:36.136Z",
-				"predicted": "2016-11-17T17:08:36.136Z"
-			},
-			"arrival": {
-				"planned": "2016-11-17T17:08:36.136Z",
-				"predicted": "2016-11-17T17:08:36.136Z"
-			},
-			"route": [
-				{
-					"stops": [
-						{
-							"displayName": "Pl. Grunwaldzki",
-							"coords": { "x" : 51.111562, "y" : 17.060132},
-							"id": "1",
-							"transport": {
-								"type":  "autobus",
-								"details": {
-									"line": "136" 
-								}
-							}
-						},
-						{
-							"displayName": "Most Grunwaldzki",
-							"coords": { "x" : 51.111562, "y" : 17.060132},
-							"id": "1",
-							"transports": {
-								"type":  "autobus",
-								"details": {
-									"line": "136"
-								}
-							}			
-						},
-						{
-							"displayName": "urzad wojewodzki",
-							"coords": { "x" : 51.111562, "y" : 17.060132},
-							"id": "1",
-							"transports": {
-								"type":  "autobus",
-								"details": {
-									"line": "136"
-								}
-							}
-						}
-					],
-					"transport": {
-						"type":  "autobus",
-						"details": {
-						"line": "136"
-						}
-					},
-					"departure": {
-						"planned": "2016-11-17T17:08:36.136Z",
-						"predicted": "2016-11-17T17:08:36.136Z"
-					},
-					"arrival": {
-						"planned": "2016-11-17T17:08:36.136Z",
-						"predicted": "2016-11-17T17:08:36.136Z"
-					},
-					"alternatives": {},
-					"details": {}
-				}
-			]
-		}
-	]
+    {"start": {
+        "displayName": "Pl. Grunwaldzki",
+        "coords": {"x" : 51.10209882,"y" :17.01244095},
+        "id": "1429",
+        "transports": [
+            {"line":" 4","type":"TRAM"},
+            {"line":" 5","type":"TRAM"},
+            {"line":"14","type":"TRAM"},
+            {"line":"11","type":"TRAM"}]
+        },
+    "end":  {
+        "displayName": "Pl. jakiśtam",
+        "coords":{"x" : 51.10689468,"y" : 17.07372026},
+        "id": "1436",
+        "transports": [
+            {"line":" 1","type":"TRAM"},
+            {"line":" 2","type":"TRAM"},
+            {"line":"10","type":"TRAM"},
+            {"line":" 4","type":"TRAM"}]
+        },
+    "departure": 
+        {"planned": "2017-01-26T04:05:21.0Z",
+        "predicted": "2017-01-26T04:05:21.0Z"},
+    "arrival": 
+        {"planned": "2017-01-26T04:44:00.0Z",
+        "predicted": "2017-01-26T04:44:00.0Z"},
+    "route": [
+                {
+                    "stops": [
+                                {
+                                    "displayName": "Grabiszyńska",
+                                    "coords":{"x":51.10209882,"y":17.01244095},
+                                    "id":"1429",
+                                    "transports":[
+                                        {"line":" 4","type":"TRAM"},
+                                        {"line":" 5","type":"TRAM"},
+                                        {"line":"14","type":"TRAM"},
+                                        {"line":"11","type":"TRAM"}]
+                                },
+                                {
+                                    "displayName": "Grabiszyńska ",
+                                    "coords":{"x":51.10246152,"y":17.01451089},
+                                    "id": "944",
+                                    "transports": [{"line":"246","type":"BUS"},{"line":"251","type":"BUS"}]
+                                }
+                            ],
+                    "transport": {"type" : "autobus",   "details": {"line":"","type":"FOOT"} },
+                    "departure": {"planned": "2017-01-26T04:05:21.0Z",
+                        "predicted": "2017-01-26T04:05:21.0Z"},
+                    "arrival": {"planned":"2017-01-26T04:10:21.0Z",
+                        "predicted": "2017-01-26T04:10:21.0Z"},
+                    "alternatives": [],
+                    "details": {}
+                },
+                {
+                    "stops": [
+                                {
+                                    "displayName": "Grabiszyńska ",
+                                    "coords":{"x":51.10246152,"y":17.01451089},
+                                    "id": "944",
+                                    "transports": [{"line":"246","type":"BUS"},{"line":"251","type":"BUS"}]
+                                },
+                                {
+                                    "displayName": "pl. Legionów",
+                                    "coords":{"x":51.10393491,"y":17.02240735},
+                                    "id": "494",
+                                    "transports":[{"line":"122","type":"BUS"},{"line":"144","type":"BUS"},{"line":"250","type":"BUS"},{"line":"246","type":"BUS"},{"line":"251","type":"BUS"}]
+                                },
+                                {
+                                    "displayName":"Arkady (Capitol)",
+                                    "coords":{"x":51.1020902,"y":17.02946781},
+                                    "id":"2815",
+                                    "transports":[{"line":"602","type":"BUS"},{"line":"D","type":"BUS"},{"line":"A","type":"BUS"},{"line":"250","type":"BUS"},{"line":"253","type":"BUS"},{"line":"246","type":"BUS"},{"line":"243","type":"BUS"},{"line":"251","type":"BUS"}]
+                                }
+                            ],
+                    "transport": {"line":"246","type":"BUS",   "details": {"line": "236"} },
+                    "departure": {"planned": "2017-01-26T04:18:00.0Z",
+                        "predicted": "2017-01-26T04:18:00.0Z"},
+                    "arrival": {"planned": "2017-01-26T04:21:00.0Z",
+                        "predicted": "2017-01-26T04:21:00.0Z"},
+                    "alternatives": [],
+                    "details": {}
+                },
+                {
+                    "stops": [
+                                {
+                                    "displayName": "Arkady (Capitol)",
+                                    "coords":{"x":51.1020902,"y":17.02946781},
+                                    "id": "2815",
+                                    "transports": [{"line":"602","type":"BUS"},{"line":"D","type":"BUS"},{"line":"A","type":"BUS"},{"line":"250","type":"BUS"},{"line":"253","type":"BUS"},{"line":"246","type":"BUS"},{"line":"243","type":"BUS"},{"line":"251","type":"BUS"}]
+                                },
+                                 {
+                                    "displayName": "Arkady (Capitol)",
+                                    "coords":{"x":51.10203906,"y":17.02983653},
+                                    "id": "2816",
+                                    "transports": [{"line":"A","type":"BUS"},{"line":"D","type":"BUS"},{"line":"257","type":"BUS"},{"line":"206","type":"BUS"},{"line":"240","type":"BUS"},{"line":"243","type":"BUS"},{"line":"246","type":"BUS"},{"line":"247","type":"BUS"},{"line":"248","type":"BUS"},{"line":"249","type":"BUS"},{"line":"251","type":"BUS"},{"line":"253","type":"BUS"}]
+                                }
+                            ],
+                    "transport": {"line":"","type":"FOOT",   "details": {"line": "136"} },
+                    "departure": {"planned": "2017-01-26T04:21:00.0Z",
+                        "predicted": "2017-01-26T04:21:00.0Z"},
+                    "arrival": {"planned": "2017-01-26T04:21:49.0Z",
+                        "predicted": "2017-01-26T04:21:49.0Z"},
+                    "alternatives": [],
+                    "details": {}
+                },
+                {
+                    "stops": [
+                                {
+                                    "displayName": "Arkady (Capitol)",
+                                    "coords":{"x":51.10203906,"y":17.02983653},
+                                    "id":"2816",
+                                    "transports":[{"line":"A","type":"BUS"},{"line":"D","type":"BUS"},{"line":"257","type":"BUS"},{"line":"206","type":"BUS"},{"line":"240","type":"BUS"},{"line":"243","type":"BUS"},{"line":"246","type":"BUS"},{"line":"247","type":"BUS"},{"line":"248","type":"BUS"},{"line":"249","type":"BUS"},{"line":"251","type":"BUS"},{"line":"253","type":"BUS"}]
+                                },
+                                 {
+                                    "displayName": "Renoma",
+                                    "coords":{"x":51.10378389,"y":17.03072932},
+                                    "id":"848",
+                                    "transports":[{"line":"257","type":"BUS"},{"line":"206","type":"BUS"},{"line":"243","type":"BUS"},{"line":"247","type":"BUS"},{"line":"248","type":"BUS"},{"line":"249","type":"BUS"},{"line":"253","type":"BUS"}]
+                                },
+                                {
+                                    "displayName":"Świdnicka",
+                                    "coords":{"x":51.10743601,"y":17.03288638},
+                                    "id":"545",
+                                    "transports":[{"line":"708","type":"BUS"},{"line":"602","type":"BUS"},{"line":"257","type":"BUS"},{"line":"114","type":"BUS"},{"line":"K","type":"BUS"},{"line":"245","type":"BUS"},{"line":"243","type":"BUS"},{"line":"255","type":"BUS"},{"line":"247","type":"BUS"},{"line":"248","type":"BUS"},{"line":"253","type":"BUS"},{"line":"259","type":"BUS"},{"line":"D","type":"BUS"}]
+                                },
+                                {
+                                    "displayName":"Rynek",
+                                    "coords":{"x":51.1110606,"y":17.0272088},
+                                    "id":"543",
+                                    "transports":[{"line":"708","type":"BUS"},{"line":"602","type":"BUS"},{"line":"257","type":"BUS"},{"line":"114","type":"BUS"},{"line":"K","type":"BUS"},{"line":"245","type":"BUS"},{"line":"243","type":"BUS"},{"line":"255","type":"BUS"},{"line":"247","type":"BUS"},{"line":"248","type":"BUS"},{"line":"253","type":"BUS"},{"line":"259","type":"BUS"},{"line":"D","type":"BUS"}]
+                                },
+                                {
+                                    "displayName":"Dubois",
+                                    "coords":{"x":51.11694924,"y":17.03421196},
+                                    "id":"1177",
+                                    "transports":[{"line":"104","type":"BUS"},{"line":"122","type":"BUS"},{"line":"128 ","type":"BUS"},{"line":"144","type":"BUS"},{"line":"240","type":"BUS"},{"line":"247","type":"BUS"},{"line":"248","type":"BUS"},{"line":"249","type":"BUS"}]
+                                }
+                            ],
+                    "transport": {"line":"247","type":"BUS",   "details": {"line": "136"} },
+                    "departure": {"planned":  "2017-01-26T04:23:00.0Z",
+                        "predicted": "2017-01-26T04:23:00.0Z"},
+                    "arrival": {"planned": "2017-01-26T04:30:00.0Z",
+                        "predicted": "2017-01-26T04:30:00.0Z"},
+                    "alternatives": [],
+                    "details": {}
+                },
+                                {
+                    "stops": [
+                                
+                                    {
+                                        "displayName":"Dubois",
+                                        "coords":{"x":51.11694924,"y":17.03421196},
+                                        "id":"1177",
+                                        "transports":[{"line":"104","type":"BUS"},{"line":"122","type":"BUS"},{"line":"128 ","type":"BUS"},{"line":"144","type":"BUS"},{"line":"240","type":"BUS"},{"line":"247","type":"BUS"},{"line":"248","type":"BUS"},{"line":"249","type":"BUS"}]
+                                    },
+                                    {
+                                        "displayName":"Dubois",
+                                        "coords":{"x":51.11727843,"y":17.03429733},
+                                        "id":"1389",
+                                        "transports":[{"line":" 9","type":"TRAM"},{"line":"20","type":"TRAM"},{"line":" 2","type":"TRAM"},{"line":" 6","type":"TRAM"},{"line":" 7","type":"TRAM"},{"line":"17","type":"TRAM"}]    
+                                    }
+                                ],
+                    "transport": {"line":"","type":"FOOT",   "details": {"line": "136"} },
+                    "departure": {"planned":  "2017-01-26T04:30:00.0Z",
+                        "predicted": "2017-01-26T04:30:00.0Z"},
+                    "arrival": {"planned": "2017-01-26T04:30:45.0Z",
+                        "predicted": "2017-01-26T04:30:45.0Z"},
+                    "alternatives": [],
+                    "details": {}
+                },
+                {
+                    "stops": [
+                                
+                                    {
+                                        "displayName":"Dubois",
+                                        "coords":{"x":51.11727843,"y":17.03429733},
+                                        "id":"1389",
+                                        "transports":[{"line":" 9","type":"TRAM"},{"line":"20","type":"TRAM"},{"line":" 2","type":"TRAM"},{"line":" 6","type":"TRAM"},{"line":" 7","type":"TRAM"},{"line":"17","type":"TRAM"}]
+                                    },
+                                    {
+                                        "displayName":"pl. Bema ",
+                                        "coords":{"x":51.11708725,"y":17.04326797},
+                                        "id":"2033",
+                                        "transports":[{"line":" 9","type":"TRAM"},{"line":"17","type":"TRAM"},{"line":" 2","type":"TRAM"},{"line":"10","type":"TRAM"},{"line":"33","type":"TRAM"}]
+                                    },
+                                    {
+                                        "displayName":"Ogród Botaniczny",
+                                        "coords":{"x":51.1161181,"y":17.05107322},
+                                        "id":"1708",
+                                        "transports":[{"line":" 2","type":"TRAM"},{"line":"10","type":"TRAM"}]
+                                    },
+                                    {
+                                        "displayName":"Katedra",
+                                        "coords":{"x":51.11421659,"y":17.05045842},
+                                        "id":"1472",
+                                        "transports":[{"line":" 2","type":"TRAM"},{"line":"10","type":"TRAM"}]
+                                    },
+                                    {
+                                        "displayName":"Reja",
+                                        "coords":{"x":51.11278613,"y":17.05556464},
+                                        "id":"1609",
+                                        "transports":[{"line":" 2","type":"TRAM"},{"line":"10","type":"TRAM"}]
+                                    },
+                                    {
+                                        "displayName":"PL. GRUNWALDZKI",
+                                        "coords":{"x":51.11145165,"y":17.06052919},
+                                        "id":"1749",
+                                        "transports":[{"line":" 2","type":"TRAM"},{"line":"10","type":"TRAM"},{"line":" 4","type":"TRAM"}]
+                                    },
+                                    {
+                                        "displayName":"Kliniki",
+                                        "coords":{"x":51.10950585,"y":17.06528265},
+                                        "id":"1482",
+                                        "transports":[{"line":" 1","type":"TRAM"},{"line":" 2","type":"TRAM"},{"line":"10","type":"TRAM"},{"line":" 4","type":"TRAM"}]
+                                    },
+                                    {
+                                        "displayName":"Hala Stulecia",
+                                        "coords":{"x":51.10689468,"y":17.07372026},
+                                        "id":"1436",
+                                        "transports":[{"line":" 1","type":"TRAM"},{"line":" 2","type":"TRAM"},{"line":"10","type":"TRAM"},{"line":" 4","type":"TRAM"}]
+                                    }
+                                ],
+                    "transport": {"line":" 2","type":"TRAM",   "details": {"line": "136"} },
+                    "departure": {"planned":  "2017-01-26T04:31:00.0Z",
+                        "predicted": "2017-01-26T04:31:00.0Z"},
+                    "arrival": {"planned": "2017-01-26T04:44:00.0Z",
+                        "predicted": "2017-01-26T04:44:00.0Z"},
+                    "alternatives": [],
+                    "details": {}
+                }
+            ]
+        }
+	   ]
 }
