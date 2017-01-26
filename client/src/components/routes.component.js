@@ -11,21 +11,21 @@
 			<div class="listOfConnections">
 				<div class="routes" v-for="route in routes">
 					<div class="route">
-					<span>{{ time(route.departure) }}</span>
+					<span>{{ plannedTime(route.departure) }}</span>
 					<span><ul class = "lines"> <li v-for="lines in route.route">{{lines.transport.details.line}} </li></ul></span>
-					<span> {{ time(route.arrival) }}</span>
+					<span> {{ predictedTime(route.arrival) }}</span>
 					</div>
 					<div class="connectionChanges">
 						<div v-for="conChange in route.route">
 							<div v-on:click="listRollout('busStops')">
-								<span>{{ time(conChange.departure) }}</span>
+								<span>{{ plannedTime(conChange.departure) }}</span>
 								<span>{{ conChange.transport.details.line}}</span>
 								<span>{{ conChange.stops[0].displayName}}</span>
 								<div v-if="conChange.stops.length>2"id="busStops">
 									<div v-for="i in conChange.stops.length-2"><span>{{ conChange.stops[i].displayName}}</span></div>
 								</div>
 								<span>{{ conChange.stops[conChange.stops.length-1].displayName}}</span>
-								<span>{{ time(conChange.arrival) }}</span>
+								<span>{{ predictedTime(conChange.arrival) }}</span>
 							</div>
 						</div>
 					</div>
@@ -54,7 +54,7 @@
                 return moment(time.planned).format("HH:mm");
                 // return {};
             },
-            predictedTime: function() {
+            predictedTime: function(time) {
                 this.log("predictedTime:", time);
                 return moment(time.predicted).format("HH:mm");
 
