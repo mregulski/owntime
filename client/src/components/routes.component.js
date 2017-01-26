@@ -11,21 +11,21 @@
 			<div class="listOfConnections">
 				<div class="routes" v-for="route in routes">
 					<div class="route">
-					<span>{{ plannedTime(route.departure) }}</span>
-					<span><ul class = "lines"> <li v-for="lines in route.route">{{lines.transport.details.line}} </li></ul></span>
-					<span> {{ predictedTime(route.arrival) }}</span>
+					<span class="departureTime">{{ plannedTime(route.departure) }}</span>
+					<ul class = "lines"> <li v-for="lines in route.route">{{lines.transport.details.line}} </li></ul>
+					<span class="arrivalTime"> {{ predictedTime(route.arrival) }}</span>
 					</div>
 					<div class="connectionChanges">
 						<div v-for="conChange in route.route">
 							<div v-on:click="listRollout('busStops')">
-								<span>{{ plannedTime(conChange.departure) }}</span>
-								<span>{{ conChange.transport.details.line}}</span>
-								<span>{{ conChange.stops[0].displayName}}</span>
+								<span class="departureTime">{{ plannedTime(conChange.departure) }}</span>
+								<span class="line">{{ conChange.transport.details.line}}</span>
+								<span class="stopFrom">{{ conChange.stops[0].displayName}}</span>
 								<div v-if="conChange.stops.length>2"id="busStops">
 									<div v-for="i in conChange.stops.length-2"><span>{{ conChange.stops[i].displayName}}</span></div>
 								</div>
-								<span>{{ conChange.stops[conChange.stops.length-1].displayName}}</span>
-								<span>{{ predictedTime(conChange.arrival) }}</span>
+								<span> class="stopTo"{{ conChange.stops[conChange.stops.length-1].displayName}}</span>
+								<span class="arrivalTime">{{ predictedTime(conChange.arrival) }}</span>
 							</div>
 						</div>
 					</div>
