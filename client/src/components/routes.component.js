@@ -17,7 +17,7 @@
 					</div>
 					<div class="connectionChanges">
 						<div v-for="conChange in route.route">
-							<div v-on:click="listRollout('busStops')">
+							<div class="onClickListRollOut" v-on:click="listRollout('busStops')">
 								<span class="departureTime">{{ plannedTime(conChange.departure) }}</span>
 								<span class="line">{{ conChange.transport.details.line}}</span>
 								<span class="stopFrom">{{ conChange.stops[0].displayName}}</span>
