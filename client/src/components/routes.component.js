@@ -24,7 +24,7 @@
 								<div v-if="conChange.stops.length>2"id="busStops">
 									<div v-for="i in conChange.stops.length-2"><span>{{ conChange.stops[i].displayName}}</span></div>
 								</div>
-								<span> class="stopTo"{{ conChange.stops[conChange.stops.length-1].displayName}}</span>
+								<span class="stopTo"> {{ conChange.stops[conChange.stops.length-1].displayName}}</span>
 								<span class="arrivalTime">{{ predictedTime(conChange.arrival) }}</span>
 							</div>
 						</div>
