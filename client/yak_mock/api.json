@@ -3,7 +3,7 @@
 		{
 			"start": {
 				"displayName": "Pl. Grunwaldzki",
-				"coords": "51.111562, 17.060132",
+				"coords": {"x" : 51.111562, "y" : 17.060132},
 				"id": "1",
 				"transport": {
 					"type":  "autobus",
@@ -14,7 +14,7 @@
 			},
 			"end": {
 				"displayName": "Pl. Grunwaldzki",
-				"coords": "51.111562, 17.060132",
+				"coords": { "x" : 51.111562, "y" : 17.060132 },
 				"id": "1",
 				"transport": {
 					"type":  "autobus",
@@ -36,7 +36,7 @@
 					"stops": [
 						{
 							"displayName": "Pl. Grunwaldzki",
-							"coords": "51.111562, 17.060132",
+							"coords": { "x" : 51.111562, "y" : 17.060132},
 							"id": "1",
 							"transport": {
 								"type":  "autobus",
@@ -47,7 +47,7 @@
 						},
 						{
 							"displayName": "Most Grunwaldzki",
-							"coords": "51.111562, 17.060132",
+							"coords": { "x" : 51.111562, "y" : 17.060132},
 							"id": "1",
 							"transports": {
 								"type":  "autobus",
@@ -58,7 +58,7 @@
 						},
 						{
 							"displayName": "urzad wojewodzki",
-							"coords": "51.111562, 17.060132",
+							"coords": { "x" : 51.111562, "y" : 17.060132},
 							"id": "1",
 							"transports": {
 								"type":  "autobus",
