@@ -115,22 +115,30 @@
 		app.clearRoute();
 		json.result = json;
     	var route = [];
-    	var cords = json.result.start.coords.split(", ");
-    	route.push({position: { lat: parseFloat(cords[0]), lng: parseFloat(cords[1]) }, text: json.result.start.displayName, color: "Blue" });
+	    //nowa, "serwerowa" wersja...
+    	var cords = json.result.start.coords;
+    	route.push({position: { lat: cords.x, lng: cords.y }, text: json.result.start.displayName, color: "Blue" });
+	    //stara, ustalona wersja -_-
+	//var cords = json.result.start.coords.split(", ");
+    	//route.push({position: { lat: parseFloat(cords[0]), lng: parseFloat(cords[1]) }, text: json.result.start.displayName, color: "Blue" });
 
     	var limit = json.result.route.length;
     	for (var i = 0; i < limit; i++) {
     		var stopsl = json.result.route[i].stops.length;
     		for (var j = 0; j < stopsl; j++) {
     			var stop = json.result.route[i].stops[j];
-    			cords = stop.coords.split(", ");
-    			route.push({position: { lat: parseFloat(cords[0]), lng: parseFloat(cords[1]) }, text: stop.displayName, color: j!=0?"#FF5900":"RED" });
+			cords = stop.coords;
+    			route.push({position: { lat: cords.x, lng: cords.y }, text: stop.displayName, color: j!=0?"#FF5900":"RED" });
+    			//cords = stop.coords.split(", ");
+    			//route.push({position: { lat: parseFloat(cords[0]), lng: parseFloat(cords[1]) }, text: stop.displayName, color: j!=0?"#FF5900":"RED" });
     		}
     	}
 
-    	cords = json.result.end.coords.split(", ");
-    	route.push({position: { lat: parseFloat(cords[0]), lng: parseFloat(cords[1]) }, text: json.result.end.displayName, color: "Green" });
-
+    	//cords = json.result.end.coords.split(", ");
+    	//route.push({position: { lat: parseFloat(cords[0]), lng: parseFloat(cords[1]) }, text: json.result.end.displayName, color: "Green" });
+	cords = json.result.end.coords;
+    	route.push({position: { lat: cords.x, lng: cords.y }, text: json.result.end.displayName, color: "Green" });
+	    
     	app.makeRoute(route);
     }
 
