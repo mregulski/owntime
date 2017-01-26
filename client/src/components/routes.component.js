@@ -17,14 +17,16 @@
 					</div>
 					<div class="connectionChanges" v-if="route == activeRoute">
 						<div v-for="conChange in route.route">
-							<div class="onClickListRollOut" v-on:click="listRollout('busStops')">
+							<div class="onClickListRollOut" v-on:click="number=conChange.transport.details.line">
 								<span class="departureTime">{{ plannedTime(conChange.departure) }}</span>
 								<span class="line">{{ conChange.transport.details.line}}</span>
-								<span class="stopFrom">{{ conChange.stops[0].displayName}}</span>
-								<div v-if="conChange.stops.length>2" id="busStops">
-									<div v-for="i in conChange.stops.length-2"><span>{{ conChange.stops[i].displayName}}</span></div>
+								<div class="changeRoute" v-if="number == conChange.transport.details.line">
+									<span class="stopFrom">{{ conChange.stops[0].displayName}}</span>
+									<div v-if="conChange.stops.length>2">
+										<div v-for="i in conChange.stops.length-2"><span>{{ conChange.stops[i].displayName}}</span></div>
+									</div>
+									<span class="stopTo"> {{ conChange.stops[conChange.stops.length-1].displayName}}</span>
 								</div>
-								<span class="stopTo"> {{ conChange.stops[conChange.stops.length-1].displayName}}</span>
 								<span class="arrivalTime">{{ predictedTime(conChange.arrival) }}</span>
 							</div>
 						</div>
@@ -36,6 +38,7 @@
         data: function() {
             return {
                 routes: [],
+				number: "",
                 log: app.getLog('routes')
             };
         },

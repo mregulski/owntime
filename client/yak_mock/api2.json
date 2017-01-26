@@ -143,8 +143,21 @@
 								    "transports": []
 								},
 								{
-								    "displayName": "Pl. trtrotrtr",
+								    "displayName": "Pl. trtrtrtr",
 								    "coords": "51.111580, 17.060160",
+								    "id": "1",
+								    "transports": []
+								},
+								{
+								    "displayName": "Pl. trtrtrtr",
+								    "coords": "51.111590, 17.060160",
+								    "id": "1",
+								    "transports": []
+								},
+								
+								{
+								    "displayName": "Pl. trtrotrtr",
+								    "coords": "51.111600, 17.060160",
 								    "id": "1",
 								    "transports": []
 								}
