@@ -10,9 +10,11 @@
 			</div>
 			<div class="listOfConnections">
 				<div class="routes" v-for="route in routes">
+					<div class="route">
 					<span>{{ time(route.departure) }}</span>
 					<span><ul class = "lines"> <li v-for="lines in route.route">{{lines.transport.details.line}} </li></ul></span>
 					<span> {{ time(route.arrival) }}</span>
+					</div>
 					<div class="connectionChanges">
 						<div v-for="conChange in route.route">
 							<div v-on:click="listRollout('busStops')">
@@ -47,9 +49,16 @@
 				// this.activeRoute = activeRoute;
 				//this.log(this.activeRoute);
             },
-			time: function(moment){
-				return moment.planned;
-			},
+			plannedTime: function(time) {
+                this.log("plannedTime:", time);
+                return moment(time.planned).format("HH:mm");
+                // return {};
+            },
+            predictedTime: function() {
+                this.log("predictedTime:", time);
+                return moment(time.predicted).format("HH:mm");
+
+            },
 			changeActive: function(activeRoute) {
 				this.activeRoute = activeRoute.orginalObject;
 				this.log("drawing route");
