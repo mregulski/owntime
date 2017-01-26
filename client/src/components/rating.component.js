@@ -4,7 +4,7 @@
         template:
                `
 		<div >
-			<div style="position: fixed; right:50px; bottom:100px;" v-if="!mobile">
+			<div style="position: fixed; right:50px; bottom:100px; pointer-events: all;" v-if="!mobile">
 				<div>
 					<div style="float:left; color:white; background: rgba(0,0,0,0.7); padding: 15px 20px; ">Jak ci się podobała trasa?</div>
 					<button 
